@@ -472,6 +472,1050 @@
     font-style:italic;
   }
   .step-body.litany-body{
+    font-size:25px;
+    line-height:1.55;
+    text-align:left;
+    max-width:100%;
+    padding:0 4px;
+  }
+  .hm-counter{
+    margin-top:18px;
+    font-family:'Cinzel', serif;
+    font-size:15px;
+    color:var(--gold-light);
+    letter-spacing:0.06em;
+  }
+
+  .pray-controls{
+    display:flex;
+    gap:12px;
+    padding:14px 20px 6px;
+    position:relative; z-index:2;
+  }
+  .ctrl-btn{
+    flex:1;
+    padding:16px;
+    border-radius:14px;
+    font-family:'Cinzel', serif;
+    font-size:18px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    cursor:pointer;
+    border:1.5px solid rgba(var(--gold-rgb),0.45);
+    background:rgba(255,255,255,0.7);
+    color:var(--gold-light);
+  }
+  .ctrl-btn.primary{
+    background:linear-gradient(180deg, var(--gold-light), var(--gold));
+    color:var(--white);
+    border:none;
+    font-weight:600;
+    flex:1.4;
+  }
+  .ctrl-btn:disabled{ opacity:0.35; }
+  .ctrl-btn:active{ transform:translateY(1px); }
+
+  .exit-row{
+    text-align:center;
+    padding:6px 0 4px;
+  }
+  .exit-link{
+    font-size:15.5px;
+    color:rgba(74,47,31,0.5);
+    cursor:pointer;
+    letter-spacing:0.03em;
+  }
+
+  .complete-wrap{
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:30px;
+  }
+  .complete-wrap .glyph-big{ font-size:56px; color:var(--gold); margin-bottom:18px; }
+  .complete-wrap h2{ font-family:'Cinzel', serif; color:var(--ink-deep); font-size:27px; margin:0 0 10px;}
+  .complete-wrap p{ color:var(--gold-light); font-style:italic; font-size:17px; max-width:310px; margin:0 0 26px;}
+
+  .hidden{ display:none !important; }
+
+  @media (max-width: 600px){
+    body{ font-size:22px; }
+    h1.title{ font-size:38px; }
+    .subtitle{ font-size:19px; }
+    .today-pill{ font-size:17px; }
+    .day-grid{ grid-template-columns:1fr; }
+    .day-grid.saturday-row{ max-width:none; }
+    .day-name{ font-size:20px; }
+    .day-mystery{ font-size:18px; }
+    .set-name{ font-size:33px; }
+    .mystery-info .mtitle{ font-size:20px; }
+    .mystery-info .mmed{ font-size:18.5px; }
+    .prayer-ref p{ font-size:20px; }
+    .prayer-ref h3{ font-size:18px; }
+    .pray-main{ padding-left:18px; padding-right:18px; }
+    .step-title{ font-size:29px; }
+    .step-eyebrow{ font-size:17.5px; }
+    .step-body{ font-size:26px; }
+    .step-body.meditation{ font-size:22.5px; }
+    .step-body.litany-body{ font-size:26px; }
+    .ctrl-btn{ font-size:18px; padding:17px 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- ===================== HOME SCREEN ===================== -->
+  <div id="screen-home">
+    <header class="top">
+      <div class="brand"><span class="cross">✝</span> Holy Rosary</div>
+      <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
+    </header>
+
+    <main>
+      <div class="hero">
+        <div class="medallion"><span class="glyph">🌹</span></div>
+        <h1 class="title">The Holy Rosary</h1>
+        <div class="subtitle">Pray always, and do not lose heart</div>
+        <div class="season-badge" id="seasonBadge">Ordinary Time</div>
+        <div class="today-pill" id="todayPill">Today · <b id="todayLabel">—</b></div>
+      </div>
+
+      <div class="section-label">Choose a Day</div>
+      <div class="day-grid" id="dayGridTop"></div>
+      <div class="day-grid saturday-row" id="dayGridSat"></div>
+
+      <details class="prayers-toggle">
+        <summary>Prayers of the Rosary</summary>
+        <div class="prayer-ref" id="prayerRef"></div>
+      </details>
+
+      <footer class="home-foot">Hail Mary, full of grace, the Lord is with thee.</footer>
+    </main>
+  </div>
+
+  <!-- ===================== MYSTERY OVERVIEW SCREEN ===================== -->
+  <div id="screen-overview" class="hidden">
+    <div class="back-row" id="backFromOverview"><span class="arrow">‹</span> Days</div>
+    <main>
+      <div class="overview-head">
+        <div class="set-forday" id="ovDay">SUNDAY</div>
+        <div class="set-name" id="ovSetName">Glorious Mysteries</div>
+      </div>
+      <div class="mystery-list" id="ovList"></div>
+      <button class="begin-btn" id="beginBtn">Begin the Rosary</button>
+    </main>
+  </div>
+
+  <!-- ===================== PRAY SCREEN ===================== -->
+  <div id="screen-pray" class="hidden">
+    <div class="pray-wrap">
+      <div class="bead-track-holder">
+        <div class="bead-track" id="beadTrack"></div>
+        <div class="progress-text" id="progressText">Step 1 of 1</div>
+      </div>
+
+      <div class="pray-main" id="prayMain"></div>
+
+      <div class="pray-controls">
+        <button class="ctrl-btn" id="prevBtn">Back</button>
+        <button class="ctrl-btn primary" id="nextBtn">Next</button>
+      </div>
+      <div class="exit-row"><span class="exit-link" id="exitLink">End early &amp; return home</span></div>
+    </div>
+  </div>
+
+  <!-- ===================== COMPLETE SCREEN ===================== -->
+  <div id="screen-complete" class="hidden">
+    <div class="complete-wrap">
+      <div class="glyph-big">✝</div>
+      <h2>Rosary Complete</h2>
+      <p>"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."</p>
+      <button class="begin-btn" id="doneBtn" style="max-width:280px;">Return Home</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============ CONTENT ============ */
+const PRAYERS = {
+  preparatory: "O my Jesus, I offer up my prayers, works, joys, and sufferings of this day for all the intentions of Thy Sacred Heart, in union with the Holy Sacrifice of the Mass offered throughout the world, in reparation for my sins, for the intentions of all who are dear to me, and in particular for the fruit of this Holy Rosary which I now begin.",
+  signOfCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+  actOfContrition: "O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, Who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more, and to avoid the near occasions of sin. Amen.",
+  apostlesCreed: "I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son, our Lord: Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; the third day He rose again from the dead. He ascended into Heaven, and sits at the right hand of God the Father Almighty. From thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the Communion of Saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.",
+  ourFather: "Our Father, who art in Heaven, hallowed be Thy name. Thy kingdom come, Thy will be done, on earth as it is in Heaven. Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil. Amen.",
+  hailMary: "Hail Mary, full of grace, the Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.",
+  gloryBe: "Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.",
+  ejaculation: "Sacred Heart of Jesus, I place all my trust in Thee. Jesus, I surrender myself to You; take care of everything. Mary, Mother of grace, Mother of mercy, shield me from the enemy, and receive me at the hour of my death. St. Michael the Archangel, defend us in battle. Amen.",
+  fatima: "O my Jesus, forgive us our sins, save us from the fires of Hell, lead all souls to Heaven, especially those most in need of Thy mercy.",
+  hailHolyQueen: "Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.",
+  litany: "Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\nGod the Father of Heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, pray for us.\nHoly Mother of God, pray for us.\nHoly Virgin of virgins, pray for us.\nMother of Christ, pray for us.\nMother of the Church, pray for us.\nMother of mercy, pray for us.\nMother of divine grace, pray for us.\nMother of hope, pray for us.\nMother most pure, pray for us.\nMother most chaste, pray for us.\nMother inviolate, pray for us.\nMother undefiled, pray for us.\nMother most amiable, pray for us.\nMother most admirable, pray for us.\nMother of good counsel, pray for us.\nMother of our Creator, pray for us.\nMother of our Savior, pray for us.\nVirgin most prudent, pray for us.\nVirgin most venerable, pray for us.\nVirgin most renowned, pray for us.\nVirgin most powerful, pray for us.\nVirgin most merciful, pray for us.\nVirgin most faithful, pray for us.\nMirror of justice, pray for us.\nSeat of wisdom, pray for us.\nCause of our joy, pray for us.\nSpiritual vessel, pray for us.\nVessel of honor, pray for us.\nSingular vessel of devotion, pray for us.\nMystical rose, pray for us.\nTower of David, pray for us.\nTower of ivory, pray for us.\nHouse of gold, pray for us.\nArk of the covenant, pray for us.\nGate of Heaven, pray for us.\nMorning star, pray for us.\nHealth of the sick, pray for us.\nRefuge of sinners, pray for us.\nComforter of the afflicted, pray for us.\nHelp of Christians, pray for us.\nQueen of Angels, pray for us.\nQueen of Patriarchs, pray for us.\nQueen of Prophets, pray for us.\nQueen of Apostles, pray for us.\nQueen of Martyrs, pray for us.\nQueen of Confessors, pray for us.\nQueen of Virgins, pray for us.\nQueen of all Saints, pray for us.\nQueen conceived without original sin, pray for us.\nQueen assumed into Heaven, pray for us.\nQueen of the most holy Rosary, pray for us.\nQueen of families, pray for us.\nQueen of peace, pray for us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.\n\nLet us pray. Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body, and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow and obtain eternal joy. Through Christ our Lord. Amen.",
+  closing: "Let us pray. O God, whose only-begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life; grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.",
+  memorare: "Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession was left unaided. Inspired by this confidence, I fly unto thee, O Virgin of virgins, my Mother; to thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me. Amen."
+};
+
+const MYSTERY_SETS = {
+  joyful: {
+    label: "Joyful Mysteries",
+    days: "Monday & Saturday",
+    items: [
+      { title:"The Annunciation", fruit:"Humility", med:"The Archangel Gabriel announces to Mary that she has been chosen to be the Mother of God, and she answers, \"Be it done unto me according to thy word.\"" },
+      { title:"The Visitation", fruit:"Love of Neighbor", med:"Mary hastens to the hill country to visit her cousin Elizabeth, who greets her as the Mother of the Lord and rejoices with her." },
+      { title:"The Nativity", fruit:"Poverty of Spirit", med:"In a stable in Bethlehem, the Son of God is born and laid in a manger, entering the world in humility and silence." },
+      { title:"The Presentation", fruit:"Obedience", med:"Mary and Joseph present the Infant Jesus in the Temple, where the aged Simeon recognizes Him as the salvation of the world." },
+      { title:"The Finding in the Temple", fruit:"Piety and Joy in Finding Jesus", med:"After three anxious days, Mary and Joseph find the boy Jesus in the Temple, seated among the teachers, listening and asking questions." }
+    ]
+  },
+  sorrowful: {
+    label: "Sorrowful Mysteries",
+    days: "Tuesday & Friday",
+    items: [
+      { title:"The Agony in the Garden", fruit:"Sorrow for Sin", med:"In Gethsemane, Jesus prays in anguish before His Passion, sweating blood, and accepts the Father's will for the salvation of souls." },
+      { title:"The Scourging at the Pillar", fruit:"Purity and Mortification", med:"Jesus is bound to a pillar and cruelly scourged, bearing the wounds of our sins in His own flesh." },
+      { title:"The Crowning with Thorns", fruit:"Courage and Moral Strength", med:"Soldiers mock Jesus as king, pressing a crown of thorns upon His head and clothing Him in a purple robe." },
+      { title:"The Carrying of the Cross", fruit:"Patience", med:"Jesus carries the heavy Cross to Calvary, falling beneath its weight, yet continuing on for love of us." },
+      { title:"The Crucifixion", fruit:"Perseverance and Salvation", med:"Jesus is nailed to the Cross and dies for the redemption of the world, offering His life out of perfect love." }
+    ]
+  },
+  glorious: {
+    label: "Glorious Mysteries",
+    days: "Sunday & Wednesday",
+    items: [
+      { title:"The Resurrection", fruit:"Faith", med:"On the third day, Jesus rises from the dead, triumphant over sin and death, and appears to His disciples." },
+      { title:"The Ascension", fruit:"Hope and Desire for Heaven", med:"Forty days after His Resurrection, Jesus ascends into Heaven, promising to prepare a place for us." },
+      { title:"The Descent of the Holy Spirit", fruit:"Love of God, Wisdom, and Zeal", med:"On Pentecost, the Holy Spirit descends upon Mary and the Apostles in tongues of fire, filling them with courage to preach the Gospel." },
+      { title:"The Assumption", fruit:"Grace of a Happy Death", med:"At the end of her earthly life, Mary is taken up body and soul into the glory of Heaven." },
+      { title:"The Coronation of Mary", fruit:"Trust in Mary's Intercession", med:"Mary is crowned Queen of Heaven and Earth by her Son, and given as Mother and advocate to all the faithful." }
+    ]
+  },
+  luminous: {
+    label: "Luminous Mysteries",
+    days: "Thursday",
+    items: [
+      { title:"The Baptism in the Jordan", fruit:"Openness to the Holy Spirit", med:"Jesus is baptized by John in the Jordan, and the Father's voice proclaims Him His beloved Son as the Spirit descends like a dove." },
+      { title:"The Wedding at Cana", fruit:"To Jesus through Mary", med:"At Mary's request, Jesus performs His first miracle, changing water into wine, and manifests His glory." },
+      { title:"The Proclamation of the Kingdom", fruit:"Repentance and Trust in God", med:"Jesus preaches the coming of God's Kingdom, calling all people to conversion and offering forgiveness of sins." },
+      { title:"The Transfiguration", fruit:"Desire for Holiness", med:"On Mount Tabor, Jesus is transfigured in glory before Peter, James, and John, revealing His divine splendor." },
+      { title:"The Institution of the Eucharist", fruit:"Adoration and Love of the Mass", med:"At the Last Supper, Jesus gives us His Body and Blood under the appearance of bread and wine, remaining with us always." }
+    ]
+  }
+};
+
+const DAY_SCHEDULE = [
+  { name:"Sunday", key:"glorious" },
+  { name:"Monday", key:"joyful" },
+  { name:"Tuesday", key:"sorrowful" },
+  { name:"Wednesday", key:"glorious" },
+  { name:"Thursday", key:"luminous" },
+  { name:"Friday", key:"sorrowful" },
+  { name:"Saturday", key:"joyful" }
+];
+
+/* ============ LITURGICAL SEASON THEME ============ */
+function computeEaster(year){
+  const a = year % 19;
+  const b = Math.floor(year/100);
+  const c = year % 100;
+  const d = Math.floor(b/4);
+  const e = b % 4;
+  const f = Math.floor((b+8)/25);
+  const g = Math.floor((b-f+1)/3);
+  const h = (19*a+b-d-g+15)%30;
+  const i = Math.floor(c/4);
+  const k = c%4;
+  const l = (32+2*e+2*i-h-k)%7;
+  const m = Math.floor((a+11*h+22*l)/451);
+  const month = Math.floor((h+l-7*m+114)/31);
+  const day = ((h+l-7*m+114)%31)+1;
+  return new Date(year, month-1, day);
+}
+function addDays(date, n){
+  const d = new Date(date);
+  d.setDate(d.getDate()+n);
+  return d;
+}
+function getAdventStart(year){
+  const nov30 = new Date(year,10,30);
+  const dow = nov30.getDay();
+  let diff;
+  if (dow === 0) diff = 0;
+  else if (dow <= 3) diff = -dow;
+  else diff = 7 - dow;
+  return addDays(nov30, diff);
+}
+function getBaptismOfLord(year){
+  const epiphany = new Date(year,0,6);
+  if (epiphany.getDay() === 0) return addDays(epiphany, 1);
+  const daysToSunday = (7 - epiphany.getDay()) % 7 || 7;
+  return addDays(epiphany, daysToSunday);
+}
+function stripTime(d){ return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+
+function getLiturgicalSeason(today){
+  const date = stripTime(today);
+  const year = date.getFullYear();
+  const easter = stripTime(computeEaster(year));
+  const ashWednesday = addDays(easter, -46);
+  const holyThursday = addDays(easter, -3);
+  const pentecost = addDays(easter, 49);
+  const adventStart = stripTime(getAdventStart(year));
+  const christmas = new Date(year,11,25);
+  const baptism = stripTime(getBaptismOfLord(year));
+
+  if (date >= adventStart && date < christmas) return 'advent';
+  if (date >= christmas || date < baptism) return 'christmas';
+  if (date >= ashWednesday && date < holyThursday) return 'lent';
+  if (date >= holyThursday && date < easter) return 'triduum';
+  if (date.getTime() === pentecost.getTime()) return 'pentecost';
+  if (date >= easter && date <= pentecost) return 'easter';
+  return 'ordinary';
+}
+
+const SEASON_THEMES = {
+  advent:   { gold:'#6b4c9a', goldLight:'#8266ad', goldPale:'#c9b8de', burgundy:'#4a2f6e', goldRgb:'107,76,154', goldLightRgb:'130,102,173', burgundyRgb:'74,47,110', label:'Advent' },
+  christmas:{ gold:'#b9791f', goldLight:'#c98a2e', goldPale:'#f0c877', burgundy:'#8a651a', goldRgb:'185,121,31', goldLightRgb:'201,138,46', burgundyRgb:'138,101,26', label:'Christmastide' },
+  lent:     { gold:'#5c3a68', goldLight:'#71517d', goldPale:'#c3aecb', burgundy:'#3d2547', goldRgb:'92,58,104', goldLightRgb:'113,81,125', burgundyRgb:'61,37,71', label:'Lent' },
+  triduum:  { gold:'#8b1e2f', goldLight:'#a13345', goldPale:'#dba7ae', burgundy:'#5c1420', goldRgb:'139,30,47', goldLightRgb:'161,51,69', burgundyRgb:'92,20,32', label:'Sacred Triduum' },
+  easter:   { gold:'#c9922e', goldLight:'#d9a53f', goldPale:'#f3d38c', burgundy:'#a8781f', goldRgb:'201,146,46', goldLightRgb:'217,165,63', burgundyRgb:'168,120,31', label:'Eastertide' },
+  pentecost:{ gold:'#a8332e', goldLight:'#bf4a3f', goldPale:'#e5a9a2', burgundy:'#7a201c', goldRgb:'168,51,46', goldLightRgb:'191,74,63', burgundyRgb:'122,32,28', label:'Pentecost' },
+  ordinary: { gold:'#4f7a52', goldLight:'#639167', goldPale:'#b9d3ba', burgundy:'#345536', goldRgb:'79,122,82', goldLightRgb:'99,145,103', burgundyRgb:'52,85,54', label:'Ordinary Time' }
+};
+
+function applySeasonTheme(season){
+  const t = SEASON_THEMES[season] || SEASON_THEMES.ordinary;
+  const root = document.documentElement.style;
+  root.setProperty('--gold', t.gold);
+  root.setProperty('--gold-light', t.goldLight);
+  root.setProperty('--gold-pale', t.goldPale);
+  root.setProperty('--burgundy', t.burgundy);
+  root.setProperty('--gold-rgb', t.goldRgb);
+  root.setProperty('--gold-light-rgb', t.goldLightRgb);
+  root.setProperty('--burgundy-rgb', t.burgundyRgb);
+  const badge = document.getElementById('seasonBadge');
+  if (badge) badge.textContent = t.label;
+}
+
+const currentSeason = getLiturgicalSeason(new Date());
+applySeasonTheme(currentSeason);
+
+/* ============ STATE ============ */
+let currentDayIndex = new Date().getDay();
+let sequence = [];
+let stepIndex = 0;
+
+/* ============ HOME RENDER ============ */
+function renderHome(){
+  document.getElementById('todayLabel').textContent =
+    DAY_SCHEDULE[currentDayIndex].name + " — " + MYSTERY_SETS[DAY_SCHEDULE[currentDayIndex].key].label;
+
+  const top = document.getElementById('dayGridTop');
+  const sat = document.getElementById('dayGridSat');
+  top.innerHTML = ""; sat.innerHTML = "";
+
+  DAY_SCHEDULE.forEach((d, idx) => {
+    const card = document.createElement('div');
+    card.className = 'day-card' + (idx === currentDayIndex ? ' is-today' : '');
+    card.innerHTML = `
+      ${idx === currentDayIndex ? '<div class="today-badge">Today</div>' : ''}
+      <div class="day-name">${d.name}</div>
+      <div class="day-mystery">${MYSTERY_SETS[d.key].label}</div>
+    `;
+    card.addEventListener('click', () => openOverview(idx));
+    if (d.name === "Saturday") sat.appendChild(card);
+    else top.appendChild(card);
+  });
+
+  const ref = document.getElementById('prayerRef');
+  ref.innerHTML = `
+    <h3>Preparatory Prayer</h3><p>${PRAYERS.preparatory}</p>
+    <h3>Sign of the Cross</h3><p>${PRAYERS.signOfCross}</p>
+    <h3>Act of Contrition</h3><p>${PRAYERS.actOfContrition}</p>
+    <h3>Apostles' Creed</h3><p>${PRAYERS.apostlesCreed}</p>
+    <h3>Our Father</h3><p>${PRAYERS.ourFather}</p>
+    <h3>Hail Mary</h3><p>${PRAYERS.hailMary}</p>
+    <h3>Glory Be</h3><p>${PRAYERS.gloryBe}</p>
+    <h3>Ejaculatory Prayer</h3><p>${PRAYERS.ejaculation}</p>
+    <h3>Fatima Prayer</h3><p>${PRAYERS.fatima}</p>
+    <h3>Hail, Holy Queen (Salve Regina)</h3><p>${PRAYERS.hailHolyQueen.replace(/\n/g,'<br>')}</p>
+    <h3>Litany of Loreto</h3><p>${PRAYERS.litany.replace(/\n/g,'<br>')}</p>
+    <h3>Closing Prayer</h3><p>${PRAYERS.closing}</p>
+    <h3>Memorare</h3><p>${PRAYERS.memorare}</p>
+  `;
+}
+
+document.getElementById('todayPill').addEventListener('click', () => openOverview(currentDayIndex));
+document.getElementById('infoBtn').addEventListener('click', () => {
+  document.querySelector('.prayers-toggle').open = true;
+  document.querySelector('.prayers-toggle').scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+/* ============ OVERVIEW ============ */
+let overviewDayIndex = 0;
+
+function openOverview(idx){
+  overviewDayIndex = idx;
+  const day = DAY_SCHEDULE[idx];
+  const set = MYSTERY_SETS[day.key];
+  document.getElementById('ovDay').textContent = day.name.toUpperCase();
+  document.getElementById('ovSetName').textContent = set.label;
+
+  const list = document.getElementById('ovList');
+  list.innerHTML = "";
+  set.items.forEach((m, i) => {
+    const row = document.createElement('div');
+    row.className = 'mystery-row';
+    row.innerHTML = `
+      <div class="mystery-num">${i+1}.</div>
+      <div class="mystery-info">
+        <div class="mtitle">${m.title}</div>
+        <div class="mfruit">Fruit of the Mystery: ${m.fruit}</div>
+        <div class="mmed">${m.med}</div>
+      </div>
+    `;
+    list.appendChild(row);
+  });
+
+  showScreen('overview');
+}
+
+document.getElementById('backFromOverview').addEventListener('click', () => showScreen('home'));
+document.getElementById('beginBtn').addEventListener('click', () => {
+  buildSequence(DAY_SCHEDULE[overviewDayIndex].key, DAY_SCHEDULE[overviewDayIndex].name);
+  stepIndex = 0;
+  showScreen('pray');
+  renderStep();
+});
+
+/* ============ SEQUENCE BUILDER ============ */
+function buildSequence(setKey, dayName){
+  const set = MYSTERY_SETS[setKey];
+  const seq = [];
+
+  seq.push({ type:'text', eyebrow:'Before You Begin', title:'Preparatory Prayer', body:PRAYERS.preparatory, bead:'big' });
+  seq.push({ type:'text', eyebrow:'Begin', title:'Sign of the Cross', body:PRAYERS.signOfCross, bead:'big' });
+  seq.push({ type:'text', eyebrow:'Preparing the Soul', title:'Act of Contrition', body:PRAYERS.actOfContrition, bead:'big' });
+  seq.push({ type:'text', eyebrow:'On the Crucifix', title:"Apostles' Creed", body:PRAYERS.apostlesCreed, bead:'big' });
+  seq.push({ type:'text', eyebrow:'First Bead', title:'Our Father', body:PRAYERS.ourFather, bead:'big' });
+  for (let i=1;i<=3;i++){
+    const virtues = ['Faith','Hope','Charity'];
+    seq.push({ type:'text', eyebrow:`Hail Mary ${i} of 3 — for ${virtues[i-1]}`, title:'Hail Mary', body:PRAYERS.hailMary, bead:'small' });
+  }
+  seq.push({ type:'text', eyebrow:'Before the Decades', title:'Glory Be', body:PRAYERS.gloryBe, bead:'big' });
+  seq.push({ type:'text', eyebrow:'A Short Aspiration', title:'Ejaculatory Prayer', body:PRAYERS.ejaculation, bead:'small' });
+
+  set.items.forEach((m, di) => {
+    seq.push({
+      type:'mystery', decade:di+1, total:5,
+      eyebrow:`${ordinal(di+1)} Mystery`, title:m.title, fruit:m.fruit, body:m.med, bead:'big'
+    });
+    seq.push({ type:'text', eyebrow:`Decade ${di+1} — Our Father`, title:'Our Father', body:PRAYERS.ourFather, bead:'big', decade:di+1 });
+    for (let h=1; h<=10; h++){
+      seq.push({ type:'text', eyebrow:`Decade ${di+1} — Hail Mary ${h} of 10`, title:'Hail Mary', body:PRAYERS.hailMary, bead:'small', decade:di+1 });
+    }
+    seq.push({ type:'text', eyebrow:`Decade ${di+1} — Glory Be`, title:'Glory Be', body:PRAYERS.gloryBe, bead:'big', decade:di+1 });
+    seq.push({ type:'text', eyebrow:`Decade ${di+1} — Fatima Prayer`, title:'O My Jesus', body:PRAYERS.fatima, bead:'small', decade:di+1 });
+  });
+
+  seq.push({ type:'text', eyebrow:'Concluding Prayer', title:'Hail, Holy Queen (Salve Regina)', body:PRAYERS.hailHolyQueen, bead:'big' });
+  seq.push({ type:'litany', eyebrow:'In Honor of Our Lady', title:'Litany of Loreto', body:PRAYERS.litany, bead:'big' });
+  seq.push({ type:'text', eyebrow:'Let Us Pray', title:'Closing Prayer', body:PRAYERS.closing, bead:'big' });
+  seq.push({ type:'text', eyebrow:'A Final Petition', title:'Memorare', body:PRAYERS.memorare, bead:'big' });
+  seq.push({ type:'text', eyebrow:'End', title:'Sign of the Cross', body:PRAYERS.signOfCross, bead:'big' });
+
+  sequence = seq;
+}
+
+function ordinal(n){
+  const s = ["th","st","nd","rd"], v = n % 100;
+  return n + (s[(v-20)%10] || s[v] || s[0]);
+}
+
+/* ============ PRAY SCREEN RENDER ============ */
+function renderStep(){
+  const step = sequence[stepIndex];
+  const main = document.getElementById('prayMain');
+
+  if (step.type === 'mystery'){
+    main.innerHTML = `
+      <div class="step-inner">
+        <div class="decade-flag">Mystery ${step.decade} of ${step.total}</div>
+        <div class="step-eyebrow">${step.eyebrow}</div>
+        <div class="step-title">${step.title}</div>
+        <div class="step-fruit">Fruit of the Mystery: ${step.fruit}</div>
+        <div class="step-body meditation">${step.body}</div>
+      </div>
+    `;
+  } else if (step.type === 'litany'){
+    main.innerHTML = `
+      <div class="step-inner">
+        <div class="step-eyebrow">${step.eyebrow}</div>
+        <div class="step-title">${step.title}</div>
+        <div class="step-body litany-body">${step.body.replace(/\n/g,'<br>')}</div>
+      </div>
+    `;
+  } else {
+    main.innerHTML = `
+      <div class="step-inner">
+        ${step.decade ? `<div class="decade-flag">Decade ${step.decade} of 5</div>` : ''}
+        <div class="step-eyebrow">${step.eyebrow}</div>
+        <div class="step-title">${step.title}</div>
+        <div class="step-body">${step.body.replace(/\n/g,'<br><br>')}</div>
+      </div>
+    `;
+  }
+
+  document.getElementById('progressText').textContent = `Step ${stepIndex+1} of ${sequence.length}`;
+  renderBeadTrack();
+
+  document.getElementById('prevBtn').disabled = stepIndex === 0;
+  document.getElementById('nextBtn').textContent = (stepIndex === sequence.length - 1) ? 'Finish' : 'Next';
+
+  main.scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+function renderBeadTrack(){
+  const track = document.getElementById('beadTrack');
+  track.innerHTML = "";
+  sequence.forEach((s, i) => {
+    const b = document.createElement('div');
+    b.className = 'bead ' + (s.bead === 'big' ? 'big' : 'small');
+    if (i < stepIndex) b.classList.add('done');
+    if (i === stepIndex) b.classList.add('current');
+    b.setAttribute('role', 'button');
+    b.setAttribute('aria-label', `${s.title} — step ${i+1}`);
+    b.addEventListener('click', () => {
+      stepIndex = i;
+      renderStep();
+    });
+    track.appendChild(b);
+  });
+  const current = track.children[stepIndex];
+  if (current){
+    const targetLeft = current.offsetLeft - (track.clientWidth / 2) + (current.clientWidth / 2);
+    track.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+  }
+}
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (stepIndex < sequence.length - 1){
+    stepIndex++;
+    renderStep();
+  } else {
+    showScreen('complete');
+  }
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if (stepIndex > 0){
+    stepIndex--;
+    renderStep();
+  }
+});
+document.getElementById('exitLink').addEventListener('click', () => showScreen('home'));
+document.getElementById('doneBtn').addEventListener('click', () => showScreen('home'));
+
+/* ============ SCREEN SWITCH ============ */
+function showScreen(name){
+  ['home','overview','pray','complete'].forEach(s => {
+    document.getElementById('screen-' + s).classList.toggle('hidden', s !== name);
+  });
+  window.scrollTo(0,0);
+}
+
+/* ============ HAPTIC FEEDBACK ============ */
+function buzz(strength){
+  if (navigator.vibrate){
+    navigator.vibrate(strength || 55);
+  }
+}
+document.addEventListener('click', (e) => {
+  const el = e.target.closest(
+    '.day-card, .today-pill, .icon-btn, .back-row, .begin-btn, ' +
+    '.ctrl-btn, .exit-link, .bead, .prayers-toggle summary, #doneBtn'
+  );
+  if (el) buzz(55);
+}, true);
+
+renderHome();
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Holy Rosary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#4a2f1f;
+    --ink-deep:#2e1c10;
+    --gold:#b9791f;
+    --gold-light:#c98a2e;
+    --gold-pale:#f0c877;
+    --gold-rgb:185,121,31;
+    --gold-light-rgb:201,138,46;
+    --burgundy-rgb:179,73,47;
+    --cream:#fffaf1;
+    --parchment:#fff1d6;
+    --burgundy:#b3492f;
+    --white:#ffffff;
+    --joyful:#7a8f6b;
+    --sorrowful:#b3492f;
+    --glorious:#c98a2e;
+    --luminous:#4a6fa5;
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%; overflow-x:hidden; width:100%;}
+  body{
+    margin:0;
+    font-family:'EB Garamond', serif;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(var(--gold-light-rgb),0.20), transparent 55%),
+      radial-gradient(ellipse at 15% 92%, rgba(var(--burgundy-rgb),0.12), transparent 50%),
+      linear-gradient(180deg, #fffdf9 0%, #fff3dc 55%, #ffe9c2 100%);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    -webkit-font-smoothing:antialiased;
+    font-size:21px;
+  }
+  .app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    padding:0 0 28px;
+    overflow-x:hidden;
+  }
+  /* corner flourishes */
+  .app::before,.app::after{
+    content:"";
+    position:absolute;
+    width:140px;height:140px;
+    background:radial-gradient(circle, rgba(var(--gold-light-rgb),0.30), transparent 70%);
+    pointer-events:none;
+    z-index:0;
+  }
+  .app::before{top:-30px;left:-40px;}
+  .app::after{bottom:-30px;right:-40px;}
+
+  header.top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px 10px;
+    position:relative;
+    z-index:2;
+  }
+  .brand{
+    font-family:'Cinzel Decorative', 'Cinzel', serif;
+    font-size:18px;
+    letter-spacing:0.14em;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand .cross{font-size:19px; color:var(--burgundy);}
+  .icon-btn{
+    background:var(--white);border:1.5px solid rgba(var(--gold-rgb),0.45);
+    color:var(--gold-light);
+    width:38px;height:38px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'EB Garamond',serif;font-size:19px;font-weight:600;
+    cursor:pointer;
+  }
+  .icon-btn:active{background:rgba(var(--gold-light-rgb),0.15);}
+
+  main{
+    flex:1;
+    position:relative;
+    z-index:1;
+    padding:0 22px;
+  }
+
+  /* ---------- HOME ---------- */
+  .hero{
+    text-align:center;
+    padding:6px 0 22px;
+  }
+  .medallion{
+    width:112px;height:112px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    border:2px solid var(--gold);
+    box-shadow:0 0 0 6px rgba(var(--gold-light-rgb),0.10), 0 8px 30px rgba(var(--gold-light-rgb),0.22);
+    display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 35% 30%, rgba(255,241,214,0.9), rgba(255,233,194,0.6));
+    font-size:44px;
+    color:var(--gold-light);
+    position:relative;
+  }
+  .medallion .glyph{ transform:translateY(-1px); }
+  h1.title{
+    font-family:'Cinzel', serif;
+    font-weight:700;
+    font-size:37px;
+    letter-spacing:0.03em;
+    margin:0 0 4px;
+    color:var(--ink-deep);
+  }
+  .subtitle{
+    font-size:18.5px;
+    color:var(--gold-light);
+    letter-spacing:0.02em;
+    font-style:italic;
+  }
+  .today-pill{
+    margin:14px auto 0;
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:9px 18px;
+    border:1.5px solid rgba(var(--gold-rgb),0.55);
+    border-radius:999px;
+    font-size:16.5px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    cursor:pointer;
+    background:rgba(var(--gold-light-rgb),0.08);
+  }
+  .today-pill b{color:var(--ink-deep); font-weight:600; font-style:normal;}
+  .season-badge{
+    margin:12px auto 0;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Cinzel', serif;
+    font-size:12.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--white);
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    padding:5px 14px;
+    border-radius:999px;
+    box-shadow:0 3px 10px rgba(var(--gold-rgb),0.25);
+  }
+  .season-badge::before{
+    content:"✦";
+    font-size:10px;
+  }
+
+  .section-label{
+    font-family:'Cinzel', serif;
+    font-size:14px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    text-align:center;
+    margin:26px 0 14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .section-label::before,.section-label::after{
+    content:"";flex:1;height:1px;
+    background:linear-gradient(90deg, transparent, rgba(var(--gold-rgb),0.5), transparent);
+  }
+
+  .day-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+  }
+  .day-grid.saturday-row{ grid-template-columns:1fr; max-width:240px; margin:12px auto 0; }
+  .day-card{
+    background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,241,214,0.6));
+    border:1.5px solid rgba(var(--gold-rgb),0.30);
+    border-radius:14px;
+    padding:15px 13px;
+    text-align:left;
+    cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    position:relative;
+    box-shadow:0 2px 8px rgba(var(--gold-rgb),0.06);
+  }
+  .day-card:active{ transform:scale(0.97); }
+  .day-card.is-today{
+    border-color:var(--gold);
+    background:linear-gradient(180deg, rgba(240,200,119,0.35), rgba(240,200,119,0.10));
+    box-shadow:0 0 0 1px rgba(var(--gold-rgb),0.30), 0 6px 18px rgba(var(--gold-rgb),0.16);
+  }
+  .day-name{
+    font-family:'Cinzel', serif;
+    font-size:19px;
+    font-weight:600;
+    color:var(--ink-deep);
+    letter-spacing:0.01em;
+    margin-bottom:5px;
+  }
+  .day-mystery{
+    font-size:17px;
+    color:var(--gold-light);
+    font-style:italic;
+  }
+  .today-badge{
+    position:absolute; top:10px; right:10px;
+    font-size:10px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--white); background:var(--gold);
+    padding:3px 8px; border-radius:999px; font-family:'Cinzel',serif; font-weight:600;
+  }
+
+  .prayers-toggle{
+    margin-top:30px;
+    border:1.5px solid rgba(var(--gold-rgb),0.30);
+    border-radius:14px;
+    overflow:hidden;
+    background:rgba(255,255,255,0.5);
+  }
+  .prayers-toggle summary{
+    list-style:none;
+    cursor:pointer;
+    padding:16px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Cinzel', serif;
+    font-size:15px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .prayers-toggle summary::-webkit-details-marker{display:none;}
+  .prayers-toggle summary::after{content:"+"; font-size:20px; color:var(--gold);}
+  .prayers-toggle[open] summary::after{content:"–";}
+  .prayer-ref{ padding:0 18px 18px; }
+  .prayer-ref h3{
+    font-family:'Cinzel', serif; font-size:17px; color:var(--gold-light);
+    margin:16px 0 5px; letter-spacing:0.02em;
+  }
+  .prayer-ref p{
+    font-size:19.5px; line-height:1.65; color:var(--ink); margin:0; opacity:0.95;
+  }
+
+  footer.home-foot{
+    text-align:center;
+    font-size:14px;
+    color:rgba(74,47,31,0.55);
+    margin-top:30px;
+    font-style:italic;
+    letter-spacing:0.01em;
+  }
+
+  /* ---------- MYSTERY OVERVIEW ---------- */
+  .back-row{
+    display:flex; align-items:center; gap:6px;
+    padding:16px 20px 4px;
+    color:var(--gold-light);
+    font-size:16px;
+    cursor:pointer;
+    position:relative; z-index:2;
+  }
+  .back-row .arrow{ font-size:19px; }
+  .overview-head{
+    text-align:center;
+    padding:8px 0 6px;
+  }
+  .set-name{
+    font-family:'Cinzel', serif;
+    font-size:32px;
+    color:var(--ink-deep);
+    margin:6px 0 2px;
+  }
+  .set-forday{ font-size:16.5px; color:var(--gold-light); letter-spacing:0.03em; text-transform:uppercase; }
+
+  .mystery-list{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .mystery-row{
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    padding:15px 15px;
+    border:1.5px solid rgba(var(--gold-rgb),0.24);
+    border-radius:12px;
+    background:rgba(255,255,255,0.65);
+  }
+  .mystery-num{
+    font-family:'Cinzel', serif;
+    font-size:22px;
+    color:var(--gold-light);
+    min-width:24px;
+  }
+  .mystery-info .mtitle{
+    font-family:'Cinzel', serif;
+    font-size:19.5px;
+    color:var(--ink-deep);
+    margin-bottom:3px;
+  }
+  .mystery-info .mfruit{
+    font-size:15.5px;
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    margin-bottom:4px;
+  }
+  .mystery-info .mmed{
+    font-size:18px;
+    color:var(--ink);
+    opacity:0.9;
+    line-height:1.55;
+  }
+
+  .begin-btn{
+    display:block;
+    width:100%;
+    margin-top:26px;
+    padding:17px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(180deg, var(--gold-light), var(--gold));
+    color:var(--white);
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:17.5px;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(var(--gold-rgb),0.28);
+  }
+  .begin-btn:active{ transform:translateY(1px); }
+
+  /* ---------- PRAY SCREEN ---------- */
+  .pray-wrap{
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+  }
+  .bead-track-holder{
+    padding:14px 18px 10px;
+    position:relative; z-index:2;
+  }
+  .bead-track{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:6px 2px 10px;
+    scrollbar-width:none;
+    overscroll-behavior-x:contain;
+    touch-action:pan-x;
+  }
+  .bead-track::-webkit-scrollbar{display:none;}
+  .bead{
+    flex:none;
+    border-radius:50%;
+    background:rgba(var(--gold-rgb),0.18);
+    border:1px solid rgba(var(--gold-rgb),0.40);
+    transition:all .2s ease;
+    cursor:pointer;
+    position:relative;
+  }
+  .bead::after{
+    content:"";
+    position:absolute;
+    top:50%; left:50%;
+    width:26px; height:26px;
+    transform:translate(-50%,-50%);
+  }
+  .bead:active{ transform:scale(1.35); }
+  .bead.small{ width:10px; height:10px; }
+  .bead.big{ width:14px; height:14px; }
+  .bead.done{ background:var(--gold); border-color:var(--gold); }
+  .bead.current{
+    background:var(--burgundy);
+    border-color:var(--burgundy);
+    box-shadow:0 0 0 4px rgba(var(--burgundy-rgb),0.22);
+  }
+  .progress-text{
+    text-align:center;
+    font-size:13px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(74,47,31,0.55);
+  }
+
+  .pray-main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    text-align:center;
+    padding:10px 24px 20px;
+    position:relative; z-index:1;
+    overflow-y:auto;
+    overflow-x:hidden;
+    max-height:calc(100vh - 220px);
+  }
+  .step-inner{
+    margin:auto 0;
+    width:100%;
+    max-width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    box-sizing:border-box;
+  }
+  .decade-flag{
+    font-size:13px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--burgundy);
+    margin-bottom:10px;
+  }
+  .step-eyebrow{
+    font-family:'Cinzel', serif;
+    font-size:17px;
+    letter-spacing:0.10em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:14px;
+  }
+  .step-title{
+    font-family:'Cinzel', serif;
+    font-size:28px;
+    color:var(--ink-deep);
+    margin:0 0 16px;
+    line-height:1.3;
+    width:100%;
+    overflow-wrap:break-word;
+  }
+  .step-fruit{
+    font-size:16.5px;
+    font-style:italic;
+    color:var(--gold-light);
+    margin-bottom:14px;
+  }
+  .step-body{
+    font-size:25px;
+    line-height:1.65;
+    color:var(--ink);
+    white-space:pre-line;
+    width:100%;
+    max-width:420px;
+    overflow-wrap:break-word;
+    box-sizing:border-box;
+  }
+  .step-body.meditation{
+    font-size:21.5px;
+    color:rgba(74,47,31,0.9);
+    font-style:italic;
+  }
+  .step-body.litany-body{
     font-size:19.5px;
     line-height:1.55;
     text-align:left;
