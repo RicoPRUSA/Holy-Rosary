@@ -582,18 +582,51 @@
     <main>
       <div class="hero">
         <div class="medallion">
-          <!-- Scalable, highly optimized vector representation of the Marian Monogram -->
+          <!-- Elegant vector representation of the Immaculate Heart of Mary -->
           <svg class="glyph-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M50 8 V20 M44 14 H56" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M30 80 L48 28 C49 25 51 25 52 28 L70 80" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M36 62 H64" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M22 76 C22 60, 32 45, 45 45 C50 45, 50 52, 45 58 C38 64, 30 72, 30 82" stroke="var(--gold-light)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M78 76 C78 60, 68 45, 55 45 C50 45, 50 52, 55 58 C62 64, 70 72, 70 82" stroke="var(--gold-light)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="50" cy="20" r="1.5" fill="var(--gold)"/>
-            <circle cx="38" cy="24" r="1.2" fill="var(--gold-light)"/>
-            <circle cx="62" cy="24" r="1.2" fill="var(--gold-light)"/>
-            <circle cx="28" cy="32" r="1" fill="var(--gold-light)"/>
-            <circle cx="72" cy="32" r="1" fill="var(--gold-light)"/>
+            <!-- Light rays radiating from the heart -->
+            <g stroke="var(--gold-light)" stroke-width="1" opacity="0.60" stroke-linecap="round">
+              <line x1="50" y1="35" x2="50" y2="25" />
+              <line x1="50" y1="83" x2="50" y2="93" />
+              <line x1="26" y1="59" x2="16" y2="59" />
+              <line x1="74" y1="59" x2="84" y2="59" />
+              <line x1="33" y1="42" x2="26" y2="35" />
+              <line x1="67" y1="42" x2="74" y2="35" />
+              <line x1="33" y1="76" x2="26" y2="83" />
+              <line x1="67" y1="76" x2="74" y2="83" />
+            </g>
+            
+            <!-- Flame of Love -->
+            <path d="M50 44 C45 35 41 22 50 10 C59 22 55 35 50 44 Z" fill="var(--burgundy)" opacity="0.15"/>
+            <path d="M50 44 C45 35 41 22 50 10 C59 22 55 35 50 44 Z" stroke="var(--burgundy)" stroke-width="2.5" stroke-linejoin="round"/>
+            <path d="M50 44 C47 38 45 30 50 20 C55 30 53 38 50 44 Z" stroke="var(--gold)" stroke-width="1.8" stroke-linejoin="round"/>
+            
+            <!-- The Sword piercing the heart -->
+            <path d="M20 26 L28 34 M17 31 L25 23" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="21" cy="27" r="1.5" fill="var(--gold)"/>
+            <path d="M24 30 L40 45" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M60 63 L72 74" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+            
+            <!-- Heart -->
+            <path d="M50 46 C35 32 18 43 18 61 C18 78 45 92 50 96 C55 92 82 78 82 61 C82 43 65 32 50 46 Z" fill="var(--parchment)" opacity="0.30"/>
+            <path d="M50 46 C35 32 18 43 18 61 C18 78 45 92 50 96 C55 92 82 78 82 61 C82 43 65 32 50 46 Z" stroke="var(--gold)" stroke-width="3" stroke-linejoin="round"/>
+            
+            <!-- Crown of Roses (Garland) -->
+            <path d="M20 63 Q50 75 80 63" stroke="var(--gold-light)" stroke-width="1.5" fill="none" stroke-dasharray="2 3"/>
+            <!-- Roses -->
+            <circle cx="32" cy="65" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
+            <circle cx="32" cy="65" r="1" fill="var(--burgundy)"/>
+            <circle cx="41" cy="67.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
+            <circle cx="41" cy="67.5" r="1" fill="var(--burgundy)"/>
+            <circle cx="50" cy="68.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
+            <circle cx="50" cy="68.5" r="1" fill="var(--burgundy)"/>
+            <circle cx="59" cy="67.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
+            <circle cx="59" cy="67.5" r="1" fill="var(--burgundy)"/>
+            <circle cx="68" cy="65" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
+            <circle cx="68" cy="65" r="1" fill="var(--burgundy)"/>
+            
+            <!-- Small leaves around the roses -->
+            <path d="M26 62 Q28 58 30 63 M74 62 Q72 58 70 63" stroke="var(--gold-light)" stroke-width="1.2" stroke-linecap="round"/>
           </svg>
         </div>
         <h1 class="title">The Holy Rosary</h1>
@@ -671,6 +704,7 @@ const PRAYERS = {
   ejaculation: "Jesus, I trust in You and I surrender myself to You; take care of everything. Mary, Mother of grace, Mother of mercy, shield me from the enemy, and receive me at the hour of my death. St. Michael the Archangel, defend us in battle. Amen.",
   fatima: "O my Jesus, forgive us our sins, save us from the fires of Hell, lead all souls to Heaven, especially those most in need of Thy mercy.",
   hailHolyQueen: "Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.",
+  stMichael: "Saint Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil. May God rebuke him, we humbly pray; and do thou, O Prince of the Heavenly Host, by the power of God, cast into hell Satan and all the evil spirits who prowl about the world seeking the ruin of souls. Amen.",
   litany: "Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\nGod the Father of Heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, pray for us.\nHoly Mother of God, pray for us.\nHoly Virgin of virgins, pray for us.\nMother of Christ, pray for us.\nMother of the Church, pray for us.\nMother of mercy, pray for us.\nMother of divine grace, pray for us.\nMother of hope, pray for us.\nMother most pure, pray for us.\nMother most chaste, pray for us.\nMother inviolate, pray for us.\nMother undefiled, pray for us.\nMother most amiable, pray for us.\nMother most admirable, pray for us.\nMother of good counsel, pray for us.\nMother of our Creator, pray for us.\nMother of our Savior, pray for us.\nVirgin most prudent, pray for us.\nVirgin most venerable, pray for us.\nVirgin most renowned, pray for us.\nVirgin most powerful, pray for us.\nVirgin most merciful, pray for us.\nVirgin most faithful, pray for us.\nMirror of justice, pray for us.\nSeat of wisdom, pray for us.\nCause of our joy, pray for us.\nSpiritual vessel, pray for us.\nVessel of honor, pray for us.\nSingular vessel of devotion, pray for us.\nMystical rose, pray for us.\nTower of David, pray for us.\nTower of ivory, pray for us.\nHouse of gold, pray for us.\nArk of the covenant, pray for us.\nGate of Heaven, pray for us.\nMorning star, pray for us.\nHealth of the sick, pray for us.\nRefuge of sinners, pray for us.\nComforter of the afflicted, pray for us.\nHelp of Christians, pray for us.\nQueen of Angels, pray for us.\nQueen of Patriarchs, pray for us.\nQueen of Prophets, pray for us.\nQueen of Apostles, pray for us.\nQueen of Martyrs, pray for us.\nQueen of Confessors, pray for us.\nQueen of Virgins, pray for us.\nQueen of all Saints, pray for us.\nQueen conceived without original sin, pray for us.\nQueen assumed into Heaven, pray for us.\nQueen of the most holy Rosary, pray for us.\nQueen of families, pray for us.\nQueen of peace, pray for us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.\n\nLet us pray. Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body, and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow and obtain eternal joy. Through Christ our Lord. Amen.",
   closing: "Let us pray. O God, whose only-begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life; grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.",
   memorare: "Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession was left unaided. Inspired by this confidence, I fly unto thee, O Virgin of virgins, my Mother; to thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me. Amen."
@@ -867,6 +901,7 @@ function renderHome(){
     <h3>Hail, Holy Queen (Salve Regina)</h3><p>${PRAYERS.hailHolyQueen.replace(/\n/g,'<br>')}</p>
     <h3>Litany of Loreto</h3><p>${PRAYERS.litany.replace(/\n/g,'<br>')}</p>
     <h3>Closing Prayer</h3><p>${PRAYERS.closing}</p>
+    <h3>Saint Michael's Prayer</h3><p>${PRAYERS.stMichael}</p>
     <h3>Memorare</h3><p>${PRAYERS.memorare}</p>
   `;
 }
@@ -948,6 +983,7 @@ function buildSequence(setKey, dayName){
   seq.push({ type:'litany', eyebrow:'In Honor of Our Lady', title:'Litany of Loreto', body:PRAYERS.litany, bead:'big' });
   seq.push({ type:'text', eyebrow:'Let Us Pray', title:'Closing Prayer', body:PRAYERS.closing, bead:'big' });
   seq.push({ type:'text', eyebrow:'A Final Petition', title:'Memorare', body:PRAYERS.memorare, bead:'big' });
+  seq.push({ type:'text', eyebrow:'Defend Us in Battle', title:"Saint Michael's Prayer", body:PRAYERS.stMichael, bead:'big' });
   seq.push({ type:'text', eyebrow:'End', title:'Sign of the Cross', body:PRAYERS.signOfCross, bead:'big' });
 
   sequence = seq;
