@@ -12,7 +12,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght=500;600;700&family=Cinzel+Decorative:wght=700&family=EB+Garamond:ital,wght=0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#4a2f1f;
@@ -588,187 +588,53 @@
     <main>
       <div class="hero">
         <div class="medallion">
-          <!-- Elegant vector representation of the Immaculate Heart of Mary -->
+          <!-- Elegant silhouette representation of Our Lady with Rosary -->
           <svg class="glyph-img" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Radiant Background Rays -->
-            <g stroke="var(--gold-light)" stroke-width="3" opacity="0.35" stroke-linecap="round">
-              <line x1="256" y1="310" x2="256" y2="100" />
-              <line x1="256" y1="310" x2="256" y2="480" />
-              <line x1="256" y1="310" x2="40" y2="310" />
-              <line x1="256" y1="310" x2="472" y2="310" />
-              <line x1="256" y1="310" x2="100" y2="154" />
-              <line x1="256" y1="310" x2="412" y2="154" />
-              <line x1="256" y1="310" x2="100" y2="466" />
-              <line x1="256" y1="310" x2="412" y2="466" />
-              <line x1="256" y1="310" x2="178" y2="110" />
-              <line x1="256" y1="310" x2="334" y2="110" />
-              <line x1="256" y1="310" x2="178" y2="510" />
-              <line x1="256" y1="310" x2="334" y2="510" />
-              <line x1="256" y1="310" x2="56" y2="200" />
-              <line x1="256" y1="310" x2="456" y2="200" />
-              <line x1="256" y1="310" x2="56" y2="420" />
-              <line x1="256" y1="310" x2="456" y2="420" />
-            </g>
+            <!-- Halo -->
+            <path d="M190 100 C155 75 160 45 200 35 C240 25 300 40 315 65 C330 90 295 115 255 120 C225 124 205 112 190 100 Z" stroke="var(--ink-deep)" stroke-width="8" fill="none" stroke-linecap="round" />
+            
+            <!-- Back hair / Veil swooping down (left side) -->
+            <path d="M276 92 C210 90 148 140 128 215 C108 290 112 365 148 425 C149 427 153 425 151 422 C125 370 118 300 135 235 C152 170 198 115 264 98 C267 97 265 92 276 92 Z" fill="var(--ink-deep)" />
+            
+            <!-- Inner hair locks / shadow detail -->
+            <path d="M145 285 C132 335 138 385 172 435 C174 438 178 435 176 432 C146 385 142 335 155 285 C156 281 146 281 145 285 Z" fill="var(--ink-deep)" />
+            <path d="M228 240 C218 290 222 340 250 380 C252 383 256 380 254 377 C228 340 224 290 234 240 C235 236 229 236 228 240 Z" fill="var(--ink-deep)" />
 
-            <!-- Halo (Aureole) -->
-            <circle cx="256" cy="220" r="140" stroke="var(--gold)" stroke-width="4" opacity="0.4" stroke-dasharray="10 8"/>
-            <circle cx="256" cy="220" r="124" stroke="var(--gold-light)" stroke-width="3" opacity="0.8"/>
+            <!-- Head / Profile silhouette -->
+            <path d="M276 92 C285 95 305 105 322 120 C338 135 348 155 344 175 C340 190 328 202 312 210 C310 211 310 213 312 214 C322 220 326 228 318 238 C310 248 310 255 298 262 C285 270 265 278 245 278 C240 278 238 272 242 268 C252 250 270 228 278 200 C282 185 282 165 278 122 C277 112 274 93 276 92 Z" fill="var(--ink-deep)" />
+            
+            <!-- Serene closed eye -->
+            <path d="M296 158 Q304 163 312 158" stroke="var(--ink-deep)" stroke-width="4.5" stroke-linecap="round" fill="none" />
 
-            <!-- Veils & Drapery (Back / Base layer of Cloak) -->
-            <path d="M256 80 C180 80 148 160 148 240 C148 310 170 380 140 440 C130 460 110 480 110 480 H402 C402 480 382 460 372 440 C342 380 364 310 364 240 C364 160 332 80 256 80 Z" fill="var(--white)" fill-opacity="0.1" stroke="var(--gold-light)" stroke-width="5" stroke-linejoin="round"/>
+            <!-- Rosary Beads -->
+            <!-- Left strand -->
+            <circle cx="185" cy="305" r="13" fill="var(--ink-deep)" />
+            <circle cx="202" cy="340" r="14" fill="var(--ink-deep)" />
+            <circle cx="222" cy="372" r="15" fill="var(--ink-deep)" />
+            <circle cx="248" cy="400" r="16" fill="var(--ink-deep)" />
+            
+            <!-- Right strand -->
+            <circle cx="318" cy="235" r="13" fill="var(--ink-deep)" />
+            <circle cx="308" cy="270" r="14" fill="var(--ink-deep)" />
+            <circle cx="292" cy="302" r="15" fill="var(--ink-deep)" />
+            <circle cx="272" cy="332" r="16" fill="var(--ink-deep)" />
 
-            <!-- Inner Veil (Framing Face) -->
-            <path d="M256 100 C200 100 176 150 176 220 C176 270 190 320 200 370 C220 400 240 410 256 410 C272 410 292 400 312 370 C322 320 336 270 336 220 C336 150 312 100 256 100 Z" fill="var(--parchment)" fill-opacity="0.15" stroke="var(--gold)" stroke-width="3.5" stroke-linejoin="round"/>
+            <!-- Connector thread -->
+            <path d="M318 235 L308 270 L292 302 L272 332 L248 400" stroke="var(--ink-deep)" stroke-width="4" fill="none" stroke-linecap="round" />
+            <path d="M185 305 L202 340 L222 372 L248 400" stroke="var(--ink-deep)" stroke-width="4" fill="none" stroke-linecap="round" />
 
-            <!-- Face Contour -->
-            <path d="M256 160 C214 160 210 220 210 260 C210 320 236 345 256 345 C276 345 302 320 302 260 C302 220 298 160 256 160 Z" fill="var(--white)" fill-opacity="0.6"/>
-            <path d="M256 160 C214 160 210 220 210 260 C210 320 236 345 256 345 C276 345 302 320 302 260 C302 220 298 160 256 160 Z" stroke="var(--ink)" stroke-width="4.5" stroke-linejoin="round"/>
-
-            <!-- Hair (Parted in Middle) -->
-            <path d="M214 212 C230 196, 246 198, 256 210 C266 198, 282 196, 298 212" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" fill="none"/>
-            <path d="M212 230 C224 215, 244 218, 256 226 C268 218, 288 215, 300 230" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-
-            <!-- Face Features (Serene Eyes, Nose, Mouth) -->
-            <!-- Eyes -->
-            <path d="M228 244 Q238 238 244 244" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <path d="M268 244 Q274 238 284 244" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <circle cx="236" cy="248" r="4.5" fill="var(--ink)"/>
-            <circle cx="276" cy="248" r="4.5" fill="var(--ink)"/>
-            <circle cx="237.5" cy="246.5" r="1.5" fill="var(--white)"/>
-            <circle cx="277.5" cy="246.5" r="1.5" fill="var(--white)"/>
-            <!-- Eyebrows -->
-            <path d="M224 236 Q236 230 246 238" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <path d="M266 238 Q276 230 288 236" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <!-- Nose -->
-            <path d="M256 244 L256 284 Q256 288 251 288" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <!-- Serene Smile -->
-            <path d="M244 308 Q256 316 268 308" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-            <path d="M248 309 C252 307, 260 307, 264 309" stroke="var(--burgundy)" stroke-width="2" stroke-linecap="round" fill="none"/>
-
-            <!-- Neck / Chest Lines -->
-            <path d="M236 342 C236 370, 276 370, 276 342" stroke="var(--ink)" stroke-width="3.5" fill="none"/>
-            <path d="M208 375 C230 388, 282 388, 304 375" stroke="var(--gold)" stroke-width="4" fill="none"/>
-
-            <!-- The Immaculate Heart of Mary -->
-            <g id="immac-heart" transform="translate(0, 10)">
-              <!-- Heart Base -->
-              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" fill="var(--white)" fill-opacity="0.8"/>
-              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" stroke="var(--burgundy)" stroke-width="6" stroke-linejoin="round"/>
-              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" stroke="var(--gold-light)" stroke-width="2" stroke-linejoin="round"/>
-
-              <!-- Rays from Heart -->
-              <g stroke="var(--gold)" stroke-width="1.8" opacity="0.85" stroke-linecap="round">
-                <line x1="256" y1="316" x2="256" y2="294" />
-                <line x1="256" y1="482" x2="256" y2="502" />
-                <line x1="150" y1="380" x2="130" y2="380" />
-                <line x1="362" y1="380" x2="382" y2="380" />
-                <line x1="184" y1="326" x2="168" y2="310" />
-                <line x1="328" y1="326" x2="344" y2="310" />
-                <line x1="184" y1="434" x2="168" y2="450" />
-                <line x1="328" y1="434" x2="344" y2="450" />
-              </g>
-
-              <!-- Flame atop Heart -->
-              <path d="M256 338 C242 320, 230 295, 256 260 C282 295, 270 320, 256 338 Z" fill="var(--burgundy)" opacity="0.30"/>
-              <path d="M256 338 C242 320, 230 295, 256 260 C282 295, 270 320, 256 338 Z" stroke="var(--burgundy)" stroke-width="4.5" stroke-linejoin="round"/>
-              <path d="M256 338 C248 326, 240 310, 256 285 C272 310, 264 326, 256 338 Z" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round"/>
-
-              <!-- Cross rising from Flame -->
-              <path d="M256 285 L256 235 M240 252 H272" stroke="var(--gold)" stroke-width="6.5" stroke-linecap="round"/>
-              <path d="M256 285 L256 235 M240 252 H272" stroke="var(--ink-deep)" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="256" cy="233" r="3" fill="var(--gold)"/>
-              <circle cx="237" cy="252" r="2.5" fill="var(--gold)"/>
-              <circle cx="275" cy="252" r="2.5" fill="var(--gold)"/>
-
-              <!-- Rose Wreath enclosing the Heart -->
-              <path d="M166 385 Q256 415 346 385" stroke="var(--gold-light)" stroke-width="3" fill="none" stroke-dasharray="4 6"/>
-              
-              <!-- Garland Rose Buds -->
-              <!-- Left Rose -->
-              <circle cx="188" cy="380" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-              <path d="M184 376 Q188 384 192 376" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
-              <!-- Center Rose -->
-              <circle cx="256" cy="396" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-              <path d="M252 392 Q256 400 260 392" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
-              <!-- Right Rose -->
-              <circle cx="324" cy="380" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-              <path d="M320 376 Q324 384 328 376" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
-              
-              <!-- Leaves around Garland -->
-              <path d="M164 394 Q172 394 176 388 M348 394 Q340 394 336 388" stroke="var(--gold-light)" stroke-width="3" stroke-linecap="round"/>
-            </g>
-
-            <!-- Outer Circular Rose Wreath (Enclosing frame) -->
-            <g id="outer-wreath" stroke="var(--ink-deep)" stroke-width="4" stroke-linejoin="round" fill="none">
-              <!-- Left side branches -->
-              <path d="M256 490 C120 490, 30 380, 30 256 C30 150, 110 50, 256 45" stroke="var(--gold-light)" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
-              <!-- Right side branches -->
-              <path d="M256 490 C392 490, 482 380, 482 256 C482 150, 402 50, 256 45" stroke="var(--gold-light)" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
-
-              <!-- Symmetrical Detailed Roses on Wreath -->
-              <!-- Bottom Center Rose -->
-              <g transform="translate(256, 486)">
-                <circle cx="0" cy="0" r="22" fill="var(--white)" stroke="var(--burgundy)" stroke-width="5"/>
-                <path d="M-10 -6 C-5 -14, 5 -14, 10 -6 C5 2, -5 2, -10 -6 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="3"/>
-                <path d="M-16 4 Q0 18 16 4" stroke="var(--burgundy)" stroke-width="3.5"/>
-                <path d="M-6 -4 Q0 -8 6 -4" stroke="var(--burgundy)" stroke-width="2.5"/>
-              </g>
-
-              <!-- Bottom Left Rose -->
-              <g transform="translate(136, 442)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 C4 2, -4 2, -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-
-              <!-- Bottom Right Rose -->
-              <g transform="translate(376, 442)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 C4 2, -4 2, -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-
-              <!-- Mid Left Rose -->
-              <g transform="translate(56, 256)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-
-              <!-- Mid Right Rose -->
-              <g transform="translate(456, 256)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-
-              <!-- Top Left Rose -->
-              <g transform="translate(136, 70)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-
-              <!-- Top Right Rose -->
-              <g transform="translate(376, 70)">
-                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
-                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
-                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
-              </g>
-            </g>
-
-            <!-- Detailed Symmetrical Leaves -->
-            <g fill="none" stroke="var(--gold-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <!-- Left Base Leaves -->
-              <path d="M196 470 Q160 485 140 455 C155 440 180 445 196 470 Z" />
-              <path d="M196 470 L164 459" />
-              <!-- Right Base Leaves -->
-              <path d="M316 470 Q352 485 372 455 C357 440 332 445 316 470 Z" />
-              <path d="M316 470 L348 459" />
-              <!-- Far Left Leaves -->
-              <path d="M72 320 Q35 340 45 300 C60 290 80 300 72 320 Z" />
-              <!-- Far Right Leaves -->
-              <path d="M440 320 Q477 340 467 300 C452 290 432 300 440 320 Z" />
+            <!-- Hanging centerpiece & crucifix -->
+            <circle cx="248" cy="400" r="18" fill="var(--ink-deep)" />
+            <path d="M248 418 L248 455" stroke="var(--ink-deep)" stroke-width="5" stroke-linecap="round" />
+            <circle cx="248" cy="435" r="10" fill="var(--ink-deep)" />
+            
+            <!-- Classic elegant crucifix -->
+            <g transform="translate(248, 470)">
+              <path d="M-4 -18 H4 V22 H-4 Z M-14 -7 H14 V1 H-14 Z" fill="var(--ink-deep)" />
+              <circle cx="0" cy="-21" r="3" fill="var(--ink-deep)" />
+              <circle cx="-16" cy="-3" r="2.5" fill="var(--ink-deep)" />
+              <circle cx="16" cy="-3" r="2.5" fill="var(--ink-deep)" />
+              <circle cx="0" cy="24" r="3" fill="var(--ink-deep)" />
             </g>
           </svg>
         </div>
