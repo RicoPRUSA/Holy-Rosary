@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Holy Rosary</title>
+<!-- iOS Home Screen Web App Capabilities -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Holy Rosary">
+<link rel="apple-touch-icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180' fill='%23fffdf9'><rect width='180' height='180' rx='40' fill='%232e1c10'/><circle cx='90' cy='90' r='80' fill='none' stroke='%23b9791f' stroke-width='4'/><path d='M90 35 C70 35 60 50 60 70 C60 90 90 120 90 125 C90 120 120 90 120 70 C120 50 110 35 90 35 Z' fill='%23fffaf1' stroke='%23b9791f' stroke-width='4'/><path d='M90 35 L90 15 M82 22 H98' stroke='%23b9791f' stroke-width='4' stroke-linecap='round'/><path d='M70 75 Q90 85 110 75' stroke='%23b3492f' stroke-width='3' fill='none'/><circle cx='75' cy='75' r='4' fill='%23b3492f'/><circle cx='90' cy='78' r='4' fill='%23b3492f'/><circle cx='105' cy='75' r='4' fill='%23b3492f'/></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -583,50 +589,187 @@
       <div class="hero">
         <div class="medallion">
           <!-- Elegant vector representation of the Immaculate Heart of Mary -->
-          <svg class="glyph-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <!-- Light rays radiating from the heart -->
-            <g stroke="var(--gold-light)" stroke-width="1" opacity="0.60" stroke-linecap="round">
-              <line x1="50" y1="35" x2="50" y2="25" />
-              <line x1="50" y1="83" x2="50" y2="93" />
-              <line x1="26" y1="59" x2="16" y2="59" />
-              <line x1="74" y1="59" x2="84" y2="59" />
-              <line x1="33" y1="42" x2="26" y2="35" />
-              <line x1="67" y1="42" x2="74" y2="35" />
-              <line x1="33" y1="76" x2="26" y2="83" />
-              <line x1="67" y1="76" x2="74" y2="83" />
+          <svg class="glyph-img" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Radiant Background Rays -->
+            <g stroke="var(--gold-light)" stroke-width="3" opacity="0.35" stroke-linecap="round">
+              <line x1="256" y1="310" x2="256" y2="100" />
+              <line x1="256" y1="310" x2="256" y2="480" />
+              <line x1="256" y1="310" x2="40" y2="310" />
+              <line x1="256" y1="310" x2="472" y2="310" />
+              <line x1="256" y1="310" x2="100" y2="154" />
+              <line x1="256" y1="310" x2="412" y2="154" />
+              <line x1="256" y1="310" x2="100" y2="466" />
+              <line x1="256" y1="310" x2="412" y2="466" />
+              <line x1="256" y1="310" x2="178" y2="110" />
+              <line x1="256" y1="310" x2="334" y2="110" />
+              <line x1="256" y1="310" x2="178" y2="510" />
+              <line x1="256" y1="310" x2="334" y2="510" />
+              <line x1="256" y1="310" x2="56" y2="200" />
+              <line x1="256" y1="310" x2="456" y2="200" />
+              <line x1="256" y1="310" x2="56" y2="420" />
+              <line x1="256" y1="310" x2="456" y2="420" />
             </g>
-            
-            <!-- Flame of Love -->
-            <path d="M50 44 C45 35 41 22 50 10 C59 22 55 35 50 44 Z" fill="var(--burgundy)" opacity="0.15"/>
-            <path d="M50 44 C45 35 41 22 50 10 C59 22 55 35 50 44 Z" stroke="var(--burgundy)" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M50 44 C47 38 45 30 50 20 C55 30 53 38 50 44 Z" stroke="var(--gold)" stroke-width="1.8" stroke-linejoin="round"/>
-            
-            <!-- The Sword piercing the heart -->
-            <path d="M20 26 L28 34 M17 31 L25 23" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="21" cy="27" r="1.5" fill="var(--gold)"/>
-            <path d="M24 30 L40 45" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M60 63 L72 74" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
-            
-            <!-- Heart -->
-            <path d="M50 46 C35 32 18 43 18 61 C18 78 45 92 50 96 C55 92 82 78 82 61 C82 43 65 32 50 46 Z" fill="var(--parchment)" opacity="0.30"/>
-            <path d="M50 46 C35 32 18 43 18 61 C18 78 45 92 50 96 C55 92 82 78 82 61 C82 43 65 32 50 46 Z" stroke="var(--gold)" stroke-width="3" stroke-linejoin="round"/>
-            
-            <!-- Crown of Roses (Garland) -->
-            <path d="M20 63 Q50 75 80 63" stroke="var(--gold-light)" stroke-width="1.5" fill="none" stroke-dasharray="2 3"/>
-            <!-- Roses -->
-            <circle cx="32" cy="65" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
-            <circle cx="32" cy="65" r="1" fill="var(--burgundy)"/>
-            <circle cx="41" cy="67.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
-            <circle cx="41" cy="67.5" r="1" fill="var(--burgundy)"/>
-            <circle cx="50" cy="68.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
-            <circle cx="50" cy="68.5" r="1" fill="var(--burgundy)"/>
-            <circle cx="59" cy="67.5" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
-            <circle cx="59" cy="67.5" r="1" fill="var(--burgundy)"/>
-            <circle cx="68" cy="65" r="3.5" fill="var(--white)" stroke="var(--burgundy)" stroke-width="1.5"/>
-            <circle cx="68" cy="65" r="1" fill="var(--burgundy)"/>
-            
-            <!-- Small leaves around the roses -->
-            <path d="M26 62 Q28 58 30 63 M74 62 Q72 58 70 63" stroke="var(--gold-light)" stroke-width="1.2" stroke-linecap="round"/>
+
+            <!-- Halo (Aureole) -->
+            <circle cx="256" cy="220" r="140" stroke="var(--gold)" stroke-width="4" opacity="0.4" stroke-dasharray="10 8"/>
+            <circle cx="256" cy="220" r="124" stroke="var(--gold-light)" stroke-width="3" opacity="0.8"/>
+
+            <!-- Veils & Drapery (Back / Base layer of Cloak) -->
+            <path d="M256 80 C180 80 148 160 148 240 C148 310 170 380 140 440 C130 460 110 480 110 480 H402 C402 480 382 460 372 440 C342 380 364 310 364 240 C364 160 332 80 256 80 Z" fill="var(--white)" fill-opacity="0.1" stroke="var(--gold-light)" stroke-width="5" stroke-linejoin="round"/>
+
+            <!-- Inner Veil (Framing Face) -->
+            <path d="M256 100 C200 100 176 150 176 220 C176 270 190 320 200 370 C220 400 240 410 256 410 C272 410 292 400 312 370 C322 320 336 270 336 220 C336 150 312 100 256 100 Z" fill="var(--parchment)" fill-opacity="0.15" stroke="var(--gold)" stroke-width="3.5" stroke-linejoin="round"/>
+
+            <!-- Face Contour -->
+            <path d="M256 160 C214 160 210 220 210 260 C210 320 236 345 256 345 C276 345 302 320 302 260 C302 220 298 160 256 160 Z" fill="var(--white)" fill-opacity="0.6"/>
+            <path d="M256 160 C214 160 210 220 210 260 C210 320 236 345 256 345 C276 345 302 320 302 260 C302 220 298 160 256 160 Z" stroke="var(--ink)" stroke-width="4.5" stroke-linejoin="round"/>
+
+            <!-- Hair (Parted in Middle) -->
+            <path d="M214 212 C230 196, 246 198, 256 210 C266 198, 282 196, 298 212" stroke="var(--ink)" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M212 230 C224 215, 244 218, 256 226 C268 218, 288 215, 300 230" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+            <!-- Face Features (Serene Eyes, Nose, Mouth) -->
+            <!-- Eyes -->
+            <path d="M228 244 Q238 238 244 244" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M268 244 Q274 238 284 244" stroke="var(--ink)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <circle cx="236" cy="248" r="4.5" fill="var(--ink)"/>
+            <circle cx="276" cy="248" r="4.5" fill="var(--ink)"/>
+            <circle cx="237.5" cy="246.5" r="1.5" fill="var(--white)"/>
+            <circle cx="277.5" cy="246.5" r="1.5" fill="var(--white)"/>
+            <!-- Eyebrows -->
+            <path d="M224 236 Q236 230 246 238" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M266 238 Q276 230 288 236" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Nose -->
+            <path d="M256 244 L256 284 Q256 288 251 288" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Serene Smile -->
+            <path d="M244 308 Q256 316 268 308" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <path d="M248 309 C252 307, 260 307, 264 309" stroke="var(--burgundy)" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+            <!-- Neck / Chest Lines -->
+            <path d="M236 342 C236 370, 276 370, 276 342" stroke="var(--ink)" stroke-width="3.5" fill="none"/>
+            <path d="M208 375 C230 388, 282 388, 304 375" stroke="var(--gold)" stroke-width="4" fill="none"/>
+
+            <!-- The Immaculate Heart of Mary -->
+            <g id="immac-heart" transform="translate(0, 10)">
+              <!-- Heart Base -->
+              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" fill="var(--white)" fill-opacity="0.8"/>
+              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" stroke="var(--burgundy)" stroke-width="6" stroke-linejoin="round"/>
+              <path d="M256 346 C216 308, 172 334, 172 380 C172 422, 240 460, 256 470 C272 460, 340 422, 340 380 C340 334, 296 308, 256 346 Z" stroke="var(--gold-light)" stroke-width="2" stroke-linejoin="round"/>
+
+              <!-- Rays from Heart -->
+              <g stroke="var(--gold)" stroke-width="1.8" opacity="0.85" stroke-linecap="round">
+                <line x1="256" y1="316" x2="256" y2="294" />
+                <line x1="256" y1="482" x2="256" y2="502" />
+                <line x1="150" y1="380" x2="130" y2="380" />
+                <line x1="362" y1="380" x2="382" y2="380" />
+                <line x1="184" y1="326" x2="168" y2="310" />
+                <line x1="328" y1="326" x2="344" y2="310" />
+                <line x1="184" y1="434" x2="168" y2="450" />
+                <line x1="328" y1="434" x2="344" y2="450" />
+              </g>
+
+              <!-- Flame atop Heart -->
+              <path d="M256 338 C242 320, 230 295, 256 260 C282 295, 270 320, 256 338 Z" fill="var(--burgundy)" opacity="0.30"/>
+              <path d="M256 338 C242 320, 230 295, 256 260 C282 295, 270 320, 256 338 Z" stroke="var(--burgundy)" stroke-width="4.5" stroke-linejoin="round"/>
+              <path d="M256 338 C248 326, 240 310, 256 285 C272 310, 264 326, 256 338 Z" stroke="var(--gold)" stroke-width="2.5" stroke-linejoin="round"/>
+
+              <!-- Cross rising from Flame -->
+              <path d="M256 285 L256 235 M240 252 H272" stroke="var(--gold)" stroke-width="6.5" stroke-linecap="round"/>
+              <path d="M256 285 L256 235 M240 252 H272" stroke="var(--ink-deep)" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="256" cy="233" r="3" fill="var(--gold)"/>
+              <circle cx="237" cy="252" r="2.5" fill="var(--gold)"/>
+              <circle cx="275" cy="252" r="2.5" fill="var(--gold)"/>
+
+              <!-- Rose Wreath enclosing the Heart -->
+              <path d="M166 385 Q256 415 346 385" stroke="var(--gold-light)" stroke-width="3" fill="none" stroke-dasharray="4 6"/>
+              
+              <!-- Garland Rose Buds -->
+              <!-- Left Rose -->
+              <circle cx="188" cy="380" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+              <path d="M184 376 Q188 384 192 376" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
+              <!-- Center Rose -->
+              <circle cx="256" cy="396" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+              <path d="M252 392 Q256 400 260 392" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
+              <!-- Right Rose -->
+              <circle cx="324" cy="380" r="10" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+              <path d="M320 376 Q324 384 328 376" stroke="var(--burgundy)" stroke-width="2.5" fill="none"/>
+              
+              <!-- Leaves around Garland -->
+              <path d="M164 394 Q172 394 176 388 M348 394 Q340 394 336 388" stroke="var(--gold-light)" stroke-width="3" stroke-linecap="round"/>
+            </g>
+
+            <!-- Outer Circular Rose Wreath (Enclosing frame) -->
+            <g id="outer-wreath" stroke="var(--ink-deep)" stroke-width="4" stroke-linejoin="round" fill="none">
+              <!-- Left side branches -->
+              <path d="M256 490 C120 490, 30 380, 30 256 C30 150, 110 50, 256 45" stroke="var(--gold-light)" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
+              <!-- Right side branches -->
+              <path d="M256 490 C392 490, 482 380, 482 256 C482 150, 402 50, 256 45" stroke="var(--gold-light)" stroke-width="4" stroke-dasharray="1 10" stroke-linecap="round"/>
+
+              <!-- Symmetrical Detailed Roses on Wreath -->
+              <!-- Bottom Center Rose -->
+              <g transform="translate(256, 486)">
+                <circle cx="0" cy="0" r="22" fill="var(--white)" stroke="var(--burgundy)" stroke-width="5"/>
+                <path d="M-10 -6 C-5 -14, 5 -14, 10 -6 C5 2, -5 2, -10 -6 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="3"/>
+                <path d="M-16 4 Q0 18 16 4" stroke="var(--burgundy)" stroke-width="3.5"/>
+                <path d="M-6 -4 Q0 -8 6 -4" stroke="var(--burgundy)" stroke-width="2.5"/>
+              </g>
+
+              <!-- Bottom Left Rose -->
+              <g transform="translate(136, 442)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 C4 2, -4 2, -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+
+              <!-- Bottom Right Rose -->
+              <g transform="translate(376, 442)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 C4 2, -4 2, -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+
+              <!-- Mid Left Rose -->
+              <g transform="translate(56, 256)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+
+              <!-- Mid Right Rose -->
+              <g transform="translate(456, 256)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+
+              <!-- Top Left Rose -->
+              <g transform="translate(136, 70)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+
+              <!-- Top Right Rose -->
+              <g transform="translate(376, 70)">
+                <circle cx="0" cy="0" r="19" fill="var(--white)" stroke="var(--burgundy)" stroke-width="4.5"/>
+                <path d="M-8 -5 C-4 -12, 4 -12, 8 -5 Q0 5 -8 -5 Z" fill="var(--parchment)" stroke="var(--burgundy)" stroke-width="2.5"/>
+                <path d="M-13 3 Q0 15 13 3" stroke="var(--burgundy)" stroke-width="3"/>
+              </g>
+            </g>
+
+            <!-- Detailed Symmetrical Leaves -->
+            <g fill="none" stroke="var(--gold-light)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Left Base Leaves -->
+              <path d="M196 470 Q160 485 140 455 C155 440 180 445 196 470 Z" />
+              <path d="M196 470 L164 459" />
+              <!-- Right Base Leaves -->
+              <path d="M316 470 Q352 485 372 455 C357 440 332 445 316 470 Z" />
+              <path d="M316 470 L348 459" />
+              <!-- Far Left Leaves -->
+              <path d="M72 320 Q35 340 45 300 C60 290 80 300 72 320 Z" />
+              <!-- Far Right Leaves -->
+              <path d="M440 320 Q477 340 467 300 C452 290 432 300 440 320 Z" />
+            </g>
           </svg>
         </div>
         <h1 class="title">The Holy Rosary</h1>
@@ -703,7 +846,7 @@ const PRAYERS = {
   gloryBe: "Glory be to the Father, and to the Son, and to the Holy Spirit. As it was in the beginning, is now, and ever shall be, world without end. Amen.",
   ejaculation: "Jesus, I trust in You and I surrender myself to You; take care of everything. Mary, Mother of grace, Mother of mercy, shield me from the enemy, and receive me at the hour of my death. St. Michael the Archangel, defend us in battle. Amen.",
   fatima: "O my Jesus, forgive us our sins, save us from the fires of Hell, lead all souls to Heaven, especially those most in need of Thy mercy.",
-  hailHolyQueen: "Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.",
+  hailHolyQueen: "Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor vanished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.",
   stMichael: "Saint Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil. May God rebuke him, we humbly pray; and do thou, O Prince of the Heavenly Host, by the power of God, cast into hell Satan and all the evil spirits who prowl about the world seeking the ruin of souls. Amen.",
   litany: "Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\nGod the Father of Heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, pray for us.\nHoly Mother of God, pray for us.\nHoly Virgin of virgins, pray for us.\nMother of Christ, pray for us.\nMother of the Church, pray for us.\nMother of mercy, pray for us.\nMother of divine grace, pray for us.\nMother of hope, pray for us.\nMother most pure, pray for us.\nMother most chaste, pray for us.\nMother inviolate, pray for us.\nMother undefiled, pray for us.\nMother most amiable, pray for us.\nMother most admirable, pray for us.\nMother of good counsel, pray for us.\nMother of our Creator, pray for us.\nMother of our Savior, pray for us.\nVirgin most prudent, pray for us.\nVirgin most venerable, pray for us.\nVirgin most renowned, pray for us.\nVirgin most powerful, pray for us.\nVirgin most merciful, pray for us.\nVirgin most faithful, pray for us.\nMirror of justice, pray for us.\nSeat of wisdom, pray for us.\nCause of our joy, pray for us.\nSpiritual vessel, pray for us.\nVessel of honor, pray for us.\nSingular vessel of devotion, pray for us.\nMystical rose, pray for us.\nTower of David, pray for us.\nTower of ivory, pray for us.\nHouse of gold, pray for us.\nArk of the covenant, pray for us.\nGate of Heaven, pray for us.\nMorning star, pray for us.\nHealth of the sick, pray for us.\nRefuge of sinners, pray for us.\nComforter of the afflicted, pray for us.\nHelp of Christians, pray for us.\nQueen of Angels, pray for us.\nQueen of Patriarchs, pray for us.\nQueen of Prophets, pray for us.\nQueen of Apostles, pray for us.\nQueen of Martyrs, pray for us.\nQueen of Confessors, pray for us.\nQueen of Virgins, pray for us.\nQueen of all Saints, pray for us.\nQueen conceived without original sin, pray for us.\nQueen assumed into Heaven, pray for us.\nQueen of the most holy Rosary, pray for us.\nQueen of families, pray for us.\nQueen of peace, pray for us.\n\nLamb of God, who takest away the sins of the world, spare us, O Lord.\nLamb of God, who takest away the sins of the world, graciously hear us, O Lord.\nLamb of God, who takest away the sins of the world, have mercy on us.\n\nV. Pray for us, O Holy Mother of God.\nR. That we may be made worthy of the promises of Christ.\n\nLet us pray. Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body, and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow and obtain eternal joy. Through Christ our Lord. Amen.",
   closing: "Let us pray. O God, whose only-begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life; grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.",
@@ -842,20 +985,6 @@ const SEASON_THEMES = {
   pentecost:{ gold:'#a8332e', goldLight:'#bf4a3f', goldPale:'#e5a9a2', burgundy:'#7a201c', goldRgb:'168,51,46', goldLightRgb:'191,74,63', burgundyRgb:'122,32,28', label:'Pentecost' },
   ordinary: { gold:'#4f7a52', goldLight:'#639167', goldPale:'#b9d3ba', burgundy:'#345536', goldRgb:'79,122,82', goldLightRgb:'99,145,103', burgundyRgb:'52,85,54', label:'Ordinary Time' }
 };
-
-function applySeasonTheme(season){
-  const t = SEASON_THEMES[season] || SEASON_THEMES.ordinary;
-  const root = document.documentElement.style;
-  root.setProperty('--gold', t.gold);
-  root.setProperty('--gold-light', t.goldLight);
-  root.setProperty('--gold-pale', t.goldPale);
-  root.setProperty('--burgundy', t.burgundy);
-  root.setProperty('--gold-rgb', t.goldRgb);
-  root.setProperty('--gold-light-rgb', t.goldLightRgb);
-  root.setProperty('--burgundy-rgb', t.burgundyRgb);
-  const badge = document.getElementById('seasonBadge');
-  if (badge) badge.textContent = t.label;
-}
 
 const currentSeason = getLiturgicalSeason(new Date());
 applySeasonTheme(currentSeason);
@@ -1106,21 +1235,61 @@ function showScreen(name){
 
 /* ============ HAPTIC FEEDBACK ============ */
 function buzz(strength){
+  // Android / Standard Vibration API
   try {
     if (navigator.vibrate){
-      navigator.vibrate(strength || 55);
+      navigator.vibrate(strength || 40);
+      return;
     }
   } catch (e) {
-    // Gracefully handle browsers blocking haptics
+    // Suppress vibration warnings
+  }
+
+  // iOS WebKit Web Audio API Haptic Emulation Fallback
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      const ctx = new AudioContext();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(150, ctx.currentTime); // 150 Hz thud
+      gain.gain.setValueAtTime(0.01, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04); // 40ms decay
+      
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.04);
+    }
+  } catch (e) {
+    // Suppress audio-context interaction blockers gracefully
   }
 }
+
 document.addEventListener('click', (e) => {
   const el = e.target.closest(
     '.day-card, .today-pill, .icon-btn, .back-row, .begin-btn, ' +
-    '.ctrl-btn, .exit-link, .bead, .prayers-toggle summary, #doneBtn'
+    '.ctrl-btn, .exit-link, .bead, .prayers-toggle summary, #doneBtn, button, a'
   );
-  if (el) buzz(55);
+  if (el) buzz(40);
 }, true);
+
+function applySeasonTheme(season){
+  const t = SEASON_THEMES[season] || SEASON_THEMES.ordinary;
+  const root = document.documentElement.style;
+  root.setProperty('--gold', t.gold);
+  root.setProperty('--gold-light', t.goldLight);
+  root.setProperty('--gold-pale', t.goldPale);
+  root.setProperty('--burgundy', t.burgundy);
+  root.setProperty('--gold-rgb', t.goldRgb);
+  root.setProperty('--gold-light-rgb', t.goldLightRgb);
+  root.setProperty('--burgundy-rgb', t.burgundyRgb);
+  const badge = document.getElementById('seasonBadge');
+  if (badge) badge.textContent = t.label;
+}
 
 renderHome();
 </script>
