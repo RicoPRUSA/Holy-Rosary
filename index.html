@@ -38,6 +38,21 @@
         <div class="today-pill" id="todayPill">Today · <b id="todayLabel">—</b></div>
       </div>
 
+      <!-- Deceased Loved One Option -->
+      <div class="deceased-option-card">
+        <label class="deceased-checkbox-label">
+          <input type="checkbox" id="dedicateDeceased"> Pray for a Deceased Loved One
+        </label>
+        <div id="deceasedForm" class="hidden">
+          <input type="text" id="deceasedName" placeholder="Name of Deceased (e.g. John)">
+          <div class="gender-selector">
+            <label><input type="radio" name="deceasedGender" value="him" checked> He/Him</label>
+            <label><input type="radio" name="deceasedGender" value="her"> She/Her</label>
+            <label><input type="radio" name="deceasedGender" value="them"> They/Them</label>
+          </div>
+        </div>
+      </div>
+
       <div class="section-label">Choose a Day</div>
       <div class="day-grid" id="dayGridTop"></div>
       <div class="day-grid saturday-row" id="dayGridSat"></div>
@@ -60,22 +75,6 @@
         <div class="set-name" id="ovSetName">Glorious Mysteries</div>
       </div>
       <div class="mystery-list" id="ovList"></div>
-
-      <!-- Deceased Loved One Option -->
-      <div class="deceased-option-card">
-        <label class="deceased-checkbox-label">
-          <input type="checkbox" id="dedicateDeceased"> Pray for a Deceased Loved One
-        </label>
-        <div id="deceasedForm" class="hidden">
-          <input type="text" id="deceasedName" placeholder="Name of Deceased (e.g. John)">
-          <div class="gender-selector">
-            <label><input type="radio" name="deceasedGender" value="him" checked> He/Him</label>
-            <label><input type="radio" name="deceasedGender" value="her"> She/Her</label>
-            <label><input type="radio" name="deceasedGender" value="them"> They/Them</label>
-          </div>
-        </div>
-      </div>
-
       <button class="begin-btn" id="beginBtn">Begin the Rosary</button>
     </main>
   </div>
@@ -158,7 +157,7 @@ const PRAYERS={preparatory:"O my Jesus, I offer up my prayers, works, joys, and 
         <div class="step-title">${e.title}</div>
         <div class="step-body">${e.body.replace(/\n/g,"<br><br>")}</div>
       </div>
-    `,document.getElementById("progressText").textContent=`Step ${stepIndex+1} of ${sequence.length}`,renderBeadTrack(),document.getElementById("prevBtn").disabled=0===stepIndex,document.getElementById("nextBtn").textContent=stepIndex===sequence.length-1?"Finish":"Next",t.scrollTop=0,window.scrollTo(0,0)}function renderBeadTrack(){const e=document.getElementById("beadTrack");e.innerHTML="",sequence.forEach((t,r)=>{const o=document.createElement("div");o.className="bead "+("big"===t.bead?"big":"small"),r<stepIndex&&o.classList.add("done"),r===stepIndex&&o.classList.add("current"),o.setAttribute("role","button"),o.setAttribute("aria-label",`${t.title} — step ${r+1}`),o.addEventListener("click",()=>{stepIndex=r,renderStep()}),e.appendChild(o)}),requestAnimationFrame(()=>{const t=e.children[stepIndex];if(t){const r=t.offsetLeft-e.clientWidth/2+t.clientWidth/2;e.scrollTo({left:Math.max(0,r),behavior:"smooth"})}})}function showScreen(e){["home","overview","pray","complete"].forEach(t=>{document.getElementById("screen-"+t).classList.toggle("hidden",t!==e)}),window.scrollTo(0,0)}function applySeasonTheme(e){const t=SEASON_THEMES[e]||SEASON_THEMES.ordinary,r=document.documentElement.style;r.setProperty("--gold",t.gold),r.setProperty("--gold-light",t.goldLight),r.setProperty("--gold-pale",t.goldPale),r.setProperty("--burgundy",t.burgundy),r.setProperty("--gold-rgb",t.goldRgb),r.setProperty("--gold-light-rgb",t.goldLightRgb),r.setProperty("--burgundy-rgb",t.burgundyRgb);const o=document.getElementById("seasonBadge");o&&(o.textContent=t.label)}
+    `,document.getElementById("progressText").textContent=`Step ${stepIndex+1} of ${sequence.length}`,renderBeadTrack(),document.getElementById("prevBtn").disabled=0===stepIndex,document.getElementById("nextBtn").textContent=stepIndex===sequence.length-1?"Finish":"Next",t.scrollTop=0,window.scrollTo(0,0)}function renderBeadTrack(){const e=document.getElementById("beadTrack");e.innerHTML="",sequence.forEach((t,r)=>{const o=document.createElement("div");o.className="bead "+("big"===t.bead?"big":"small"),r<stepIndex&&o.classList.add("done"),r===stepIndex&&o.classList.add("current"),o.setAttribute("role","button"),o.setAttribute("aria-label",`${t.title} — step ${r+1}`),o.addEventListener("click",()=>{stepIndex=r,renderStep()}),e.appendChild(o)}),requestAnimationFrame(()=>{const t=e.children[stepIndex];if(t){const r=t.offsetLeft-e.clientWidth/2+t.clientWidth/2;e.scrollTo({left:Math.max(0,r),behavior:"smooth"})}})}function showScreen(e){["home","overview","pray","complete"].forEach(t=>{document.getElementById("screen-"+t).classList.toggle("hidden",t!==e)}),window.scrollTo(0,0)}function applySeasonTheme(e){const t=SEASON_THEMES[e]||SEASON_THEMES.ordinary,r=document.documentElement.style;r.setProperty("--gold",t.gold);r.setProperty("--gold-light",t.goldLight);r.setProperty("--gold-pale",t.goldPale);r.setProperty("--burgundy",t.burgundy);r.setProperty("--gold-rgb",t.goldRgb);r.setProperty("--gold-light-rgb",t.goldLightRgb);r.setProperty("--burgundy-rgb",t.burgundyRgb);const o=document.getElementById("seasonBadge");o&&(o.textContent=t.label)}
 
 /* ============ INITIALIZATION & EVENT LISTENERS ============ */
 renderHome();
