@@ -57,7 +57,7 @@ body{
 header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px;position:relative;z-index:2}
 .brand{font-family:'Cinzel Decorative','Cinzel',serif;font-size:18px;letter-spacing:.14em;color:var(--gold-light);text-transform:uppercase;display:flex;align-items:center;gap:8px}
 
-/* Custom Vector Cross Icon (Prevents Mobile Emoji Substitution & Matches Liturgical Calendar Colors) */
+/* Custom Vector Cross Icon (Prevents Mobile Emoji Substitution) */
 .brand-cross-svg{
   width:18px;
   height:20px;
@@ -153,7 +153,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 /* Circular Rosary Loop SVG Holder */
 .circular-rosary-wrap{width:100%;display:flex;justify-content:center;margin:4px 0 6px;position:relative}
-.circular-rosary-svg{width:160px;height:115px;overflow:visible}
+.circular-rosary-svg{width:160px;height:120px;overflow:visible}
 
 /* Main Pray Area & Visual Swipe Animations */
 .pray-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:10px 22px 20px;position:relative;z-index:1;overflow-y:auto;overflow-x:hidden;max-height:calc(100vh - 270px);touch-action:pan-y}
@@ -270,7 +270,6 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   <!-- ===================== HOME SCREEN ===================== -->
   <div id="screen-home">
     <header class="top">
-      <!-- Title with Inline SVG Cross (Prevents Emoji Substitution on Mobile) -->
       <div class="brand">
         <svg class="brand-cross-svg" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></svg>
         <span id="ui-brand">Holy Rosary</span>
@@ -355,7 +354,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
       <!-- Circular / Decade Loop Bead Visualizer -->
       <div class="circular-rosary-wrap" id="circularRosaryWrap">
-        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 115"></svg>
+        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 120"></svg>
       </div>
 
       <div class="pray-main" id="prayMain"></div>
@@ -397,7 +396,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v11';
+    const CACHE_NAME = 'rosary-v12';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -451,7 +450,7 @@ const MYSTERY_SETS={
     luminous:{label:"Luminous Mysteries",days:"Thursday",items:[{title:"The Baptism in the Jordan",fruit:"Openness to the Holy Spirit",med:"Jesus is baptized by John in the Jordan, and the Father's voice proclaims Him His beloved Son as the Spirit descends like a dove."},{title:"The Wedding at Cana",fruit:"To Jesus through Mary",med:"At Mary's request, Jesus performs His first miracle, changing water into wine, and manifests His glory."},{title:"The Proclamation of the Kingdom",fruit:"Repentance and Trust in God",med:"Jesus preaches the coming of God's Kingdom, calling all people to conversion and offering forgiveness of sins."},{title:"The Transfiguration",fruit:"Desire for Holiness",med:"On Mount Tabor, Jesus is transfigured in glory before Peter, James, and John, revealing His divine splendor."},{title:"The Institution of the Eucharist",fruit:"Adoration and Love of the Mass",med:"At the Last Supper, Jesus gives us His Body and Blood under the appearance of bread and wine, remaining with us always."}]}
   },
   es:{
-    joyful:{label:"Misterios Gozosos",days:"Lunes y Sábado",items:[{title:"La Anunciación",fruit:"Humildad",med:"El Arcángel Gabriel anuncia a María que ha sido elegida para ser la Madre de Dios, y ella responde: \"Hágase en mí según tu palabra.\""},{title:"La Visitación",fruit:"Amor al Prójimo",med:"María corre a la montaña para visitar a su prima Isabel, quien la saluda como la Madre del Señor y se alegra con ella."},{title:"El Nacimiento de Jesús",fruit:"Pobreza de Espíritu",med:"En un pesebre en Belén, nace el Hijo de Dios y es recostado en un pesebre, entrando al mundo en humildad y silencio."},{title:"La Presentación",fruit:"Obediencia",med:"María y José presentan al Niño Jesús en el Templo, donde el anciano Simeón lo reconoce como la salvación del mundo."},{title:"El Niño Perdido y Hallado",fruit:"Piedad y Alegría de encontrar a Jesús",med:"Después de tres días de angustia, María y José encuentran al niño Jesús en el Templo, sentado entre los maestros."}]},
+    joyful:{label:"Misterios Gozosos",days:"Lunes y Sábado",items:[{title:"La Anunciación",fruit:"Humildad",med:"El Arcángel Gabriel anuncia a María que ha sido elegida para ser la Madre de Dios, y ella responde: \"Hágase en mí según tu palabra.\""},{title:"La Visitación",fruit:"Amor al Prójimo",med:"María corre a la montaña para visitar a su prima Isabel, quien la saluda como la Madre del Señor y se alegra con ella."},{title:"El Nacimiento de Jesús",fruit:"Pobreza de Espíritu",med:"En un pesebre en Belén, nace el Hijo de Dios y es recostado en un pesebre, entrando al mundo en humedad y silencio."},{title:"La Presentación",fruit:"Obediencia",med:"María y José presentan al Niño Jesús en el Templo, donde el anciano Simeón lo reconoce como la salvación del mundo."},{title:"El Niño Perdido y Hallado",fruit:"Piedad y Alegría de encontrar a Jesús",med:"Después de tres días de angustia, María y José encuentran al niño Jesús en el Templo, sentado entre los maestros."}]},
     sorrowful:{label:"Misterios Dolorosos",days:"Martes y Viernes",items:[{title:"La Agonía en el Huerto",fruit:"Dolor por el Pecado",med:"En Getsemaní, Jesús ora con angustia antes de su Pasión, sudando sangre y aceptando la voluntad del Padre."},{title:"La Flagelación",fruit:"Pureza y Mortificación",med:"Jesús es atado a una columna y azotado cruelmente, cargando con las heridas de nuestros pecados en su carne."},{title:"La Coronación de Espinas",fruit:"Coraje y Fortaleza Moral",med:"Los soldados se burlan de Jesús como rey, colocando una corona de espinas sobre su cabeza y vistiéndolo de púrpura."},{title:"Jesús con la Cruz a Cuestas",fruit:"Paciencia",med:"Jesús carga la pesada Cruz camino al Calvario, cayendo bajo su peso, pero continuando por amor a nosotros."},{title:"La Crucifixión",fruit:"Perseverancia y Salvación",med:"Jesús es clavado en la Cruz y muere por la redención del mundo, ofreciendo su vida por amor perfecto."}]},
     glorious:{label:"Misterios Gloriosos",days:"Domingo y Miércoles",items:[{title:"La Resurrección",fruit:"Fe",med:"Al tercer día, Jesús resucita de entre los muertos, triunfante sobre el pecado y la muerte, y se aparece a sus discípulos."},{title:"La Ascensión",fruit:"Esperanza y Deseo del Cielo",med:"Cuarenta días después de su Resurrección, Jesús asciende al Cielo, prometiendo preparar un lugar para nosotros."},{title:"La Venida del Espíritu Santo",fruit:"Amor de Dios, Sabiduría y Celo",med:"En Pentecostés, el Espíritu Santo desciende sobre María y los Apóstoles en lenguas de fuego, dándoles valor."},{title:"La Asunción de María",fruit:"Gracia de una Feliz Muerte",med:"Al final de su vida terrenal, María es llevada en cuerpo y alma a la gloria del Cielo."},{title:"La Coronación de María",fruit:"Confianza en la Intercesión de María",med:"María es coronada Reina de los Cielos y de la Tierra por su Hijo, entregada como Madre de todos los fieles."}]},
     luminous:{label:"Misterios Luminosos",days:"Jueves",items:[{title:"El Bautismo en el Jordán",fruit:"Apertura al Espíritu Santo",med:"Jesús es bautizado por Juan en el Jordán, y la voz del Padre lo proclama su Hijo amado mientras el Espíritu desciende."},{title:"Las Bodas de Caná",fruit:"A Jesús por María",med:"A petición de María, Jesús realiza su primer milagro, transformando el agua en vino, y manifiesta su gloria."},{title:"El Anuncio del Reino",fruit:"Arrepentimiento y Confianza en Dios",med:"Jesús proclama la venida del Reino de Dios, llamando a todos a la conversión y ofreciendo el perdón."},{title:"La Transfiguración",fruit:"Deseo de Santidad",med:"En el monte Tabor, Jesús se transfigura en gloria ante Pedro, Santiago y Juan, revelando su divinidad."},{title:"La Institución de la Eucaristía",fruit:"Adoración y Amor por la Misa",med:"En la Última Cena, Jesús nos entrega su Cuerpo y su Sangre bajo las especies de pan y vino, quedándose con nosotros."}]}
@@ -794,7 +793,7 @@ function renderBeadTrack(){
   });
 }
 
-/* Render Dynamic SVG Circular Rosary Visualizer Loop */
+/* Render Dynamic SVG Circular Rosary Visualizer Loop (Cross converted to SVG Path to prevent Mobile Emoji Substitution) */
 function renderCircularRosaryLoop(){
   const svg=document.getElementById("circularRosarySvg");
   if(!svg) return;
@@ -804,7 +803,7 @@ function renderCircularRosaryLoop(){
   const activeHM = currentStep? (currentStep.hailMaryNum || 0) : 0;
   const currentDecade = currentStep? (currentStep.decade || 0) : 0;
 
-  // Render 10-bead decade arc with center piece and crucifix
+  // Render 10-bead decade arc with center piece and crucifix line
   let html=`
     <path d="M 30,75 C 30,25 130,25 130,75" fill="none" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
     <path d="M 80,75 L 80,95" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
@@ -830,8 +829,14 @@ function renderCircularRosaryLoop(){
   html += `<circle cx="80" cy="75" r="6" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1" />`;
   // Our Father Bead
   html += `<circle cx="80" cy="88" r="5" fill="${currentStep && currentStep.title.includes("Our Father")?'var(--burgundy)':'var(--gold-light)'}" />`;
-  // Crucifix
-  html += `<text x="80" y="112" font-size="14" text-anchor="middle" fill="var(--burgundy)" font-weight="bold">✝</text>`;
+  
+  // Crucifix as Pure Vector SVG Path (Immune to mobile OS emoji substitution)
+  html += `
+    <g transform="translate(80, 108)" stroke="var(--burgundy)" stroke-width="2.2" stroke-linecap="round">
+      <line x1="0" y1="-8" x2="0" y2="8" />
+      <line x1="-5" y1="-3" x2="5" y2="-3" />
+    </g>
+  `;
 
   svg.innerHTML = html;
 }
