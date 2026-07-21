@@ -69,7 +69,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
   transition:color .3s ease;
 }
 
-/* Restored Header White Card Buttons */
+/* Header Buttons */
 .icon-btn{
   background:var(--white);
   border:1.5px solid rgba(var(--gold-rgb),.55);
@@ -283,9 +283,9 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 }
 .begin-btn:active{transform:translateY(1px)}
 
-/* Pray Screen Layout */
-.pray-wrap{display:flex;flex-direction:column;min-height:100vh}
-.top-pray-bar{display:flex;align-items:center;justify-content:flex-start;padding:10px 18px 4px;position:relative;z-index:3}
+/* Pray Screen Layout (Optimized Spacing) */
+.pray-wrap{display:flex;flex-direction:column;min-height:100vh;padding-bottom:70px}
+.top-pray-bar{display:flex;align-items:center;justify-content:flex-start;padding:6px 18px 2px;position:relative;z-index:3}
 .font-scaler{
   display:flex;
   align-items:center;
@@ -293,15 +293,15 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   background:rgba(255,255,255,.8);
   border:1.5px solid rgba(var(--gold-rgb),.4);
   border-radius:4px;
-  padding:3px 8px;
+  padding:2px 8px;
   box-shadow:0 3px 10px rgba(0,0,0,.1), 0 2px 6px rgba(var(--gold-rgb),.18);
 }
 .font-scaler-label{font-family:'Cinzel',serif;font-size:11px;color:var(--gold-light);margin-right:2px;text-transform:uppercase}
 .font-btn{background:none;border:none;color:var(--ink-deep);font-family:'Cinzel',serif;font-weight:700;font-size:14px;padding:2px 6px;cursor:pointer}
 .font-btn:active{color:var(--gold)}
 
-.bead-track-holder{padding:6px 18px 8px;position:relative;z-index:2}
-.bead-track{display:flex;align-items:center;gap:5px;overflow-x:auto;overflow-y:hidden;padding:6px 2px;scrollbar-width:none;touch-action:pan-x}
+.bead-track-holder{padding:2px 18px 2px;position:relative;z-index:2}
+.bead-track{display:flex;align-items:center;gap:5px;overflow-x:auto;overflow-y:hidden;padding:4px 2px;scrollbar-width:none;touch-action:pan-x}
 .bead-track::-webkit-scrollbar{display:none}
 .bead{flex:none;border-radius:50%;background:rgba(var(--gold-rgb),.18);border:1px solid rgba(var(--gold-rgb),.4);transition:all .2s ease;cursor:pointer;position:relative}
 .bead::after{content:"";position:absolute;top:50%;left:50%;width:24px;height:24px;transform:translate(-50%,-50%)}
@@ -311,14 +311,14 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 .bead.done{background:var(--gold);border-color:var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .bead.current{background:var(--burgundy);border-color:var(--burgundy);box-shadow:0 0 0 4px rgba(var(--burgundy-rgb),.28), 0 4px 10px rgba(0,0,0,.2)}
 
-.progress-text{text-align:center;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(74,47,31,.55);margin-top:2px}
+.progress-text{text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(74,47,31,.55);margin-top:1px}
 
-/* Circular Rosary Loop SVG Holder */
-.circular-rosary-wrap{width:100%;display:flex;justify-content:center;margin:4px 0 6px;position:relative}
-.circular-rosary-svg{width:160px;height:120px;overflow:visible}
+/* Tightened Middle Spacing: Circular Rosary Visualizer */
+.circular-rosary-wrap{width:100%;display:flex;justify-content:center;margin:0 auto;position:relative}
+.circular-rosary-svg{width:160px;height:82px;overflow:visible}
 
-/* Main Pray Area & Visual Swipe Animations */
-.pray-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:10px 22px 20px;position:relative;z-index:1;overflow-y:auto;overflow-x:hidden;max-height:calc(100vh - 270px);touch-action:pan-y}
+/* Main Pray Text Container */
+.pray-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:4px 22px 12px;position:relative;z-index:1;overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
 
 /* Swipe transition classes */
 .slide-out-left{animation:slideOutLeft .18s forwards ease-in}
@@ -333,14 +333,14 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
-.decade-flag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:10px;font-weight:600}
-.step-eyebrow{font-family:'Cinzel',serif;font-size:16.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px}
-.step-title{font-family:'Cinzel',serif;font-size:28px;color:var(--ink-deep);margin:0 0 16px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-size:16.5px;font-style:italic;color:var(--gold-light);margin-bottom:14px}
+.decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:6px;font-weight:600}
+.step-eyebrow{font-family:'Cinzel',serif;font-size:15.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
+.step-title{font-family:'Cinzel',serif;font-size:27px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
+.step-fruit{font-size:15.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
 
 .step-body{
-  font-size:calc(25px * var(--step-font-scale));
-  line-height:1.65;
+  font-size:calc(24.5px * var(--step-font-scale));
+  line-height:1.6;
   color:var(--ink);
   white-space:pre-line;
   width:100%;
@@ -349,23 +349,42 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   box-sizing:border-box
 }
 .step-body.meditation{
-  font-size:calc(21.5px * var(--step-font-scale));
+  font-size:calc(21px * var(--step-font-scale));
   color:rgba(74,47,31,.95);
   font-style:italic
 }
 .step-body.litany-body{
-  font-size:calc(24px * var(--step-font-scale));
-  line-height:1.55;
+  font-size:calc(23.5px * var(--step-font-scale));
+  line-height:1.5;
   text-align:left;
   max-width:100%;
   padding:0 4px
 }
 
-/* Plain Transparent Control Icons */
-.pray-controls{display:flex;gap:32px;padding:12px 20px 4px;position:relative;z-index:2;align-items:center;justify-content:center}
+/* FIXED / STATIC BOTTOM NAVIGATION BAR */
+.bottom-pray-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:480px;
+  background:linear-gradient(180deg, rgba(255,253,249,0.85) 0%, rgba(255,243,220,0.98) 100%);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-top:1.5px solid rgba(var(--gold-rgb),.28);
+  padding:6px 16px 8px;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  box-shadow:0 -4px 18px rgba(0,0,0,.08);
+}
+
+.pray-controls{display:flex;gap:32px;padding:2px 0;align-items:center;justify-content:center}
 .ctrl-btn{
-  width:48px;
-  height:48px;
+  width:44px;
+  height:44px;
   border-radius:0;
   display:flex;
   align-items:center;
@@ -383,18 +402,17 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   border:none !important;
   box-shadow:none !important;
 }
-.ctrl-btn svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.ctrl-btn:disabled{opacity:.25;cursor:not-allowed}
+.ctrl-btn svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn:disabled{opacity:.2;cursor:not-allowed}
 .ctrl-btn:active:not(:disabled){transform:scale(0.88);opacity:0.6}
 
 .swipe-hint-underneath{
   text-align:center;
-  font-size:13px;
+  font-size:12px;
   font-style:italic;
   color:var(--gold-light);
   opacity:0.85;
-  margin-top:4px;
-  padding-bottom:2px;
+  margin-top:2px;
 }
 
 .complete-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
@@ -428,7 +446,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   .subtitle{font-size:18px}
   .today-pill{font-size:16px}
   .set-name{font-size:30px}
-  .step-title{font-size:28px}
+  .step-title{font-size:26px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -443,7 +461,6 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
         <svg class="brand-cross-svg" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></svg>
         <span id="ui-brand">Holy Rosary</span>
       </div>
-      <!-- Restored White Header Card Buttons -->
       <div style="display:flex;gap:8px;">
         <button class="icon-btn" id="langBtn" aria-label="Language">ES</button>
         <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
@@ -452,7 +469,6 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
     <main>
       <div class="hero">
-        <!-- Original Medallion PNG with -150px shift & projected Calendar Drop Shadow -->
         <div class="medallion">
           <img class="glyph-img" src="medallion.png" alt="Our Lady Medallion" onerror="this.style.display='none';">
         </div>
@@ -527,28 +543,28 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
         <div class="progress-text" id="progressText">Step 1 of 1</div>
       </div>
 
-      <!-- Circular / Decade Loop Bead Visualizer -->
+      <!-- Compact Circular / Decade Loop Bead Visualizer -->
       <div class="circular-rosary-wrap" id="circularRosaryWrap">
-        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 120"></svg>
+        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 88"></svg>
       </div>
 
       <div class="pray-main" id="prayMain"></div>
 
-      <!-- Plain Transparent Floating Control Icons: Back | Home | Next -->
-      <div class="pray-controls">
-        <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="ctrl-btn" id="exitHomeBtn" aria-label="Return home">
-          <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></svg>
-        </button>
-        <button class="ctrl-btn primary" id="nextBtn" aria-label="Next step">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
+      <!-- STATIC / FIXED BOTTOM NAVIGATION BAR -->
+      <div class="bottom-pray-nav">
+        <div class="pray-controls">
+          <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="ctrl-btn" id="exitHomeBtn" aria-label="Return home">
+            <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></svg>
+          </button>
+          <button class="ctrl-btn primary" id="nextBtn" aria-label="Next step">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+        </div>
+        <div class="swipe-hint-underneath" id="ui-swipeHint">Swipe left/right to navigate</div>
       </div>
-      
-      <!-- Navigation Hint Positioned Underneath Controls -->
-      <div class="swipe-hint-underneath" id="ui-swipeHint">Swipe left/right to navigate</div>
 
     </div>
   </div>
@@ -571,7 +587,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v18';
+    const CACHE_NAME = 'rosary-v19';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -750,7 +766,8 @@ function saveState(){
 function clearSavedState(){
   localStorage.removeItem("rosary_active_session");
   const c=document.getElementById("resumeContainer");
-  if(c) c.innerHTML="";
+  if(!c) return;
+  c.innerHTML="";
 }
 
 function checkResumeState(){
@@ -965,7 +982,7 @@ function renderBeadTrack(){
   });
 }
 
-/* Render Dynamic SVG Circular Rosary Visualizer Loop */
+/* Render Dynamic SVG Circular Rosary Visualizer Loop (Tightened Vertical Bounds) */
 function renderCircularRosaryLoop(){
   const svg=document.getElementById("circularRosarySvg");
   if(!svg) return;
@@ -975,38 +992,38 @@ function renderCircularRosaryLoop(){
   const activeHM = currentStep? (currentStep.hailMaryNum || 0) : 0;
   const currentDecade = currentStep? (currentStep.decade || 0) : 0;
 
-  // Render 10-bead decade arc with center piece and crucifix line
+  // Compact Arc & Stem Coordinates
   let html=`
-    <path d="M 30,75 C 30,25 130,25 130,75" fill="none" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
-    <path d="M 80,75 L 80,95" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
+    <path d="M 30,52 C 30,12 130,12 130,52" fill="none" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
+    <path d="M 80,52 L 80,68" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
   `;
 
   // Draw 10 Hail Mary beads along arc
   for(let i=1; i<=10; i++){
     const angle = Math.PI - ((i - 0.5) * (Math.PI / 10));
     const cx = 80 + 50 * Math.cos(angle);
-    const cy = 75 - 45 * Math.sin(angle);
+    const cy = 52 - 40 * Math.sin(angle);
     
     let isDone = (i < activeHM) || (currentDecade > 0 && currentStep && currentStep.type==="text" && currentStep.title.includes("Glory"));
     let isCurrent = (i === activeHM);
 
     let color = isCurrent ? "var(--burgundy)" : (isDone ? "var(--gold)" : "rgba(185,121,31,0.25)");
-    let radius = isCurrent ? 6 : 4.5;
+    let radius = isCurrent ? 5.5 : 4;
     let stroke = isCurrent ? "#fff" : "none";
 
     html += `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${color}" stroke="${stroke}" stroke-width="1.5" />`;
   }
 
   // Center Medallion Bead
-  html += `<circle cx="80" cy="75" r="6" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1" />`;
+  html += `<circle cx="80" cy="52" r="5.5" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1" />`;
   // Our Father Bead
-  html += `<circle cx="80" cy="88" r="5" fill="${currentStep && currentStep.title.includes("Our Father")?'var(--burgundy)':'var(--gold-light)'}" />`;
+  html += `<circle cx="80" cy="63" r="4.5" fill="${currentStep && currentStep.title.includes("Our Father")?'var(--burgundy)':'var(--gold-light)'}" />`;
   
   // Crucifix as Pure Vector SVG Path
   html += `
-    <g transform="translate(80, 108)" stroke="var(--burgundy)" stroke-width="2.2" stroke-linecap="round">
-      <line x1="0" y1="-8" x2="0" y2="8" />
-      <line x1="-5" y1="-3" x2="5" y2="-3" />
+    <g transform="translate(80, 80)" stroke="var(--burgundy)" stroke-width="2.2" stroke-linecap="round">
+      <line x1="0" y1="-7" x2="0" y2="7" />
+      <line x1="-4.5" y1="-2.5" x2="4.5" y2="-2.5" />
     </g>
   `;
 
