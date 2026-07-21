@@ -92,7 +92,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 main{flex:1;position:relative;z-index:1;padding:0 22px}
 .hero{text-align:center;padding:6px 0 16px}
 
-/* Vector Medallion (100% Reliable on Mobile, Matches Calendar Colors) */
+/* Medallion Outer Container */
 .medallion{
   width:105px;
   height:105px;
@@ -103,17 +103,23 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:radial-gradient(circle at 35% 30%,rgba(255,241,214,.95),rgba(255,233,194,.7));
+  background:radial-gradient(circle at 35% 30%,rgba(255,241,214,.95),rgba(255,233,194,.75));
   position:relative;
-  overflow:hidden;
+  overflow:hidden; /* Hides original image shifted left */
   transition:border-color .3s ease, box-shadow .3s ease;
 }
 
-.medallion-svg-icon{
-  width:90px;
-  height:95px;
-  display:block;
-  transition:all .3s ease;
+/* Original PNG Image shifted -150px left; Projected Drop Shadow +150px right in Calendar Theme Color */
+.medallion .glyph-img{
+  position:absolute;
+  top:5px;
+  left:5px;
+  width:95px;
+  height:95px; /* 105px diameter minus 5px top and 5px bottom padding */
+  object-fit:contain;
+  transform:translateX(-150px);
+  filter:drop-shadow(150px 0 0 var(--gold));
+  transition:filter .3s ease;
 }
 
 h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
@@ -464,28 +470,9 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
     <main>
       <div class="hero">
-        <!-- Embedded Vector Marian Medallion (100% Reliable on Mobile, Dynamic Calendar Colors) -->
+        <!-- Medallion Image with Shifted Drop-Shadow Matching Calendar Theme -->
         <div class="medallion">
-          <svg viewBox="0 0 100 100" class="medallion-svg-icon">
-            <circle cx="50" cy="50" r="46" fill="rgba(255,241,214,0.6)" stroke="var(--gold)" stroke-width="2.5"/>
-            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--gold-light)" stroke-width="1" stroke-dasharray="3,2"/>
-            
-            <!-- 12 Stars of Our Lady -->
-            <g fill="var(--gold)">
-              <circle cx="50" cy="12" r="1.8"/><circle cx="69" cy="17" r="1.8"/><circle cx="83" cy="31" r="1.8"/>
-              <circle cx="88" cy="50" r="1.8"/><circle cx="83" cy="69" r="1.8"/><circle cx="69" cy="83" r="1.8"/>
-              <circle cx="50" cy="88" r="1.8"/><circle cx="31" cy="83" r="1.8"/><circle cx="17" cy="69" r="1.8"/>
-              <circle cx="12" cy="50" r="1.8"/><circle cx="17" cy="31" r="1.8"/><circle cx="31" cy="17" r="1.8"/>
-            </g>
-            
-            <!-- Radiant Rays of Grace -->
-            <path d="M50 22 L50 14 M36 26 L28 18 M64 26 L72 18" stroke="var(--gold-pale)" stroke-width="1.5" stroke-linecap="round"/>
-            
-            <!-- Our Lady Silhouette & Veil -->
-            <path d="M50 28 C45 28 42 33 42 38 C42 43 45 45 43 49 C40 55 34 63 33 76 L67 76 C66 63 60 55 57 49 C55 45 58 43 58 38 C58 28 55 28 50 28 Z" fill="var(--gold)"/>
-            <path d="M43 38 C45 48 47 65 46 76 M57 38 C55 48 53 65 54 76" stroke="var(--parchment)" stroke-width="1.2" fill="none"/>
-            <path d="M50 52 L50 63 M45 57 L55 57" stroke="var(--parchment)" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <img class="glyph-img" src="medallion.png" alt="Our Lady Medallion" onerror="this.style.display='none';">
         </div>
         <h1 class="title" id="ui-title">The Holy Rosary</h1>
         <div class="subtitle" id="ui-subtitle">Pray always, and do not lose heart</div>
@@ -602,7 +589,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v20';
+    const CACHE_NAME = 'rosary-v23';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
