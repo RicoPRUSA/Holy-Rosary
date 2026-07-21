@@ -124,31 +124,39 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
 h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
 .subtitle{font-size:18px;color:var(--gold-light);letter-spacing:.02em;font-style:italic}
 
-/* Straight Single-Line Inline Today Card */
+/* Today Card: "TODAY" on top, text underneath */
 .today-pill{
   margin:12px auto 0;
   display:flex;
-  flex-direction:row;
-  gap:6px;
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  padding:11px 12px;
+  gap:4px;
+  padding:11px 16px;
   border:1.5px solid var(--gold);
   border-radius:4px;
-  font-size:clamp(12.5px, 3.6vw, 15.5px); /* Scales dynamically for mobile */
-  letter-spacing:.02em;
-  text-transform:uppercase;
-  color:var(--gold-light);
   cursor:pointer;
   background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,241,214,.85));
   box-shadow:0 5px 16px rgba(0,0,0,.14), 0 2px 8px rgba(var(--gold-rgb),.28);
   width:100%;
-  white-space:nowrap; /* Forces text straight across on one line */
-  overflow:hidden;
-  text-overflow:ellipsis;
+  max-width:380px;
+  text-align:center;
   transition:all .15s ease
 }
-.today-pill b{color:var(--ink-deep);font-weight:600;font-style:normal}
+.today-tag{
+  font-family:'Cinzel',serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.today-mystery-label{
+  font-size:16.5px;
+  font-weight:600;
+  color:var(--ink-deep);
+  line-height:1.25;
+}
 .today-pill:active{transform:scale(0.98);box-shadow:0 2px 8px rgba(0,0,0,.12)}
 
 .season-badge{
@@ -168,39 +176,37 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
 }
 .season-badge::before{content:"✦";font-size:10px}
 
-/* Straight Single-Line Inline Resume Card */
+/* Resume Card: Text on top, Button underneath */
 .resume-card{
   background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,241,214,.95));
   border:2px solid var(--gold);
   border-radius:4px;
-  padding:10px 12px;
+  padding:14px 16px;
   margin:14px 0;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  justify-content:space-between;
-  gap:8px;
+  justify-content:center;
+  gap:10px;
+  text-align:center;
   box-shadow:0 8px 22px rgba(0,0,0,.15), 0 4px 12px rgba(var(--gold-rgb),.28);
-  white-space:nowrap; /* Forces inline layout */
 }
-.resume-info{
+.resume-info-stacked{
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:5px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  text-align:left;
+  gap:2px;
 }
 .resume-title{
   font-family:'Cinzel',serif;
-  font-size:clamp(12px, 3.4vw, 14px);
+  font-size:15px;
   font-weight:700;
   color:var(--burgundy);
   text-transform:uppercase;
-  letter-spacing:.02em;
+  letter-spacing:.04em;
 }
 .resume-sub{
-  font-size:clamp(11.5px, 3.2vw, 13.5px);
+  font-size:14px;
   color:var(--ink);
   opacity:.85;
 }
@@ -208,17 +214,17 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
   background:linear-gradient(180deg,var(--gold-light),var(--gold));
   color:var(--white);
   border:none;
-  padding:7px 12px;
+  padding:9px 24px;
   border-radius:4px;
   font-family:'Cinzel',serif;
-  font-size:12px;
+  font-size:13px;
   font-weight:600;
-  letter-spacing:.05em;
+  letter-spacing:.06em;
   cursor:pointer;
   text-transform:uppercase;
   box-shadow:0 4px 12px rgba(0,0,0,.18), 0 2px 6px rgba(var(--gold-rgb),.35);
-  white-space:nowrap;
-  flex-shrink:0;
+  width:100%;
+  max-width:220px;
 }
 
 .section-label{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);text-align:center;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
@@ -468,6 +474,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   body{font-size:21px}
   h1.title{font-size:35px}
   .subtitle{font-size:18px}
+  .today-pill{font-size:16px}
   .set-name{font-size:30px}
   .step-title{font-size:28px}
 }
@@ -500,11 +507,10 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
         <div class="subtitle" id="ui-subtitle">Pray always, and do not lose heart</div>
         <div class="season-badge" id="seasonBadge">Ordinary Time</div>
         
-        <!-- Rectangular Today Pill (Inline Single Row) -->
+        <!-- Rectangular Today Card ("TODAY" on top, text underneath) -->
         <div class="today-pill" id="todayPill">
-          <span id="ui-todayPrefix">Today</span>
-          <span style="opacity:0.6;">·</span>
-          <b id="todayLabel">—</b>
+          <div class="today-tag" id="ui-todayPrefix">TODAY</div>
+          <div class="today-mystery-label" id="todayLabel">—</div>
         </div>
       </div>
 
@@ -615,7 +621,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v24';
+    const CACHE_NAME = 'rosary-v25';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -644,7 +650,7 @@ const PRAYERS={
     memorare:"Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession was left unaided. Inspired by this confidence, I fly unto thee, O Virgin of virgins, my Mother; to thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me. Amen."
   },
   es:{
-    preparatory:"Oh mi Jesús, te ofrezco mis oraciones, trabajos, alegrías y sufrimientos de este día por todas las intenciones de tu Sagrado Corazón, en unión con el Santo Sacrificio de la Misa offered en todo el mundo, en reparación de mis pecados, por las intenciones de todos mis seres queridos, y en particular por el fruto de este Santo Rosario que ahora comienzo.",
+    preparatory:"Oh mi Jesús, te ofrezco mis oraciones, trabajos, alegrías y sufrimientos de este día por todas las intenciones de tu Sagrado Corazón, en unión con el Santo Sacrificio de la Misa ofrecido en todo el mundo, en reparación de mis pecados, por las intenciones de todos mis seres queridos, y en particular por el fruto de este Santo Rosario que ahora comienzo.",
     signOfCross:"En el nombre del Padre, y del Hijo, y del Espíritu Santo. Amén.",
     actOfContrition:"Señor mío Jesucristo, Dios y Hombre verdadero, me pesa de todo corazón haber pecado, porque te ofendí a ti, que eres sumamente bueno y digno de ser amado sobre todas las cosas. Propongo firmemente, con la ayuda de tu gracia, enmendarme y evitar las ocasiones próximas de pecado. Amén.",
     apostlesCreed:"Creo en Dios, Padre Todopoderoso, Creador del cielo y de la tierra. Creo en Jesucristo, su único Hijo, nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, padeció bajo el poder de Poncio Pilato, fue crucificado, muerto y sepultado, descendió a los infiernos, al tercer día resucitó de entre los muertos, subió a los cielos y está sentado a la derecha de Dios, Padre todopoderoso. Desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia Católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.",
@@ -714,7 +720,7 @@ function translateUI(){
   document.getElementById("ui-brand").textContent=trans.brand;
   document.getElementById("ui-title").textContent=trans.title;
   document.getElementById("ui-subtitle").textContent=trans.subtitle;
-  document.getElementById("ui-todayPrefix").textContent=trans.todayPrefix;
+  document.getElementById("ui-todayPrefix").textContent=trans.todayPrefix.toUpperCase();
   document.getElementById("ui-deceasedLabel").textContent=trans.deceasedLabel;
   document.getElementById("deceasedName").placeholder=trans.deceasedPlaceholder;
   document.getElementById("ui-genderMale").textContent=trans.genderMale;
@@ -794,7 +800,8 @@ function saveState(){
 function clearSavedState(){
   localStorage.removeItem("rosary_active_session");
   const c=document.getElementById("resumeContainer");
-  if(c) c.innerHTML="";
+  if(!c) return;
+  c.innerHTML="";
 }
 
 function checkResumeState(){
@@ -810,10 +817,9 @@ function checkResumeState(){
         const sub=trans.resumeSub.replace("{step}", data.stepIndex+1).replace("{total}", data.sequence.length);
         c.innerHTML=`
           <div class="resume-card">
-            <div class="resume-info">
-              <span class="resume-title">${trans.resumeTitle}</span>
-              <span style="opacity:0.5;margin:0 2px;">·</span>
-              <span class="resume-sub">${sub}</span>
+            <div class="resume-info-stacked">
+              <div class="resume-title">${trans.resumeTitle}</div>
+              <div class="resume-sub">${sub}</div>
             </div>
             <button class="resume-btn" id="resumeSessionBtn">${trans.resumeBtn}</button>
           </div>
