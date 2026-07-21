@@ -158,10 +158,9 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
-/* Sacred Art Frame */
-.sacred-art-frame{margin:0 auto 14px;width:100%;max-width:320px;border-radius:12px;border:2px solid var(--gold);box-shadow:0 6px 20px rgba(var(--gold-rgb),.25);overflow:hidden;background:#2e1c10;position:relative}
-.sacred-art-img{width:100%;height:180px;object-fit:cover;display:block;transition:opacity .3s ease}
-.sacred-art-caption{font-size:12px;font-style:italic;color:var(--parchment);background:rgba(46,28,16,.88);padding:4px 8px;text-align:center;border-top:1px solid rgba(var(--gold-rgb),.3)}
+/* Embedded Sacred Art Container */
+.sacred-art-frame{margin:0 auto 14px;width:100%;max-width:300px;border-radius:14px;border:2px solid var(--gold);box-shadow:0 6px 18px rgba(var(--gold-rgb),.22);overflow:hidden;background:radial-gradient(circle at 50% 30%,#2e1c10,#1a0e07);padding:12px;position:relative}
+.sacred-art-svg{width:100%;height:150px;display:block}
 
 .decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px;font-weight:600}
 .step-eyebrow{font-family:'Cinzel',serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px}
@@ -191,12 +190,12 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   padding:0 4px
 }
 
-/* Icon Button Styles for Controls */
-.pray-controls{display:flex;gap:14px;padding:12px 20px 6px;position:relative;z-index:2;align-items:center;justify-content:center}
+/* Equal-Sized Sleek Circular Control Buttons */
+.pray-controls{display:flex;gap:24px;padding:12px 20px 6px;position:relative;z-index:2;align-items:center;justify-content:center}
 .ctrl-btn{
-  width:64px;
-  height:56px;
-  border-radius:14px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -204,20 +203,18 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   border:1.5px solid rgba(var(--gold-rgb),.45);
   background:rgba(255,255,255,.8);
   color:var(--gold-light);
-  box-shadow:0 3px 10px rgba(var(--gold-rgb),.12);
+  box-shadow:0 4px 12px rgba(var(--gold-rgb),.15);
   transition:all .15s ease
 }
 .ctrl-btn.primary{
-  flex:1;
-  max-width:220px;
-  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
   color:var(--white);
   border:none;
-  box-shadow:0 6px 18px rgba(var(--gold-rgb),.28)
+  box-shadow:0 6px 16px rgba(var(--gold-rgb),.3)
 }
-.ctrl-btn svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.ctrl-btn:disabled{opacity:.3;cursor:not-allowed}
-.ctrl-btn:active:not(:disabled){transform:translateY(1px)}
+.ctrl-btn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
+.ctrl-btn:active:not(:disabled){transform:scale(0.95)}
 
 .exit-row{text-align:center;padding:4px 0 4px}
 .exit-link{font-size:15px;color:rgba(74,47,31,.5);cursor:pointer;letter-spacing:.03em}
@@ -343,7 +340,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
       <div class="pray-main" id="prayMain"></div>
 
-      <!-- Control Buttons as Icons -->
+      <!-- Clean Equal-Sized Control Buttons -->
       <div class="pray-controls">
         <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
@@ -372,7 +369,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v3';
+    const CACHE_NAME = 'rosary-v4';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -418,37 +415,102 @@ const PRAYERS={
   }
 };
 
-/* Sacred Art Illustrations Mapping with Public Domain Wikimedia URLs */
-const MYSTERY_ART={
-  joyful:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Fra_Angelico_-_Annunciation_-_WGA00473.jpg/640px-Fra_Angelico_-_Annunciation_-_WGA00473.jpg",artist:"Fra Angelico — Annunciation"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg/640px-Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg",artist:"Domenico Ghirlandaio — Visitation"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg/640px-Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg",artist:"Gerard van Honthorst — Nativity"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg/640px-Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg",artist:"Simon Vouet — Presentation"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Christ_in_the_Temple_by_Heinrich_Hofmann.jpg/640px-Christ_in_the_Temple_by_Heinrich_Hofmann.jpg",artist:"Heinrich Hofmann — Finding in Temple"}
-  ],
-  sorrowful:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg/640px-Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg",artist:"Giovanni Bellini — Agony in Garden"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg/640px-The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg",artist:"Caravaggio — Scourging at Pillar"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Titian_-_Crowning_with_Thorns_-_WGA22967.jpg/640px-Titian_-_Crowning with Thorns"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg/640px-El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg",artist:"El Greco — Carrying of Cross"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cristo_crucificado_2.jpg/640px-Cristo_crucificado_2.jpg",artist:"Diego Velázquez — Crucifixion"}
-  ],
-  glorious:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Resurrection_Piero_della_Francesca.jpg/640px-Resurrection_Piero_della_Francesca.jpg",artist:"Piero della Francesca — Resurrection"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg/640px-Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg",artist:"Giotto — Ascension"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pentecostes_El_Greco_Museo_del_Prado.jpg/640px-Pentecostes_El_Greco_Museo_del_Prado.jpg",artist:"El Greco — Descent of Holy Spirit"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Titian_-_Assunta_%281516-1518%29.jpg/640px-Titian_-_Assunta_%281516-1518%29.jpg",artist:"Titian — Assumption of Mary"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg/640px-Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg",artist:"Diego Velázquez — Coronation of Mary"}
-  ],
-  luminous:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg/640px-Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg",artist:"Verrocchio & Da Vinci — Baptism"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg/640px-The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg",artist:"Jean-Léon Gérôme — Wedding at Cana"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg/640px-Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg",artist:"Fra Angelico — Proclamation of Kingdom"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Transfiguration_Raphael.jpg/640px-Transfiguration_Raphael.jpg",artist:"Raphael — Transfiguration"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg/640px-%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg",artist:"Leonardo da Vinci — Last Supper"}
-  ]
-};
+/* Embedded Vector Sacred Art SVGs (100% Offline & Reliable) */
+function getEmbeddedSacredArtSVG(key, index){
+  const colorGold = "#f0c877";
+  const colorBurgundy = "#b3492f";
+  const colorWhite = "#ffffff";
+  
+  let content = "";
+  
+  if(key === "joyful"){
+    if(index === 0) { // Annunciation
+      content = `<path d="M100 30 L100 120 M70 60 L130 60" stroke="${colorGold}" stroke-width="3" opacity="0.4"/>
+                 <path d="M100 45 C80 20 120 20 100 45 Z" fill="${colorGold}"/>
+                 <path d="M80 85 C80 60 120 60 120 85 C120 110 80 110 80 85 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <circle cx="100" cy="85" r="10" fill="${colorBurgundy}"/>`;
+    } else if(index === 1) { // Visitation
+      content = `<circle cx="80" cy="70" r="18" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <circle cx="120" cy="70" r="18" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M65 105 C65 85 95 85 95 105 Z" fill="${colorGold}" opacity="0.6"/>
+                 <path d="M105 105 C105 85 135 85 135 105 Z" fill="${colorGold}"/>`;
+    } else if(index === 2) { // Nativity
+      content = `<path d="M100 20 L105 40 L125 40 L108 52 L114 70 L100 58 L86 70 L92 52 L75 40 L95 40 Z" fill="${colorGold}"/>
+                 <rect x="75" y="90" width="50" height="25" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <circle cx="100" cy="95" r="8" fill="${colorWhite}"/>`;
+    } else if(index === 3) { // Presentation
+      content = `<path d="M60 110 L60 50 L100 30 L140 50 L140 110 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <circle cx="100" cy="70" r="12" fill="${colorGold}"/>
+                 <path d="M90 110 L90 85 L110 85 L110 110 Z" fill="${colorBurgundy}"/>`;
+    } else { // Finding in Temple
+      content = `<path d="M70 50 Q100 30 130 50 L130 100 Q100 90 70 100 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <line x1="100" y1="38" x2="100" y2="95" stroke="${colorGold}" stroke-width="1.5"/>
+                 <circle cx="100" cy="65" r="15" fill="${colorBurgundy}" opacity="0.5"/>`;
+    }
+  } else if(key === "sorrowful"){
+    if(index === 0) { // Agony
+      content = `<path d="M85 85 C70 50 130 50 115 85 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <rect x="90" y="85" width="20" height="15" fill="${colorGold}"/>
+                 <circle cx="100" cy="40" r="6" fill="${colorBurgundy}"/>`;
+    } else if(index === 1) { // Scourging
+      content = `<rect x="92" y="30" width="16" height="80" rx="3" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M70 50 L92 65 M70 70 L92 75 M70 90 L92 85" stroke="${colorBurgundy}" stroke-width="2"/>`;
+    } else if(index === 2) { // Thorns
+      content = `<circle cx="100" cy="70" r="32" fill="none" stroke="${colorGold}" stroke-width="4" stroke-dasharray="6,4"/>
+                 <path d="M80 55 L85 45 M115 55 L120 45 M70 75 L60 80 M130 75 L140 80" stroke="${colorBurgundy}" stroke-width="2"/>`;
+    } else if(index === 3) { // Carrying Cross
+      content = `<path d="M60 100 L140 40 M90 40 L130 100" stroke="${colorGold}" stroke-width="7" stroke-linecap="round"/>`;
+    } else { // Crucifixion
+      content = `<path d="M100 25 L100 115 M65 50 L135 50" stroke="${colorGold}" stroke-width="5"/>
+                 <circle cx="100" cy="50" r="14" fill="none" stroke="${colorBurgundy}" stroke-width="2"/>
+                 <path d="M92 20 L108 20" stroke="${colorGold}" stroke-width="2"/>`;
+    }
+  } else if(key === "glorious"){
+    if(index === 0) { // Resurrection
+      content = `<path d="M100 20 L100 100 M75 45 L125 45" stroke="${colorGold}" stroke-width="4"/>
+                 <circle cx="100" cy="60" r="35" fill="none" stroke="${colorGold}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
+    } else if(index === 1) { // Ascension
+      content = `<path d="M70 100 C70 70 130 70 130 100 Z" fill="${colorGold}" opacity="0.3"/>
+                 <path d="M100 70 L100 25 M85 40 L100 25 L115 40" stroke="${colorGold}" stroke-width="3" stroke-linecap="round"/>`;
+    } else if(index === 2) { // Pentecost
+      content = `<path d="M100 25 C80 50 120 50 100 25 Z" fill="${colorWhite}"/>
+                 <path d="M100 60 C90 75 110 75 100 60 Z" fill="${colorBurgundy}"/>
+                 <path d="M75 80 C68 92 82 92 75 80 Z" fill="${colorGold}"/>
+                 <path d="M125 80 C118 92 132 92 125 80 Z" fill="${colorGold}"/>`;
+    } else if(index === 3) { // Assumption
+      content = `<path d="M100 95 C70 65 130 65 100 95 Z" fill="${colorGold}"/>
+                 <circle cx="100" cy="45" r="16" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M80 45 C80 25 120 25 120 45" fill="none" stroke="${colorWhite}" stroke-width="1.5"/>`;
+    } else { // Coronation
+      content = `<path d="M70 80 L80 45 L100 65 L120 45 L130 80 Z" fill="none" stroke="${colorGold}" stroke-width="3"/>
+                 <circle cx="80" cy="40" r="4" fill="${colorGold}"/>
+                 <circle cx="100" cy="58" r="4" fill="${colorGold}"/>
+                 <circle cx="120" cy="40" r="4" fill="${colorGold}"/>`;
+    }
+  } else { // Luminous
+    if(index === 0) { // Baptism
+      content = `<path d="M60 95 Q100 115 140 95 Q100 80 60 95 Z" fill="${colorGold}" opacity="0.4"/>
+                 <path d="M100 25 C85 45 115 45 100 25 Z" fill="${colorWhite}"/>
+                 <line x1="100" y1="45" x2="100" y2="80" stroke="${colorGold}" stroke-width="2" stroke-dasharray="3,3"/>`;
+    } else if(index === 1) { // Cana Jars
+      content = `<rect x="70" y="60" width="22" height="35" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <rect x="108" y="60" width="22" height="35" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M70 75 Q81 85 92 75" stroke="${colorBurgundy}" stroke-width="2"/>
+                 <path d="M108 75 Q119 85 130 75" stroke="${colorBurgundy}" stroke-width="2"/>`;
+    } else if(index === 2) { // Kingdom Proclamation
+      content = `<circle cx="100" cy="65" r="30" fill="none" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M100 35 L100 95 M70 65 L130 65" stroke="${colorGold}" stroke-width="2"/>`;
+    } else if(index === 3) { // Transfiguration
+      content = `<circle cx="100" cy="65" r="35" fill="none" stroke="${colorGold}" stroke-width="1.5"/>
+                 <path d="M100 20 L100 110 M55 65 L145 65 M68 33 L132 97 M68 97 L132 33" stroke="${colorGold}" stroke-width="1.5" opacity="0.6"/>`;
+    } else { // Eucharist
+      content = `<circle cx="100" cy="45" r="18" fill="${colorWhite}" stroke="${colorGold}" stroke-width="2"/>
+                 <path d="M85 105 L115 105 M100 105 L100 80 M88 80 L112 80 L106 68 L94 68 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>`;
+    }
+  }
+
+  return `<svg class="sacred-art-svg" viewBox="0 0 200 140">${content}</svg>`;
+}
 
 const MYSTERY_SETS={
   en:{
@@ -733,7 +795,7 @@ function buildSequence(e,t){
 
 function ordinal(e){const t=["th","st","nd","rd"],r=e%100;return e+(t[(r-20)%10]||t[r]||t[0])}
 
-/* Render Step with Sacred Art Frame & Font Scaling */
+/* Render Step with Embedded Sacred Art Frame */
 function renderStep(){
   saveState();
   const e=sequence[stepIndex],t=document.getElementById("prayMain");
@@ -741,12 +803,11 @@ function renderStep(){
   const labelMystery=currentLang==="en"?"Mystery":"Misterio";
   
   let artHtml="";
-  if(e.mysteryIndex!==undefined && MYSTERY_ART[currentMysteryKey] && MYSTERY_ART[currentMysteryKey][e.mysteryIndex]){
-    const art=MYSTERY_ART[currentMysteryKey][e.mysteryIndex];
+  if(e.mysteryIndex!==undefined){
+    const svgContent = getEmbeddedSacredArtSVG(currentMysteryKey, e.mysteryIndex);
     artHtml=`
       <div class="sacred-art-frame">
-        <img class="sacred-art-img" src="${art.url}" alt="${e.title}" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none';">
-        <div class="sacred-art-caption">${art.artist}</div>
+        ${svgContent}
       </div>
     `;
   }
