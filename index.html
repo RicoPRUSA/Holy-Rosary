@@ -119,7 +119,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 /* Pray Screen Layout */
 .pray-wrap{display:flex;flex-direction:column;min-height:100vh}
-.top-pray-bar{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 4px;position:relative;z-index:3}
+.top-pray-bar{display:flex;align-items:center;justify-content:flex-start;padding:10px 18px 4px;position:relative;z-index:3}
 .font-scaler{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.6);border:1px solid rgba(var(--gold-rgb),.3);border-radius:999px;padding:2px 8px}
 .font-scaler-label{font-family:'Cinzel',serif;font-size:11px;color:var(--gold-light);margin-right:2px;text-transform:uppercase}
 .font-btn{background:none;border:none;color:var(--ink-deep);font-family:'Cinzel',serif;font-weight:700;font-size:14px;padding:2px 6px;cursor:pointer}
@@ -186,34 +186,41 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   padding:0 4px
 }
 
-/* Equal-Sized Sleek Controls */
-.pray-controls{display:flex;gap:24px;padding:12px 20px 6px;position:relative;z-index:2;align-items:center;justify-content:center}
+/* Equal-Sized Inline Button Trio (Back, Home, Next) */
+.pray-controls{display:flex;gap:18px;padding:10px 20px 2px;position:relative;z-index:2;align-items:center;justify-content:center}
 .ctrl-btn{
-  width:54px;
-  height:54px;
+  width:48px;
+  height:48px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   border:1.5px solid rgba(var(--gold-rgb),.45);
-  background:rgba(255,255,255,.85);
+  background:rgba(255,255,255,.9);
   color:var(--gold-light);
-  box-shadow:0 4px 12px rgba(var(--gold-rgb),.15);
+  box-shadow:0 3px 10px rgba(var(--gold-rgb),.15);
   transition:all .15s ease
 }
 .ctrl-btn.primary{
   background:linear-gradient(135deg,var(--gold-light),var(--gold));
   color:var(--white);
   border:none;
-  box-shadow:0 6px 16px rgba(var(--gold-rgb),.3)
+  box-shadow:0 5px 14px rgba(var(--gold-rgb),.3)
 }
-.ctrl-btn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
 .ctrl-btn:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
 .ctrl-btn:active:not(:disabled){transform:scale(0.95)}
 
-.exit-row{text-align:center;padding:4px 0 4px}
-.exit-link{font-size:15px;color:rgba(74,47,31,.5);cursor:pointer;letter-spacing:.03em}
+.swipe-hint-underneath{
+  text-align:center;
+  font-size:13px;
+  font-style:italic;
+  color:var(--gold-light);
+  opacity:0.85;
+  margin-top:4px;
+  padding-bottom:2px;
+}
 
 .complete-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
 .complete-wrap .glyph-big{font-size:56px;color:var(--gold);margin-bottom:18px}
@@ -321,7 +328,6 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
           <button class="font-btn" id="fontDownBtn" aria-label="Decrease font size">A-</button>
           <button class="font-btn" id="fontUpBtn" aria-label="Increase font size">A+</button>
         </div>
-        <div style="font-size: 13px; font-style: italic; color: var(--gold-light);" id="ui-swipeHint">Swipe left/right to navigate</div>
       </div>
 
       <div class="bead-track-holder">
@@ -336,16 +342,22 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
       <div class="pray-main" id="prayMain"></div>
 
-      <!-- Clean Equal-Sized Control Buttons -->
+      <!-- Clean Inline Button Trio: Back | Home | Next -->
       <div class="pray-controls">
         <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="ctrl-btn" id="exitHomeBtn" aria-label="Return home">
+          <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></svg>
         </button>
         <button class="ctrl-btn primary" id="nextBtn" aria-label="Next step">
           <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
-      <div class="exit-row"><span class="exit-link" id="exitLink">End early &amp; return home</span></div>
+      
+      <!-- Navigation Hint Positioned Underneath Controls -->
+      <div class="swipe-hint-underneath" id="ui-swipeHint">Swipe left/right to navigate</div>
+
     </div>
   </div>
 
@@ -365,7 +377,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v8';
+    const CACHE_NAME = 'rosary-v9';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -404,7 +416,7 @@ const PRAYERS={
     ejaculation:"Jesús, en Ti confío y me entrego a Ti; hazte cargo de todo. María, Madre de gracia, Madre de misericordia, defiéndeme del enemigo y recíbeme en la hora de mi muerte. San Miguel Arcángel, defiéndenos en la lucha. Amén.",
     fatima:"Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva a todas las almas al cielo, especialmente a las más necesitadas de tu misericordia. Amén.",
     hailHolyQueen:"Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra; Dios te salve. A ti llamamos los desterrados hijos de Eva; a ti suspiramos, gimiendo y llorando, en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos; y después de este destierro muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce Virgen María!\n\nV. Ruega por nosotros, Santa Madre de Dios.\nR. Para que seamos dignos de alcanzar las promesas de nuestro Señor Jesucristo. Amén.",
-    stMichael:"San Miguel Arcángel, defiéndenos en la batalla. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste su poder sobre él, es nuestra humilde súplica; y tú, oh Príncipe de la Milicia Celestial, con el poder que Dios te ha conferred, arroja al infierno a Satanás y a los demás espíritus malignos que vagan por el mundo para la perdición de las almas. Amén.",
+    stMichael:"San Miguel Arcángel, defiéndenos en la batalla. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste su poder sobre él, es nuestra humilde súplica; y tú, oh Príncipe de la Milicia Celestial, con el poder que Dios te ha conferido, arroja al infierno a Satanás y a los demás espíritus malignos que vagan por el mundo para la perdición de las almas. Amén.",
     litany:"Señor, ten piedad de nosotros. Cristo, ten piedad de nosotros. Señor, ten piedad de nosotros.\nCristo, óyenos. Cristo, escúchanos.\nDios Padre celestial, ten piedad de nosotros.\nDios Hijo, Redentor del mundo, ten piedad de nosotros.\nDios Espíritu Santo, ten piedad de nosotros.\nSantísima Trinidad, un solo Dios, ten piedad de nosotros.\n\nSanta María, ruega por nosotros.\nSanta Madre de Dios, ruega por nosotros.\nSanta Virgen de las vírgenes, ruega por nosotros.\nMadre de Cristo, ruega por nosotros.\nMadre de la Iglesia, ruega por nosotros.\nMadre de la misericordia, ruega por nosotros.\nMadre de la divina gracia, ruega por nosotros.\nMadre de la esperanza, ruega por nosotros.\nMadre purísima, ruega por nosotros.\nMadre castísima, ruega por nosotros.\nMadre siempre virgen, ruega por nosotros.\nMadre sin mancha, ruega por nosotros.\nMadre amable, ruega por nosotros.\nMadre admirable, ruega por nosotros.\nMadre del buen consejo, ruega por nosotros.\nMadre del Creador, ruega por nosotros.\nMadre del Salvador, ruega por nosotros.\nVirgen prudentísima, ruega por nosotros.\nVirgen digna de veneración, ruega por nosotros.\nVirgen digna de alabanza, ruega por nosotros.\nVirgen poderosa, ruega por nosotros.\nVirgen clemente, ruega por nosotros.\nVirgen fiel, ruega por nosotros.\nEspejo de justicia, ruega por nosotros.\nTrono de la sabiduría, ruega por nosotros.\nCausa de nuestra alegría, ruega por nosotros.\nVaso espiritual, ruega por nosotros.\nVaso digno de honor, ruega por nosotros.\nVaso insigne de devoción, ruega por nosotros.\nRosa mística, ruega por nosotros.\nTorre de David, ruega por nosotros.\nTorre de marfil, ruega por nosotros.\nCasa de oro, ruega por nosotros.\nArca de la Alianza, ruega por nosotros.\nPuerta del cielo, ruega por nosotros.\nEstrella de la mañana, ruega por nosotros.\nSalud de los enfermos, ruega por nosotros.\nRefugio de los pecadores, ruega por nosotros Consoladora de los afligidos, ruega por nosotros.\nAuxilio de los cristianos, ruega por nosotros.\nReina de los Ángeles, ruega por nosotros.\nReina de los Patriarcas, ruega por nosotros.\nReina de los Profetas, ruega por nosotros.\nReina de los Apóstoles, ruega por nosotros.\nReina de los Mártires, ruega por nosotros.\nReina de los Confesores, ruega por nosotros.\nReina de las Vírgenes, ruega por nosotros.\nReina de todos los Santos, ruega por nosotros.\nReina concebida sin pecado original, ruega por nosotros.\nReina asunta a los Cielos, ruega por nosotros.\nReina del Santísimo Rosario, ruega por nosotros.\nReina de la familia, ruega por nosotros.\nReina de la paz, ruega por nosotros.\n\nCordero de Dios, que quitas el pecado del mundo, perdónanos, Señor.\nCordero de Dios, que quitas el pecado del mundo, escúchanos, Señor.\nCordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.\n\nV. Ruega por nosotros, Santa Madre de Dios.\nR. Para que seamos dignos de alcanzar las promesas de nuestro Señor Jesucristo.\n\nOremos. Concede, Señor Dios, a tus siervos gozar de perpetua salud de alma y cuerpo; y por la gloriosa intercesión de la Bienaventurada siempre Virgen María, líbranos de las tristezas de la vida presente y concédenos las alegrías eternas. Por Jesucristo nuestro Señor. Amén.",
     closing:"Oremos. Oh Dios, cuyo Hijo Unigénito, con su vida, muerte y resurrección, nos ha comprado las recompensas de la vida eterna; concédenos, te rogamos, que meditando estos misterios del Santísimo Rosario de la Bienaventurada Virgen María, imitemos lo que contienen y obtengamos lo que prometen, por el mismo Jesucristo nuestro Señor. Amén.",
     memorare:"Acuérdate, oh piadosísima Virgen María, que jamás se ha oído decir que ninguno de los que han acudido a tu protección, implorado tu auxilio o reclamado tu socorro, haya sido desamparado de ti. Animado por esta confianza, acudo a ti, Madre, Virgen de la vírgenes, y gimiendo bajo el peso de mis pecados, me atrevo a comparecer ante ti. Oh Madre del Verbo Divino, no deseches mis súplicas, antes bien, escúchalas y acógelas benignamente. Amén."
@@ -427,8 +439,8 @@ const MYSTERY_SETS={
 };
 
 const TRANSLATIONS={
-  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",nextCtrl:"Next",finishCtrl:"Finish",exitLink:"End early & return home",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume"},
-  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",nextCtrl:"Siguiente",finishCtrl:"Terminar",exitLink:"Terminar antes y volver al inicio",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar"}
+  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume"},
+  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar"}
 };
 
 const DAY_SCHEDULE=[{nameIndex:0,key:"glorious"},{nameIndex:1,key:"joyful"},{nameIndex:2,key:"sorrowful"},{nameIndex:3,key:"glorious"},{nameIndex:4,key:"luminous"},{nameIndex:5,key:"sorrowful"},{nameIndex:6,key:"joyful"}];
@@ -479,8 +491,8 @@ function translateUI(){
   document.getElementById("ui-compQuote").textContent=trans.compQuote;
   document.getElementById("doneBtn").textContent=trans.doneBtn;
   document.getElementById("prevBtn").setAttribute("aria-label", trans.backCtrl);
+  document.getElementById("exitHomeBtn").setAttribute("aria-label", trans.homeCtrl);
   document.getElementById("nextBtn").setAttribute("aria-label", trans.nextCtrl);
-  document.getElementById("exitLink").textContent=trans.exitLink;
   document.getElementById("ui-textSizeLabel").textContent=trans.textSizeLabel;
   document.getElementById("ui-swipeHint").textContent=trans.swipeHint;
   applySeasonTheme(currentSeason);
@@ -694,7 +706,7 @@ function buildSequence(e,t){
 
 function ordinal(e){const t=["th","st","nd","rd"],r=e%100;return e+(t[(r-20)%10]||t[r]||t[0])}
 
-/* Render Step (Clean Typography without Images) */
+/* Render Step */
 function renderStep(){
   saveState();
   const e=sequence[stepIndex],t=document.getElementById("prayMain");
@@ -896,7 +908,7 @@ document.getElementById("prevBtn").addEventListener("click",()=>{
   }
 });
 
-document.getElementById("exitLink").addEventListener("click",()=>{
+document.getElementById("exitHomeBtn").addEventListener("click",()=>{
   saveState();
   showScreen("home");
   renderHome();
