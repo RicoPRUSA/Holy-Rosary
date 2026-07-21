@@ -160,8 +160,8 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 /* Sacred Art Frame */
 .sacred-art-frame{margin:0 auto 14px;width:100%;max-width:320px;border-radius:12px;border:2px solid var(--gold);box-shadow:0 6px 20px rgba(var(--gold-rgb),.25);overflow:hidden;background:#2e1c10;position:relative}
-.sacred-art-img{width:100%;max-height:210px;object-fit:cover;display:block;transition:opacity .3s ease}
-.sacred-art-caption{font-size:12px;font-style:italic;color:var(--parchment);background:rgba(46,28,16,.85);padding:4px 8px;text-align:center;border-top:1px solid rgba(var(--gold-rgb),.3)}
+.sacred-art-img{width:100%;height:180px;object-fit:cover;display:block;transition:opacity .3s ease}
+.sacred-art-caption{font-size:12px;font-style:italic;color:var(--parchment);background:rgba(46,28,16,.88);padding:4px 8px;text-align:center;border-top:1px solid rgba(var(--gold-rgb),.3)}
 
 .decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px;font-weight:600}
 .step-eyebrow{font-family:'Cinzel',serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px}
@@ -191,11 +191,33 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   padding:0 4px
 }
 
-.pray-controls{display:flex;gap:12px;padding:12px 20px 6px;position:relative;z-index:2}
-.ctrl-btn{flex:1;padding:15px;border-radius:14px;font-family:'Cinzel',serif;font-size:17.5px;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border:1.5px solid rgba(var(--gold-rgb),.45);background:rgba(255,255,255,.7);color:var(--gold-light)}
-.ctrl-btn.primary{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--white);border:none;font-weight:600;flex:1.4}
-.ctrl-btn:disabled{opacity:.35}
-.ctrl-btn:active{transform:translateY(1px)}
+/* Icon Button Styles for Controls */
+.pray-controls{display:flex;gap:14px;padding:12px 20px 6px;position:relative;z-index:2;align-items:center;justify-content:center}
+.ctrl-btn{
+  width:64px;
+  height:56px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  border:1.5px solid rgba(var(--gold-rgb),.45);
+  background:rgba(255,255,255,.8);
+  color:var(--gold-light);
+  box-shadow:0 3px 10px rgba(var(--gold-rgb),.12);
+  transition:all .15s ease
+}
+.ctrl-btn.primary{
+  flex:1;
+  max-width:220px;
+  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  color:var(--white);
+  border:none;
+  box-shadow:0 6px 18px rgba(var(--gold-rgb),.28)
+}
+.ctrl-btn svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn:disabled{opacity:.3;cursor:not-allowed}
+.ctrl-btn:active:not(:disabled){transform:translateY(1px)}
 
 .exit-row{text-align:center;padding:4px 0 4px}
 .exit-link{font-size:15px;color:rgba(74,47,31,.5);cursor:pointer;letter-spacing:.03em}
@@ -224,7 +246,6 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   .day-mystery{font-size:17px}
   .set-name{font-size:30px}
   .step-title{font-size:26px}
-  .ctrl-btn{font-size:17px;padding:15px 8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -322,9 +343,14 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
       <div class="pray-main" id="prayMain"></div>
 
+      <!-- Control Buttons as Icons -->
       <div class="pray-controls">
-        <button class="ctrl-btn" id="prevBtn">Back</button>
-        <button class="ctrl-btn primary" id="nextBtn">Next</button>
+        <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
+          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="ctrl-btn primary" id="nextBtn" aria-label="Next step">
+          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
       </div>
       <div class="exit-row"><span class="exit-link" id="exitLink">End early &amp; return home</span></div>
     </div>
@@ -346,7 +372,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v2';
+    const CACHE_NAME = 'rosary-v3';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -392,35 +418,35 @@ const PRAYERS={
   }
 };
 
-/* Sacred Art Illustrations Mapping */
+/* Sacred Art Illustrations Mapping with Public Domain Wikimedia URLs */
 const MYSTERY_ART={
   joyful:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Fra_Angelico_-_Annunciation_-_WGA00473.jpg/640px-Fra_Angelico_-_Annunciation_-_WGA00473.jpg",artist:"Fra Angelico"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg/640px-Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg",artist:"Domenico Ghirlandaio"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg/640px-Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg",artist:"Gerard van Honthorst"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg/640px-Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg",artist:"Simon Vouet"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Christ_in_the_Temple_by_Heinrich_Hofmann.jpg/640px-Christ_in_the_Temple_by_Heinrich_Hofmann.jpg",artist:"Heinrich Hofmann"}
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Fra_Angelico_-_Annunciation_-_WGA00473.jpg/640px-Fra_Angelico_-_Annunciation_-_WGA00473.jpg",artist:"Fra Angelico — Annunciation"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg/640px-Domenico_Ghirlandaio_-_The_Visitation_-_WGA08833.jpg",artist:"Domenico Ghirlandaio — Visitation"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg/640px-Gerard_van_Honthorst_-_Adoration_of_the_Shepherds_%281622%29.jpg",artist:"Gerard van Honthorst — Nativity"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg/640px-Simon_Vouet_-_Presentation_in_the_Temple_-_WGA25368.jpg",artist:"Simon Vouet — Presentation"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Christ_in_the_Temple_by_Heinrich_Hofmann.jpg/640px-Christ_in_the_Temple_by_Heinrich_Hofmann.jpg",artist:"Heinrich Hofmann — Finding in Temple"}
   ],
   sorrowful:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg/640px-Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg",artist:"Giovanni Bellini"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg/640px-The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg",artist:"Caravaggio"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Titian_-_Crowning_with_Thorns_-_WGA22967.jpg/640px-Titian_-_Crowning_with_Thorns_-_WGA22967.jpg",artist:"Titian"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg/640px-El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg",artist:"El Greco"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cristo_crucificado_2.jpg/640px-Cristo_crucificado_2.jpg",artist:"Diego Velázquez"}
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg/640px-Giovanni_Bellini_-_Agony_in_the_Garden_-_WGA01673.jpg",artist:"Giovanni Bellini — Agony in Garden"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg/640px-The_Flagellation_of_Christ-Caravaggio_%281607%29.jpg",artist:"Caravaggio — Scourging at Pillar"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Titian_-_Crowning_with_Thorns_-_WGA22967.jpg/640px-Titian_-_Crowning with Thorns"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg/640px-El_Greco_-_Christ_Carrying_the_Cross_-_WGA10526.jpg",artist:"El Greco — Carrying of Cross"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Cristo_crucificado_2.jpg/640px-Cristo_crucificado_2.jpg",artist:"Diego Velázquez — Crucifixion"}
   ],
   glorious:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Resurrection_Piero_della_Francesca.jpg/640px-Resurrection_Piero_della_Francesca.jpg",artist:"Piero della Francesca"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg/640px-Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg",artist:"Giotto di Bondone"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pentecostes_El_Greco_Museo_del_Prado.jpg/640px-Pentecostes_El_Greco_Museo_del_Prado.jpg",artist:"El Greco"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Titian_-_Assunta_%281516-1518%29.jpg/640px-Titian_-_Assunta_%281516-1518%29.jpg",artist:"Titian"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg/640px-Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg",artist:"Diego Velázquez"}
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Resurrection_Piero_della_Francesca.jpg/640px-Resurrection_Piero_della_Francesca.jpg",artist:"Piero della Francesca — Resurrection"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg/640px-Giotto_-_Scrovegni_-_-38-_-_Ascension.jpg",artist:"Giotto — Ascension"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Pentecostes_El_Greco_Museo_del_Prado.jpg/640px-Pentecostes_El_Greco_Museo_del_Prado.jpg",artist:"El Greco — Descent of Holy Spirit"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Titian_-_Assunta_%281516-1518%29.jpg/640px-Titian_-_Assunta_%281516-1518%29.jpg",artist:"Titian — Assumption of Mary"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg/640px-Vel%C3%A1zquez_-_Coronation_of_the_Virgin_-_Google_Art_Project.jpg",artist:"Diego Velázquez — Coronation of Mary"}
   ],
   luminous:[
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg/640px-Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg",artist:"Verrocchio & Leonardo da Vinci"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg/640px-The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg",artist:"Jean-Léon Gérôme"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg/640px-Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg",artist:"Fra Angelico"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Transfiguration_Raphael.jpg/640px-Transfiguration_Raphael.jpg",artist:"Raphael"},
-    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg/640px-%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg",artist:"Leonardo da Vinci"}
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg/640px-Verrocchio%2C_Leonardo_da_Vinci_-_Battesimo_di_Cristo.jpg",artist:"Verrocchio & Da Vinci — Baptism"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg/640px-The_Marriage_at_Cana_by_G%C3%A9rome_1852.jpg",artist:"Jean-Léon Gérôme — Wedding at Cana"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg/640px-Fra_Angelico_-_Sermon_on_the_Mount_-_WGA00537.jpg",artist:"Fra Angelico — Proclamation of Kingdom"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Transfiguration_Raphael.jpg/640px-Transfiguration_Raphael.jpg",artist:"Raphael — Transfiguration"},
+    {url:"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg/640px-%C3%9Altima_Cena_-_Leonardo_Da_Vinci_High_Resolution_Scale_Canvas.jpg",artist:"Leonardo da Vinci — Last Supper"}
   ]
 };
 
@@ -468,6 +494,7 @@ let currentSeason=getLiturgicalSeason(new Date());
 let currentDayIndex=new Date().getDay(),sequence=[],stepIndex=0;
 let audioCtx=null;
 let currentMysteryKey="joyful";
+let overviewDayIndex=0;
 
 function buzz(e){if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
 
@@ -490,7 +517,8 @@ function translateUI(){
   document.getElementById("ui-compTitle").textContent=trans.compTitle;
   document.getElementById("ui-compQuote").textContent=trans.compQuote;
   document.getElementById("doneBtn").textContent=trans.doneBtn;
-  document.getElementById("prevBtn").textContent=trans.backCtrl;
+  document.getElementById("prevBtn").setAttribute("aria-label", trans.backCtrl);
+  document.getElementById("nextBtn").setAttribute("aria-label", trans.nextCtrl);
   document.getElementById("exitLink").textContent=trans.exitLink;
   document.getElementById("ui-textSizeLabel").textContent=trans.textSizeLabel;
   document.getElementById("ui-swipeHint").textContent=trans.swipeHint;
@@ -569,7 +597,6 @@ function checkResumeState(){
   if(saved){
     try{
       const data=JSON.parse(saved);
-      // Valid for 24 hours
       if(Date.now() - data.timestamp < 86400000 && data.sequence && data.sequence.length>0){
         const trans=TRANSLATIONS[currentLang];
         const sub=trans.resumeSub.replace("{step}", data.stepIndex+1).replace("{total}", data.sequence.length);
@@ -718,7 +745,7 @@ function renderStep(){
     const art=MYSTERY_ART[currentMysteryKey][e.mysteryIndex];
     artHtml=`
       <div class="sacred-art-frame">
-        <img class="sacred-art-img" src="${art.url}" alt="${e.title}" onerror="this.parentElement.style.display='none';">
+        <img class="sacred-art-img" src="${art.url}" alt="${e.title}" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentElement.style.display='none';">
         <div class="sacred-art-caption">${art.artist}</div>
       </div>
     `;
@@ -760,7 +787,6 @@ function renderStep(){
   renderCircularRosaryLoop();
 
   document.getElementById("prevBtn").disabled=0===stepIndex;
-  document.getElementById("nextBtn").textContent=stepIndex===sequence.length-1?(currentLang==="en"?"Finish":"Terminar"):(currentLang==="en"?"Next":"Siguiente");
   t.scrollTop=0;
   window.scrollTo(0,0);
 }
