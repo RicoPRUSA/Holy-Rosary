@@ -69,7 +69,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
   transition:color .3s ease;
 }
 
-/* Header Buttons with Darker Tactile Shadow */
+/* Restored Header White Card Buttons */
 .icon-btn{
   background:var(--white);
   border:1.5px solid rgba(var(--gold-rgb),.55);
@@ -85,14 +85,14 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
   font-weight:600;
   cursor:pointer;
   box-shadow:0 3px 10px rgba(0,0,0,.12), 0 2px 6px rgba(var(--gold-rgb),.2);
-  transition:all .15s ease
+  transition:all .15s ease;
 }
 .icon-btn:active{background:rgba(var(--gold-light-rgb),.15);transform:scale(0.96)}
 
 main{flex:1;position:relative;z-index:1;padding:0 22px}
 .hero{text-align:center;padding:6px 0 16px}
 
-/* Medallion Container with Deeper Theme Shadow */
+/* Medallion Container */
 .medallion{
   width:105px;
   height:105px;
@@ -124,7 +124,7 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
 h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
 .subtitle{font-size:18px;color:var(--gold-light);letter-spacing:.02em;font-style:italic}
 
-/* Rectangular Today Pill with Darker Pops-out Shadow */
+/* Rectangular Today Pill */
 .today-pill{
   margin:12px auto 0;
   display:flex;
@@ -165,7 +165,7 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
 }
 .season-badge::before{content:"✦";font-size:10px}
 
-/* Resume Session Banner with Darker Shadow */
+/* Resume Session Banner */
 .resume-card{
   background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,241,214,.95));
   border:2px solid var(--gold);
@@ -200,7 +200,7 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
 .section-label{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);text-align:center;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
 .section-label::before,.section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.5),transparent)}
 
-/* Choose a Day Dropdown Menu with Deeper Shadow */
+/* Choose a Day Dropdown Menu */
 .day-dropdown-container{margin-bottom:16px}
 .day-dropdown{
   width:100%;
@@ -361,31 +361,31 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   padding:0 4px
 }
 
-/* Control Buttons with Deeper Darker Shadows */
-.pray-controls{display:flex;gap:18px;padding:10px 20px 2px;position:relative;z-index:2;align-items:center;justify-content:center}
+/* Plain Transparent Control Icons */
+.pray-controls{display:flex;gap:32px;padding:12px 20px 4px;position:relative;z-index:2;align-items:center;justify-content:center}
 .ctrl-btn{
   width:48px;
   height:48px;
-  border-radius:4px;
+  border-radius:0;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  border:1.5px solid rgba(var(--gold-rgb),.55);
-  background:rgba(255,255,255,.95);
-  color:var(--gold-light);
-  box-shadow:0 5px 16px rgba(0,0,0,.18), 0 2px 6px rgba(var(--gold-rgb),.3);
-  transition:all .15s ease
+  border:none !important;
+  background:transparent !important;
+  color:var(--gold) !important;
+  box-shadow:none !important;
+  transition:transform .15s ease, opacity .15s ease;
 }
 .ctrl-btn.primary{
-  background:linear-gradient(135deg,var(--gold-light),var(--gold));
-  color:var(--white);
-  border:none;
-  box-shadow:0 6px 18px rgba(0,0,0,.22), 0 4px 12px rgba(var(--gold-rgb),.45)
+  background:transparent !important;
+  color:var(--gold) !important;
+  border:none !important;
+  box-shadow:none !important;
 }
-.ctrl-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.ctrl-btn:disabled{opacity:.3;cursor:not-allowed;box-shadow:none}
-.ctrl-btn:active:not(:disabled){transform:scale(0.95)}
+.ctrl-btn svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn:disabled{opacity:.25;cursor:not-allowed}
+.ctrl-btn:active:not(:disabled){transform:scale(0.88);opacity:0.6}
 
 .swipe-hint-underneath{
   text-align:center;
@@ -399,13 +399,13 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .complete-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
 .complete-wrap .glyph-big{margin-bottom:18px}
-.complete-cross-svg{width:42px;height:52px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 4px 10px rgba(0,0,0,.15))}
+.complete-cross-svg{width:42px;height:52px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round}
 .complete-wrap h2{font-family:'Cinzel',serif;color:var(--ink-deep);font-size:27px;margin:0 0 10px}
 .complete-wrap p{color:var(--gold-light);font-style:italic;font-size:17px;max-width:310px;margin:0 0 26px}
 
 .hidden{display:none!important}
 
-/* Deceased Card with Darker Shadow */
+/* Deceased Card */
 .deceased-option-card{
   background:rgba(255,255,255,.75);
   border:1.5px solid rgba(var(--gold-rgb),.35);
@@ -443,6 +443,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
         <svg class="brand-cross-svg" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></svg>
         <span id="ui-brand">Holy Rosary</span>
       </div>
+      <!-- Restored White Header Card Buttons -->
       <div style="display:flex;gap:8px;">
         <button class="icon-btn" id="langBtn" aria-label="Language">ES</button>
         <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
@@ -459,7 +460,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
         <div class="subtitle" id="ui-subtitle">Pray always, and do not lose heart</div>
         <div class="season-badge" id="seasonBadge">Ordinary Time</div>
         
-        <!-- Rectangular Today Pill with Deeper Shadow -->
+        <!-- Rectangular Today Pill -->
         <div class="today-pill" id="todayPill"><span id="ui-todayPrefix">Today</span> · <b id="todayLabel">—</b></div>
       </div>
 
@@ -533,7 +534,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
       <div class="pray-main" id="prayMain"></div>
 
-      <!-- Clean Inline Button Trio: Back | Home | Next -->
+      <!-- Plain Transparent Floating Control Icons: Back | Home | Next -->
       <div class="pray-controls">
         <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
           <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
@@ -570,7 +571,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v16';
+    const CACHE_NAME = 'rosary-v18';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
