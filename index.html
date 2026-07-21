@@ -56,7 +56,10 @@ body{
 
 header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px;position:relative;z-index:2}
 .brand{font-family:'Cinzel Decorative','Cinzel',serif;font-size:18px;letter-spacing:.14em;color:var(--gold-light);text-transform:uppercase;display:flex;align-items:center;gap:8px}
-.brand .cross{font-size:19px;color:var(--burgundy)}
+
+/* Dynamically matches active Liturgical Calendar theme colors */
+.brand .cross{font-size:20px;color:var(--gold);transition:color .3s ease}
+
 .icon-btn{background:var(--white);border:1.5px solid rgba(var(--gold-rgb),.45);color:var(--gold-light);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:17px;font-weight:600;cursor:pointer}
 .icon-btn:active{background:rgba(var(--gold-light-rgb),.15)}
 
@@ -377,7 +380,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v9';
+    const CACHE_NAME = 'rosary-v10';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
