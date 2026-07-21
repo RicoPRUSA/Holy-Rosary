@@ -109,22 +109,21 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
   transition:border-color .3s ease, box-shadow .3s ease;
 }
 
-.medallion .glyph-img{
+/* Embedded Vector SVG Medallion */
+.medallion-svg{
+  width:95px;
+  height:95px;
+  color:var(--gold);
   position:absolute;
   top:5px;
   left:5px;
-  width:95px;
-  height:95px;
-  object-fit:contain;
-  transform:translateX(-150px);
-  filter:drop-shadow(150px 0 0 var(--gold));
-  transition:filter .3s ease;
+  transition:color .3s ease;
 }
 
 h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
 .subtitle{font-size:18px;color:var(--gold-light);letter-spacing:.02em;font-style:italic}
 
-/* Today Card: "TODAY" on top, text underneath */
+/* Today Card */
 .today-pill{
   margin:12px auto 0;
   display:flex;
@@ -176,7 +175,7 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
 }
 .season-badge::before{content:"✦";font-size:10px}
 
-/* Resume Card: Text on top, Button underneath */
+/* Resume Card */
 .resume-card{
   background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,241,214,.95));
   border:2px solid var(--gold);
@@ -365,8 +364,8 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:6px;font-weight:600}
 .step-eyebrow{font-family:'Cinzel',serif;font-size:15.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
-.step-title{font-family:'Cinzel',serif;font-size:27px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-size:15.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
+.step-title{font-family:'Cinzel',serif;font-size:28px;color:var(--ink-deep);margin:0 0 16px;line-height:1.25;width:100%;overflow-wrap:break-word}
+.step-fruit{font-size:16.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
 
 .step-body{
   font-size:calc(24.5px * var(--step-font-scale));
@@ -499,9 +498,13 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
     <main>
       <div class="hero">
-        <!-- Medallion Image with Shifted Drop-Shadow Matching Calendar Theme -->
+        <!-- Native Vector Medallion (Instant Load & Calendar Color Matched) -->
         <div class="medallion">
-          <img class="glyph-img" src="medallion.png" alt="Our Lady Medallion" onerror="this.style.display='none';">
+          <svg class="medallion-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
+              <path d="M2475 5029 c-352 -45 -707 -278 -839 -549 -38 -79 -41 -91 -41 -170 0 -72 4 -93 26 -135 25 -49 94 -112 152 -138 15 -6 27 -14 27 -17 0 -3 -81 -113 -181 -245 -348 -462 -435 -617 -475 -850 -13 -78 -14 -107 -5 -160 20 -114 27 -117 34 -14 10 153 51 274 148 445 71 123 142 219 325 440 86 104 184 224 218 267 l61 77 126 0 c93 0 146 5 205 20 276 70 560 245 696 427 l39 53 72 -36 c100 -50 180 -110 260 -192 72 -75 85 -113 50 -144 -10 -9 -148 -83 -308 -165 -324 -167 -498 -263 -654 -361 -372 -234 -576 -459 -676 -747 -40 -118 -55 -204 -55 -337 0 -54 -4 -98 -9 -98 -14 0 -35 165 -34 265 3 201 71 401 208 610 l20 30 -30 -22 c-43 -30 -184 -179 -227 -238 -47 -65 -98 -163 -131 -250 -102 -268 -37 -547 180 -770 83 -86 170 -153 413 -320 303 -208 390 -283 452 -393 32 -56 43 -67 28 -28 -45 119 -115 204 -300 366 -170 148 -313 298 -359 374 -19 31 -50 103 -69 159 -31 90 -35 116 -40 233 -6 161 -2 183 33 176 16 -3 25 -11 25 -22 0 -10 7 -26 16 -34 14 -15 13 -19 -8 -48 -17 -25 -23 -46 -22 -87 0 -49 3 -57 37 -87 27 -25 46 -34 72 -34 28 0 37 -5 45 -24 5 -13 16 -29 26 -34 13 -7 14 -13 5 -30 -6 -11 -11 -44 -11 -71 0 -44 5 -56 34 -89 33 -36 37 -37 100 -37 58 0 66 -2 68 -20 2 -11 13 -24 24 -29 19 -9 21 -16 17 -65 -3 -45 0 -63 17 -89 33 -54 105 -73 171 -47 12 4 18 -1 23 -19 4 -16 16 -28 32 -32 18 -5 23 -11 19 -23 -35 -84 17 -187 97 -193 39 -3 46 -50 13 -90 -49 -58 -25 -166 42 -190 34 -12 41 -22 23 -33 -19 -12 -11 -57 10 -62 l21 -6 -21 -14 c-27 -19 -27 -63 0 -70 29 -8 25 -17 -20 -56 l-41 -35 20 -59 c11 -32 23 -83 27 -112 l7 -53 -49 6 c-27 3 -70 16 -96 28 l-47 21 -34 -29 c-19 -16 -42 -35 -53 -42 -15 -10 -16 -14 -5 -19 8 -3 31 -21 51 -39 l37 -34 44 19 c65 28 124 34 139 16 17 -20 -3 -256 -30 -359 l-19 -71 33 -35 c18 -19 36 -43 39 -53 8 -22 37 -23 37 -1 0 9 16 32 35 50 l36 33 -20 98 c-11 54 -23 156 -27 226 l-7 128 39 -6 c67 -12 113 -25 119 -35 10 -17 43 -11 57 9 8 11 26 25 41 32 35 16 34 34 -3 56 -16 9 -30 21 -30 25 0 4 -8 12 -18 17 -14 7 -29 5 -58 -9 -21 -11 -63 -22 -93 -25 l-54 -6 7 56 c3 31 15 81 26 112 l19 55 -34 33 c-36 33 -42 49 -25 60 14 9 13 48 -2 63 -9 9 -9 15 0 24 15 15 16 54 2 63 -15 9 -12 25 5 25 8 0 29 13 46 28 59 53 48 161 -21 197 -16 8 -35 15 -43 15 -7 0 -18 12 -23 28 -10 24 -7 31 20 60 27 28 31 41 31 85 0 29 -4 60 -8 69 -7 13 -3 17 15 20 13 2 28 13 33 26 7 17 15 21 30 17 84 -25 140 -10 175 48 22 35 26 97 9 129 -9 17 -8 23 5 30 10 5 21 20 26 33 7 17 14 21 34 18 36 -7 89 13 121 47 36 37 46 116 21 155 -15 22 -15 25 -1 25 9 0 24 13 33 30 13 24 24 30 50 30 100 0 163 110 116 202 -15 28 -14 31 5 45 12 8 21 25 21 37 0 19 7 25 34 30 104 20 150 144 81 216 -22 23 -25 31 -16 48 6 12 11 29 11 39 0 10 14 25 33 34 71 34 73 157 4 199 -47 29 -108 26 -146 -6 -55 -46 -60 -121 -11 -174 40 -43 31 -82 -23 -101 -88 -30 -117 -148 -52 -213 16 -16 16 -18 1 -35 -9 -10 -16 -25 -16 -34 0 -13 -9 -17 -42 -17 -104 0 -165 -97 -124 -195 13 -29 13 -35 0 -46 -8 -6 -14 -20 -14 -30 0 -17 -8 -19 -60 -19 -54 0 -64 -3 -96 -33 -31 -28 -37 -42 -41 -84 -3 -29 0 -59 7 -72 9 -18 9 -26 -3 -39 -8 -9 -16 -23 -18 -30 -3 -9 -25 -14 -68 -15 -57 -2 -65 -5 -91 -34 -33 -37 -47 -95 -33 -134 10 -25 8 -28 -14 -33 -13 -4 -29 -18 -35 -32 -7 -15 -17 -23 -26 -19 -39 15 -62 15 -95 2 l-35 -15 -6 29 c-4 20 -13 30 -31 35 -19 5 -24 11 -19 23 27 61 5 138 -48 171 -34 21 -102 27 -128 11 -10 -7 -19 -2 -32 20 -10 16 -24 29 -32 29 -12 0 -12 6 0 41 18 52 5 104 -36 144 -23 22 -41 29 -83 33 -46 4 -55 8 -65 32 -10 22 -10 32 3 56 43 83 -18 194 -108 194 -20 0 -26 6 -30 33 -3 22 1 38 13 52 28 30 42 76 35 112 -6 33 -64 93 -90 93 -41 0 -18 55 74 178 161 213 400 365 826 527 358 136 470 196 564 301 l49 55 -5 -48 c-17 -176 -60 -262 -203 -403 -59 -58 -114 -120 -123 -136 -18 -35 -52 -168 -61 -237 -9 -75 -21 -90 -64 -83 -72 12 -76 12 -80 -9 -7 -33 -22 -45 -58 -45 -27 0 -36 -5 -44 -24 -11 -29 -38 -46 -74 -46 -20 0 -35 -12 -61 -49 -52 -72 -95 -81 -161 -33 -82 59 -148 153 -190 269 -32 88 -33 87 -90 -34 -106 -225 -78 -431 87 -638 61 -76 109 -124 109 -109 0 6 -4 14 -9 20 -6 5 -24 52 -42 104 -25 73 -33 118 -37 195 -4 96 10 209 27 220 5 2 26 -9 47 -27 64 -51 139 -81 187 -75 36 5 51 15 97 67 30 33 61 60 69 60 7 0 30 13 50 29 20 15 47 31 61 34 14 3 33 19 42 34 15 25 22 28 69 28 49 0 55 3 76 34 13 19 33 66 44 103 20 65 25 72 101 136 45 37 111 93 149 125 68 57 139 146 177 222 63 126 75 303 30 435 -70 203 -213 371 -418 492 -69 40 -75 47 -72 74 1 16 3 74 5 129 2 93 0 103 -25 146 -52 88 -139 140 -283 170 -97 20 -150 22 -260 8z m253 -48 c51 -11 113 -31 137 -45 53 -32 110 -97 126 -144 13 -39 7 -152 -9 -194 l-11 -27 -57 19 c-198 68 -364 60 -543 -28 -159 -77 -321 -229 -528 -491 -6 -9 -91 38 -126 69 -231 203 68 645 545 804 163 55 318 67 466 37z m129 -452 c34 -11 65 -24 68 -30 16 -24 -141 -184 -254 -259 -98 -66 -193 -111 -310 -150 -118 -38 -204 -52 -309 -48 l-83 3 41 55 c65 87 168 198 246 264 207 176 397 228 601 165z m497 -560 c-27 -54 -123 -147 -199 -194 -95 -59 -181 -98 -435 -195 -118 -45 -241 -95 -272 -110 -32 -15 -58 -24 -58 -21 0 9 123 101 210 157 114 73 759 409 768 400 2 -2 -4 -19 -14 -37z M1943 3570 c-409 -275 -619 -497 -696 -735 -79 -243 -12 -472 206 -700 82 -86 98 -93 42 -19 -47 61 -120 213 -142 294 -37 138 -13 331 61 484 93 192 218 337 606 704 36 34 63 61 60 61 -3 0 -65 -40 -137 -89z M2889 3485 c43 -8 90 -25 113 -40 36 -24 38 -24 28 -6 -20 39 -57 54 -138 57 l-77 3 74 -14z M2760 3355 c0 -29 95 -105 131 -105 8 0 22 16 31 35 l16 36 -24 -16 c-35 -23 -58 -19 -108 20 -25 19 -46 32 -46 30z" fill="currentColor"/>
+            </g>
+          </svg>
         </div>
         <h1 class="title" id="ui-title">The Holy Rosary</h1>
         <div class="subtitle" id="ui-subtitle">Pray always, and do not lose heart</div>
@@ -621,7 +624,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v25';
+    const CACHE_NAME = 'rosary-v28';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -800,8 +803,7 @@ function saveState(){
 function clearSavedState(){
   localStorage.removeItem("rosary_active_session");
   const c=document.getElementById("resumeContainer");
-  if(!c) return;
-  c.innerHTML="";
+  if(c) c.innerHTML="";
 }
 
 function checkResumeState(){
