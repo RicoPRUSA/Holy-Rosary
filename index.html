@@ -158,18 +158,14 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
-/* Embedded Sacred Art Container */
-.sacred-art-frame{margin:0 auto 14px;width:100%;max-width:300px;border-radius:14px;border:2px solid var(--gold);box-shadow:0 6px 18px rgba(var(--gold-rgb),.22);overflow:hidden;background:radial-gradient(circle at 50% 30%,#2e1c10,#1a0e07);padding:12px;position:relative}
-.sacred-art-svg{width:100%;height:150px;display:block}
-
-.decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px;font-weight:600}
-.step-eyebrow{font-family:'Cinzel',serif;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px}
-.step-title{font-family:'Cinzel',serif;font-size:26px;color:var(--ink-deep);margin:0 0 14px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-size:15.5px;font-style:italic;color:var(--gold-light);margin-bottom:12px}
+.decade-flag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:10px;font-weight:600}
+.step-eyebrow{font-family:'Cinzel',serif;font-size:16.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px}
+.step-title{font-family:'Cinzel',serif;font-size:28px;color:var(--ink-deep);margin:0 0 16px;line-height:1.25;width:100%;overflow-wrap:break-word}
+.step-fruit{font-size:16.5px;font-style:italic;color:var(--gold-light);margin-bottom:14px}
 
 .step-body{
-  font-size:calc(24px * var(--step-font-scale));
-  line-height:1.6;
+  font-size:calc(25px * var(--step-font-scale));
+  line-height:1.65;
   color:var(--ink);
   white-space:pre-line;
   width:100%;
@@ -178,19 +174,19 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   box-sizing:border-box
 }
 .step-body.meditation{
-  font-size:calc(20.5px * var(--step-font-scale));
+  font-size:calc(21.5px * var(--step-font-scale));
   color:rgba(74,47,31,.95);
   font-style:italic
 }
 .step-body.litany-body{
-  font-size:calc(23px * var(--step-font-scale));
-  line-height:1.5;
+  font-size:calc(24px * var(--step-font-scale));
+  line-height:1.55;
   text-align:left;
   max-width:100%;
   padding:0 4px
 }
 
-/* Equal-Sized Sleek Circular Control Buttons */
+/* Equal-Sized Sleek Controls */
 .pray-controls{display:flex;gap:24px;padding:12px 20px 6px;position:relative;z-index:2;align-items:center;justify-content:center}
 .ctrl-btn{
   width:54px;
@@ -201,7 +197,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   justify-content:center;
   cursor:pointer;
   border:1.5px solid rgba(var(--gold-rgb),.45);
-  background:rgba(255,255,255,.8);
+  background:rgba(255,255,255,.85);
   color:var(--gold-light);
   box-shadow:0 4px 12px rgba(var(--gold-rgb),.15);
   transition:all .15s ease
@@ -242,7 +238,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   .day-name{font-size:19px}
   .day-mystery{font-size:17px}
   .set-name{font-size:30px}
-  .step-title{font-size:26px}
+  .step-title{font-size:28px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -369,7 +365,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v4';
+    const CACHE_NAME = 'rosary-v8';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -408,109 +404,12 @@ const PRAYERS={
     ejaculation:"Jesús, en Ti confío y me entrego a Ti; hazte cargo de todo. María, Madre de gracia, Madre de misericordia, defiéndeme del enemigo y recíbeme en la hora de mi muerte. San Miguel Arcángel, defiéndenos en la lucha. Amén.",
     fatima:"Oh Jesús mío, perdona nuestros pecados, líbranos del fuego del infierno, lleva a todas las almas al cielo, especialmente a las más necesitadas de tu misericordia. Amén.",
     hailHolyQueen:"Dios te salve, Reina y Madre de misericordia, vida, dulzura y esperanza nuestra; Dios te salve. A ti llamamos los desterrados hijos de Eva; a ti suspiramos, gimiendo y llorando, en este valle de lágrimas. Ea, pues, Señora, abogada nuestra, vuelve a nosotros esos tus ojos misericordiosos; y después de este destierro muéstranos a Jesús, fruto bendito de tu vientre. ¡Oh clementísima, oh piadosa, oh dulce Virgen María!\n\nV. Ruega por nosotros, Santa Madre de Dios.\nR. Para que seamos dignos de alcanzar las promesas de nuestro Señor Jesucristo. Amén.",
-    stMichael:"San Miguel Arcángel, defiéndenos en la batalla. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste su poder sobre él, es nuestra humilde súplica; y tú, oh Príncipe de la Milicia Celestial, con el poder que Dios te ha conferido, arroja al infierno a Satanás y a los demás espíritus malignos que vagan por el mundo para la perdición de las almas. Amén.",
+    stMichael:"San Miguel Arcángel, defiéndenos en la batalla. Sé nuestro amparo contra la perversidad y acechanzas del demonio. Que Dios manifieste su poder sobre él, es nuestra humilde súplica; y tú, oh Príncipe de la Milicia Celestial, con el poder que Dios te ha conferred, arroja al infierno a Satanás y a los demás espíritus malignos que vagan por el mundo para la perdición de las almas. Amén.",
     litany:"Señor, ten piedad de nosotros. Cristo, ten piedad de nosotros. Señor, ten piedad de nosotros.\nCristo, óyenos. Cristo, escúchanos.\nDios Padre celestial, ten piedad de nosotros.\nDios Hijo, Redentor del mundo, ten piedad de nosotros.\nDios Espíritu Santo, ten piedad de nosotros.\nSantísima Trinidad, un solo Dios, ten piedad de nosotros.\n\nSanta María, ruega por nosotros.\nSanta Madre de Dios, ruega por nosotros.\nSanta Virgen de las vírgenes, ruega por nosotros.\nMadre de Cristo, ruega por nosotros.\nMadre de la Iglesia, ruega por nosotros.\nMadre de la misericordia, ruega por nosotros.\nMadre de la divina gracia, ruega por nosotros.\nMadre de la esperanza, ruega por nosotros.\nMadre purísima, ruega por nosotros.\nMadre castísima, ruega por nosotros.\nMadre siempre virgen, ruega por nosotros.\nMadre sin mancha, ruega por nosotros.\nMadre amable, ruega por nosotros.\nMadre admirable, ruega por nosotros.\nMadre del buen consejo, ruega por nosotros.\nMadre del Creador, ruega por nosotros.\nMadre del Salvador, ruega por nosotros.\nVirgen prudentísima, ruega por nosotros.\nVirgen digna de veneración, ruega por nosotros.\nVirgen digna de alabanza, ruega por nosotros.\nVirgen poderosa, ruega por nosotros.\nVirgen clemente, ruega por nosotros.\nVirgen fiel, ruega por nosotros.\nEspejo de justicia, ruega por nosotros.\nTrono de la sabiduría, ruega por nosotros.\nCausa de nuestra alegría, ruega por nosotros.\nVaso espiritual, ruega por nosotros.\nVaso digno de honor, ruega por nosotros.\nVaso insigne de devoción, ruega por nosotros.\nRosa mística, ruega por nosotros.\nTorre de David, ruega por nosotros.\nTorre de marfil, ruega por nosotros.\nCasa de oro, ruega por nosotros.\nArca de la Alianza, ruega por nosotros.\nPuerta del cielo, ruega por nosotros.\nEstrella de la mañana, ruega por nosotros.\nSalud de los enfermos, ruega por nosotros.\nRefugio de los pecadores, ruega por nosotros Consoladora de los afligidos, ruega por nosotros.\nAuxilio de los cristianos, ruega por nosotros.\nReina de los Ángeles, ruega por nosotros.\nReina de los Patriarcas, ruega por nosotros.\nReina de los Profetas, ruega por nosotros.\nReina de los Apóstoles, ruega por nosotros.\nReina de los Mártires, ruega por nosotros.\nReina de los Confesores, ruega por nosotros.\nReina de las Vírgenes, ruega por nosotros.\nReina de todos los Santos, ruega por nosotros.\nReina concebida sin pecado original, ruega por nosotros.\nReina asunta a los Cielos, ruega por nosotros.\nReina del Santísimo Rosario, ruega por nosotros.\nReina de la familia, ruega por nosotros.\nReina de la paz, ruega por nosotros.\n\nCordero de Dios, que quitas el pecado del mundo, perdónanos, Señor.\nCordero de Dios, que quitas el pecado del mundo, escúchanos, Señor.\nCordero de Dios, que quitas el pecado del mundo, ten piedad de nosotros.\n\nV. Ruega por nosotros, Santa Madre de Dios.\nR. Para que seamos dignos de alcanzar las promesas de nuestro Señor Jesucristo.\n\nOremos. Concede, Señor Dios, a tus siervos gozar de perpetua salud de alma y cuerpo; y por la gloriosa intercesión de la Bienaventurada siempre Virgen María, líbranos de las tristezas de la vida presente y concédenos las alegrías eternas. Por Jesucristo nuestro Señor. Amén.",
     closing:"Oremos. Oh Dios, cuyo Hijo Unigénito, con su vida, muerte y resurrección, nos ha comprado las recompensas de la vida eterna; concédenos, te rogamos, que meditando estos misterios del Santísimo Rosario de la Bienaventurada Virgen María, imitemos lo que contienen y obtengamos lo que prometen, por el mismo Jesucristo nuestro Señor. Amén.",
     memorare:"Acuérdate, oh piadosísima Virgen María, que jamás se ha oído decir que ninguno de los que han acudido a tu protección, implorado tu auxilio o reclamado tu socorro, haya sido desamparado de ti. Animado por esta confianza, acudo a ti, Madre, Virgen de la vírgenes, y gimiendo bajo el peso de mis pecados, me atrevo a comparecer ante ti. Oh Madre del Verbo Divino, no deseches mis súplicas, antes bien, escúchalas y acógelas benignamente. Amén."
   }
 };
-
-/* Embedded Vector Sacred Art SVGs (100% Offline & Reliable) */
-function getEmbeddedSacredArtSVG(key, index){
-  const colorGold = "#f0c877";
-  const colorBurgundy = "#b3492f";
-  const colorWhite = "#ffffff";
-  
-  let content = "";
-  
-  if(key === "joyful"){
-    if(index === 0) { // Annunciation
-      content = `<path d="M100 30 L100 120 M70 60 L130 60" stroke="${colorGold}" stroke-width="3" opacity="0.4"/>
-                 <path d="M100 45 C80 20 120 20 100 45 Z" fill="${colorGold}"/>
-                 <path d="M80 85 C80 60 120 60 120 85 C120 110 80 110 80 85 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <circle cx="100" cy="85" r="10" fill="${colorBurgundy}"/>`;
-    } else if(index === 1) { // Visitation
-      content = `<circle cx="80" cy="70" r="18" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <circle cx="120" cy="70" r="18" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M65 105 C65 85 95 85 95 105 Z" fill="${colorGold}" opacity="0.6"/>
-                 <path d="M105 105 C105 85 135 85 135 105 Z" fill="${colorGold}"/>`;
-    } else if(index === 2) { // Nativity
-      content = `<path d="M100 20 L105 40 L125 40 L108 52 L114 70 L100 58 L86 70 L92 52 L75 40 L95 40 Z" fill="${colorGold}"/>
-                 <rect x="75" y="90" width="50" height="25" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <circle cx="100" cy="95" r="8" fill="${colorWhite}"/>`;
-    } else if(index === 3) { // Presentation
-      content = `<path d="M60 110 L60 50 L100 30 L140 50 L140 110 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <circle cx="100" cy="70" r="12" fill="${colorGold}"/>
-                 <path d="M90 110 L90 85 L110 85 L110 110 Z" fill="${colorBurgundy}"/>`;
-    } else { // Finding in Temple
-      content = `<path d="M70 50 Q100 30 130 50 L130 100 Q100 90 70 100 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <line x1="100" y1="38" x2="100" y2="95" stroke="${colorGold}" stroke-width="1.5"/>
-                 <circle cx="100" cy="65" r="15" fill="${colorBurgundy}" opacity="0.5"/>`;
-    }
-  } else if(key === "sorrowful"){
-    if(index === 0) { // Agony
-      content = `<path d="M85 85 C70 50 130 50 115 85 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <rect x="90" y="85" width="20" height="15" fill="${colorGold}"/>
-                 <circle cx="100" cy="40" r="6" fill="${colorBurgundy}"/>`;
-    } else if(index === 1) { // Scourging
-      content = `<rect x="92" y="30" width="16" height="80" rx="3" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M70 50 L92 65 M70 70 L92 75 M70 90 L92 85" stroke="${colorBurgundy}" stroke-width="2"/>`;
-    } else if(index === 2) { // Thorns
-      content = `<circle cx="100" cy="70" r="32" fill="none" stroke="${colorGold}" stroke-width="4" stroke-dasharray="6,4"/>
-                 <path d="M80 55 L85 45 M115 55 L120 45 M70 75 L60 80 M130 75 L140 80" stroke="${colorBurgundy}" stroke-width="2"/>`;
-    } else if(index === 3) { // Carrying Cross
-      content = `<path d="M60 100 L140 40 M90 40 L130 100" stroke="${colorGold}" stroke-width="7" stroke-linecap="round"/>`;
-    } else { // Crucifixion
-      content = `<path d="M100 25 L100 115 M65 50 L135 50" stroke="${colorGold}" stroke-width="5"/>
-                 <circle cx="100" cy="50" r="14" fill="none" stroke="${colorBurgundy}" stroke-width="2"/>
-                 <path d="M92 20 L108 20" stroke="${colorGold}" stroke-width="2"/>`;
-    }
-  } else if(key === "glorious"){
-    if(index === 0) { // Resurrection
-      content = `<path d="M100 20 L100 100 M75 45 L125 45" stroke="${colorGold}" stroke-width="4"/>
-                 <circle cx="100" cy="60" r="35" fill="none" stroke="${colorGold}" stroke-width="1.5" stroke-dasharray="4,3"/>`;
-    } else if(index === 1) { // Ascension
-      content = `<path d="M70 100 C70 70 130 70 130 100 Z" fill="${colorGold}" opacity="0.3"/>
-                 <path d="M100 70 L100 25 M85 40 L100 25 L115 40" stroke="${colorGold}" stroke-width="3" stroke-linecap="round"/>`;
-    } else if(index === 2) { // Pentecost
-      content = `<path d="M100 25 C80 50 120 50 100 25 Z" fill="${colorWhite}"/>
-                 <path d="M100 60 C90 75 110 75 100 60 Z" fill="${colorBurgundy}"/>
-                 <path d="M75 80 C68 92 82 92 75 80 Z" fill="${colorGold}"/>
-                 <path d="M125 80 C118 92 132 92 125 80 Z" fill="${colorGold}"/>`;
-    } else if(index === 3) { // Assumption
-      content = `<path d="M100 95 C70 65 130 65 100 95 Z" fill="${colorGold}"/>
-                 <circle cx="100" cy="45" r="16" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M80 45 C80 25 120 25 120 45" fill="none" stroke="${colorWhite}" stroke-width="1.5"/>`;
-    } else { // Coronation
-      content = `<path d="M70 80 L80 45 L100 65 L120 45 L130 80 Z" fill="none" stroke="${colorGold}" stroke-width="3"/>
-                 <circle cx="80" cy="40" r="4" fill="${colorGold}"/>
-                 <circle cx="100" cy="58" r="4" fill="${colorGold}"/>
-                 <circle cx="120" cy="40" r="4" fill="${colorGold}"/>`;
-    }
-  } else { // Luminous
-    if(index === 0) { // Baptism
-      content = `<path d="M60 95 Q100 115 140 95 Q100 80 60 95 Z" fill="${colorGold}" opacity="0.4"/>
-                 <path d="M100 25 C85 45 115 45 100 25 Z" fill="${colorWhite}"/>
-                 <line x1="100" y1="45" x2="100" y2="80" stroke="${colorGold}" stroke-width="2" stroke-dasharray="3,3"/>`;
-    } else if(index === 1) { // Cana Jars
-      content = `<rect x="70" y="60" width="22" height="35" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <rect x="108" y="60" width="22" height="35" rx="4" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M70 75 Q81 85 92 75" stroke="${colorBurgundy}" stroke-width="2"/>
-                 <path d="M108 75 Q119 85 130 75" stroke="${colorBurgundy}" stroke-width="2"/>`;
-    } else if(index === 2) { // Kingdom Proclamation
-      content = `<circle cx="100" cy="65" r="30" fill="none" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M100 35 L100 95 M70 65 L130 65" stroke="${colorGold}" stroke-width="2"/>`;
-    } else if(index === 3) { // Transfiguration
-      content = `<circle cx="100" cy="65" r="35" fill="none" stroke="${colorGold}" stroke-width="1.5"/>
-                 <path d="M100 20 L100 110 M55 65 L145 65 M68 33 L132 97 M68 97 L132 33" stroke="${colorGold}" stroke-width="1.5" opacity="0.6"/>`;
-    } else { // Eucharist
-      content = `<circle cx="100" cy="45" r="18" fill="${colorWhite}" stroke="${colorGold}" stroke-width="2"/>
-                 <path d="M85 105 L115 105 M100 105 L100 80 M88 80 L112 80 L106 68 L94 68 Z" fill="none" stroke="${colorGold}" stroke-width="2"/>`;
-    }
-  }
-
-  return `<svg class="sacred-art-svg" viewBox="0 0 200 140">${content}</svg>`;
-}
 
 const MYSTERY_SETS={
   en:{
@@ -795,27 +694,16 @@ function buildSequence(e,t){
 
 function ordinal(e){const t=["th","st","nd","rd"],r=e%100;return e+(t[(r-20)%10]||t[r]||t[0])}
 
-/* Render Step with Embedded Sacred Art Frame */
+/* Render Step (Clean Typography without Images) */
 function renderStep(){
   saveState();
   const e=sequence[stepIndex],t=document.getElementById("prayMain");
   const labelDecade=currentLang==="en"?"Decade":"Década";
   const labelMystery=currentLang==="en"?"Mystery":"Misterio";
-  
-  let artHtml="";
-  if(e.mysteryIndex!==undefined){
-    const svgContent = getEmbeddedSacredArtSVG(currentMysteryKey, e.mysteryIndex);
-    artHtml=`
-      <div class="sacred-art-frame">
-        ${svgContent}
-      </div>
-    `;
-  }
 
   if(e.type==="mystery"){
     t.innerHTML=`
       <div class="step-inner">
-        ${artHtml}
         <div class="decade-flag">${labelMystery} ${e.decade} ${currentLang==="en"?"of":"de"} ${e.total}</div>
         <div class="step-eyebrow">${e.eyebrow}</div>
         <div class="step-title">${e.title}</div>
@@ -834,7 +722,6 @@ function renderStep(){
   }else{
     t.innerHTML=`
       <div class="step-inner">
-        ${artHtml}
         ${e.decade?`<div class="decade-flag">${labelDecade} ${e.decade} ${currentLang==="en"?"of 5":"de 5"}</div>`:""}
         <div class="step-eyebrow">${e.eyebrow}</div>
         <div class="step-title">${e.title}</div>
