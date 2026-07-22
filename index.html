@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <title>Holy Rosary</title>
-<link rel="icon" type="image/png" sizes="180x180" href="favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAEa0lEQVRYhcWXa2xTZRjHf+e0Xbd1a8/anl3ajW1sZYtkCnNZWBwCBmcWbo5gDHKRYOQDgl+NJH4yMXwwMcEQDZGIEhbNRAVxIxElQh1WZMuuwGjZYN3a3Tp26dZua48fYJNolJ469f/p5Lzv+/x/75P3eS8CD2ntvu3WiE57EJSNwDIghcXRPaATQTg5NZN0/NqxY7PzDcL8x+oDO59H4QRgWiTTv5DSIWiUmktHam8tADwwPw2I/675ggaVaLTC+UHtbeF+2jVuVM7cZEjBapKIRCOMTkwwFpxUC9GUORguF6MJmgNqzA2JiRQvyUen1eHp99Lj95FmNJKTnqEWoNQn63dolSibf18Jf6/U5GTSJTM37nYDkGWRKbDb8Y+MkJlmoXdwQBWBILBbRMAR6wBZSsPT7yUxQc/Lz22k0J5Ni7uL5XlLyc3IwmaVVQEApVpUlJpBn4hWo2H/lm2c/K6BwPgYpY4iWjxd9Ph9rChYhigIeIcGYw2ZpmrVD4+P8/be/fQPD1Foz6a8eDmtt930+H3oNFrscgb7Nm5VExKtms5PLHVw4ZqL75t+WfgnCAKVj6/AZpaxW2Vy5ExVADFnwGaVyTCbudh8FUNSEgAl+YVsW7OevAwbkWiULy9fJBieXnwAURTZXPE0Da5G1q4sY24uwutbt7Nv01bCM2Hqf3ZS73Kyt3ozHzecVQUgrH5tp/KoTtXlTxEYH6OkwEG9y8mBmhdpv+3m9KUfCM/OkC6ZKSt6jInpIJdbm1UBPDIDgiBgNBjYUFEJQE3lOupdTtx9vYRnZwAIhqboHfRzubWZN7bv4UlH8eIBmJINFGXncrP3DrIkkZtpo7nrBod2vEJRTi5FObnYrOl09HjQabVYTBKdDzaqWPTIKpgMTRNVFMypJqxGCYd9CYkJenoGfARD00xMTS2cA5YUIzazJWbzmADmIhF6h/yYU40stWXT1u3mmdJymrqu/2nDOfzqQY6e+YLpcDhmgJiq4NwVJ5OhEMZkA7/e7KQkv4DGjhY0omahT1VZBe3dt2j13IzZPGaAkfF7nLrwLeevNpKXmcXAaICqslXotPcTKBlS2PlsNV//9CPBUGjxAQCmQmHe/fwk/SPDXL/bjaLAmy/tIUGno/atdzhce4JuX58qc4hxH/ijSvILMaWkkqzXs7tqA4eOH+XugF+1Oag8C+bV1u3GZEjBZpFx93kZCATiMod/cAccC07i8XmZi0TIltP/ewCAmdlZGlxOPP3e/wcAYKWjGJMh/ueDyP1HQ1yqqVyHxSSxbc16rKa0eEKMiUBTvABfOS/iGxnmxPlvGB4bVR9AENyigPJpvAAAsiRhlaT4BkeVM5ryvOL2yWTtJgSy4olxy9vL0L24ynB0Th/eJdbV1UUiGs0LQMxX2YcVV+ohqqDsvvJeXUAEaHz/E4+giVYqAu3xRFOpUQVli/PoqXMAC8fZHVdbQF6x6qMEcbYPAQlIBZIWyXRcgDYUPpzTh3c1HvmsZb7hN7eTjnhkGVNgAAAAAElFTkSuQmCC">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Holy Rosary">
@@ -31,10 +31,21 @@
   --parchment:#F1EEE6;
   --burgundy:#2A4A3F;
   --white:#fff;
+  --surface:#fff;
+  --accent-text:var(--burgundy);
   --line:#E5E1D6;
   --shadow-soft:0 1px 2px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.06);
   --shadow-pill:0 6px 24px rgba(0,0,0,.10);
   --step-font-scale: 1;
+}
+html.dark-mode{
+  --ink:#C7C2D4;
+  --ink-deep:#F1EEF5;
+  --cream:#17141F;
+  --parchment:#1E1A28;
+  --surface:#221E30;
+  --line:#332E42;
+  --accent-text:var(--gold-light);
 }
 *{box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden;width:100%}
@@ -68,7 +79,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 
 /* Header Buttons */
 .icon-btn{
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   color:var(--ink-deep);
   width:36px;
@@ -100,7 +111,7 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
   display:flex;
   align-items:center;
   justify-content:center;
-  background:var(--gold-pale);
+  background:rgba(var(--gold-rgb),.18);
   position:relative;
   transition:background-color .3s ease, border-color .3s ease;
 }
@@ -125,8 +136,8 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   font-weight:600;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:var(--burgundy);
-  background:var(--gold-pale);
+  color:var(--accent-text);
+  background:rgba(var(--gold-rgb),.18);
   padding:6px 14px;
   border-radius:999px;
 }
@@ -144,7 +155,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   border:1px solid var(--line);
   border-radius:16px;
   cursor:pointer;
-  background:var(--white);
+  background:var(--surface);
   box-shadow:var(--shadow-soft);
   width:100%;
   max-width:380px;
@@ -170,7 +181,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
 
 /* Resume Card */
 .resume-card{
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:16px;
   padding:16px;
@@ -193,7 +204,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   font-family:'Inter',sans-serif;
   font-size:13px;
   font-weight:600;
-  color:var(--burgundy);
+  color:var(--accent-text);
   letter-spacing:.04em;
 }
 .resume-sub{
@@ -229,7 +240,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   font-size:15px;
   font-weight:600;
   color:var(--ink-deep);
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:14px;
   outline:none;
@@ -249,7 +260,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   border:1px solid var(--line);
   border-radius:16px;
   overflow:hidden;
-  background:var(--white);
+  background:var(--surface);
   box-shadow:var(--shadow-soft);
 }
 .prayers-toggle summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep)}
@@ -276,7 +287,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   padding:15px;
   border:1px solid var(--line);
   border-radius:14px;
-  background:var(--white);
+  background:var(--surface);
   box-shadow:var(--shadow-soft);
 }
 .mystery-num{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--gold);min-width:22px}
@@ -308,7 +319,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   display:flex;
   align-items:center;
   gap:4px;
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:10px;
   padding:3px 9px;
@@ -347,7 +358,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
-.decade-flag{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px}
+.decade-flag{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px}
 .step-eyebrow{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .step-title{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
 .step-fruit{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gold);margin-bottom:12px}
@@ -376,6 +387,8 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   max-width:100%;
   padding:0 4px
 }
+.step-body.litany-body p{margin:0 0 16px}
+.step-body.litany-body p:last-child{margin-bottom:0}
 
 /* Floating pill bottom nav */
 .bottom-pray-nav{
@@ -384,7 +397,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   left:50%;
   transform:translateX(-50%);
   width:auto;
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:999px;
   padding:10px 22px 8px;
@@ -440,7 +453,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
 /* Deceased Card */
 .deceased-option-card{
-  background:var(--white);
+  background:var(--surface);
   border:1px solid var(--line);
   border-radius:14px;
   padding:14px;
@@ -450,7 +463,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 }
 .deceased-checkbox-label{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--ink-deep);display:flex;align-items:center;gap:8px;cursor:pointer}
 #deceasedForm{margin-top:10px;display:flex;flex-direction:column;gap:10px}
-#deceasedName{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;background:var(--white);color:var(--ink-deep);outline:none}
+#deceasedName{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;background:var(--surface);color:var(--ink-deep);outline:none}
 #deceasedName:focus{border-color:var(--gold)}
 .gender-selector{display:flex;gap:12px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink)}
 .gender-selector label{display:flex;align-items:center;gap:5px;cursor:pointer}
@@ -462,6 +475,29 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   .set-name{font-size:26px}
   .step-title{font-size:25px}
 }
+@keyframes beadPulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.22);opacity:.82}
+}
+.bead-pulse{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:beadPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes medallionBreathe{
+  0%,100%{box-shadow:var(--shadow-soft), 0 0 0 0 rgba(var(--gold-rgb),0)}
+  50%{box-shadow:var(--shadow-soft), 0 0 0 9px rgba(var(--gold-rgb),.12)}
+}
+.medallion{
+  animation:medallionBreathe 4.5s ease-in-out infinite;
+}
+
+.screen-fade-out{animation:screenFadeOut .16s forwards ease-in}
+.screen-fade-in{animation:screenFadeIn .22s forwards ease-out}
+@keyframes screenFadeOut{from{opacity:1}to{opacity:0}}
+@keyframes screenFadeIn{from{opacity:0}to{opacity:1}}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -476,6 +512,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
         <span id="ui-brand">Holy Rosary</span>
       </div>
       <div style="display:flex;gap:8px;">
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
         <button class="icon-btn" id="langBtn" aria-label="Language">ES</button>
         <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
       </div>
@@ -991,11 +1028,12 @@ function renderStep(){
       </div>
     `;
   }else if(e.type==="litany"){
+    const litanyGroups = e.body.split("\n\n").map(g=>`<p>${g.replace(/\n/g,"<br>")}</p>`).join("");
     t.innerHTML=`
       <div class="step-inner">
         <div class="step-eyebrow">${e.eyebrow}</div>
         <div class="step-title">${e.title}</div>
-        <div class="step-body litany-body">${e.body.replace(/\n/g,"<br>")}</div>
+        <div class="step-body litany-body">${litanyGroups}</div>
       </div>
     `;
   }else{
@@ -1117,16 +1155,34 @@ function updateCircularRosaryState(){
     circle.setAttribute("fill", isCurrent?"var(--burgundy)":(isDone?"var(--gold)":"var(--line)"));
     circle.setAttribute("r", isCurrent?5.5:4);
     circle.setAttribute("stroke", isCurrent?"#fff":"none");
+    circle.classList.toggle("bead-pulse", isCurrent);
   });
 
-  circularNodes.ourFatherBead.setAttribute("fill", currentStep && currentStep.title.includes("Our Father")?"var(--burgundy)":"var(--gold-light)");
+  const ourFatherActive = currentStep && currentStep.title.includes("Our Father");
+  circularNodes.ourFatherBead.setAttribute("fill", ourFatherActive?"var(--burgundy)":"var(--gold-light)");
+  circularNodes.ourFatherBead.classList.toggle("bead-pulse", !!ourFatherActive);
 }
 
+let currentScreenName="home";
+let isScreenTransitioning=false;
 function showScreen(e){
-  ["home","overview","pray","complete"].forEach(t=>{
-    document.getElementById("screen-"+t).classList.toggle("hidden",t!==e);
-  });
-  window.scrollTo(0,0);
+  if(e===currentScreenName || isScreenTransitioning) return;
+  isScreenTransitioning=true;
+  const oldEl=document.getElementById("screen-"+currentScreenName);
+  const newEl=document.getElementById("screen-"+e);
+  oldEl.classList.add("screen-fade-out");
+  setTimeout(()=>{
+    oldEl.classList.add("hidden");
+    oldEl.classList.remove("screen-fade-out");
+    newEl.classList.remove("hidden");
+    newEl.classList.add("screen-fade-in");
+    window.scrollTo(0,0);
+    currentScreenName=e;
+    setTimeout(()=>{
+      newEl.classList.remove("screen-fade-in");
+      isScreenTransitioning=false;
+    }, 220);
+  }, 160);
 }
 
 function applySeasonTheme(e){
@@ -1192,6 +1248,26 @@ prayMainEl.addEventListener('touchend', e => {
 /* ============ INITIALIZATION & LISTENERS ============ */
 translateUI();
 renderHome();
+
+/* Dark mode: respect stored preference, else system preference */
+function applyDarkMode(isDark){
+  document.documentElement.classList.toggle("dark-mode", isDark);
+  const btn=document.getElementById("themeBtn");
+  if(btn) btn.textContent = isDark ? "☀" : "☾";
+  try{ localStorage.setItem("rosary_dark_mode", isDark ? "1" : "0"); }catch(e){}
+}
+let isDarkMode = (()=>{
+  try{
+    const stored = localStorage.getItem("rosary_dark_mode");
+    if(stored !== null) return stored === "1";
+  }catch(e){}
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+})();
+applyDarkMode(isDarkMode);
+document.getElementById("themeBtn").addEventListener("click", ()=>{
+  isDarkMode = !isDarkMode;
+  applyDarkMode(isDarkMode);
+});
 
 document.getElementById("dedicateDeceased").addEventListener("change",e=>{
   document.getElementById("deceasedForm").classList.toggle("hidden",!e.target.checked);
