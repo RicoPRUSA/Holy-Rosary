@@ -8,62 +8,59 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Holy Rosary">
-<meta name="theme-color" content="#b9791f">
+<meta name="theme-color" content="#3D6B5C">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <!-- Inline PWA Web App Manifest -->
-<link rel="manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%22Holy%20Rosary%22%2C%22short_name%22%3A%22Rosary%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23fffdf9%22%2C%22theme_color%22%3A%22%23b9791f%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22apple-touch-icon.png%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+<link rel="manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%20%22Holy%20Rosary%22%2C%20%22short_name%22%3A%20%22Rosary%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23FAF8F4%22%2C%20%22theme_color%22%3A%20%22%233D6B5C%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22apple-touch-icon.png%22%2C%20%22sizes%22%3A%20%22180x180%22%2C%20%22type%22%3A%20%22image/png%22%7D%5D%7D">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#4a2f1f;
-  --ink-deep:#2e1c10;
-  --gold:#b9791f;
-  --gold-light:#c98a2e;
-  --gold-pale:#f0c877;
-  --gold-rgb:185,121,31;
-  --gold-light-rgb:201,138,46;
-  --burgundy-rgb:179,73,47;
-  --cream:#fffaf1;
-  --parchment:#fff1d6;
-  --burgundy:#b3492f;
+  --ink:#3A3550;
+  --ink-deep:#211D2B;
+  --gold:#3D6B5C;
+  --gold-light:#4F8471;
+  --gold-pale:#BFD6C9;
+  --gold-rgb:61,107,92;
+  --gold-light-rgb:79,132,113;
+  --burgundy-rgb:42,74,63;
+  --cream:#FAF8F4;
+  --parchment:#F1EEE6;
+  --burgundy:#2A4A3F;
   --white:#fff;
-  --joyful:#7a8f6b;
-  --sorrowful:#b3492f;
-  --glorious:#c98a2e;
-  --luminous:#4a6fa5;
+  --line:#E5E1D6;
+  --shadow-soft:0 1px 2px rgba(0,0,0,.04), 0 4px 14px rgba(0,0,0,.06);
+  --shadow-pill:0 6px 24px rgba(0,0,0,.10);
   --step-font-scale: 1;
 }
 *{box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden;width:100%}
 body{
   margin:0;
-  font-family:'EB Garamond',serif;
-  background:radial-gradient(ellipse at 50% 0,rgba(var(--gold-light-rgb),.25),transparent 55%),radial-gradient(ellipse at 15% 92%,rgba(var(--burgundy-rgb),.15),transparent 50%),linear-gradient(180deg,#fffdf9 0,#fff3dc 55%,#ffe9c2 100%);
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(ellipse 900px 460px at 50% -8%,rgba(var(--gold-rgb),.07),transparent 60%),var(--cream);
   color:var(--ink);
   min-height:100vh;
   display:flex;
   justify-content:center;
   -webkit-font-smoothing:antialiased;
-  font-size:21px
+  font-size:16px
 }
-.app{width:100%;max-width:480px;min-height:100vh;position:relative;display:flex;flex-direction:column;padding:0 0 28px;overflow-x:hidden}
-.app::before,.app::after{content:"";position:absolute;width:140px;height:140px;background:radial-gradient(circle,rgba(var(--gold-light-rgb),.35),transparent 70%);pointer-events:none;z-index:0}
-.app::before{top:-30px;left:-40px}.app::after{bottom:-30px;right:-40px}
+.app{width:100%;max-width:480px;min-height:100vh;position:relative;display:flex;flex-direction:column;padding:0 0 28px}
 
 header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 20px 10px;position:relative;z-index:2}
-.brand{font-family:'Cinzel Decorative','Cinzel',serif;font-size:18px;letter-spacing:.14em;color:var(--gold-light);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.brand{font-family:'Fraunces',serif;font-weight:500;font-size:17px;letter-spacing:.01em;color:var(--ink-deep);text-transform:none;display:flex;align-items:center;gap:8px}
 
 .brand-cross-svg{
-  width:18px;
-  height:20px;
+  width:16px;
+  height:18px;
   color:var(--gold);
   fill:none;
   stroke:currentColor;
-  stroke-width:2.5;
+  stroke-width:2.3;
   stroke-linecap:round;
   flex-shrink:0;
   transition:color .3s ease;
@@ -72,283 +69,272 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 /* Header Buttons */
 .icon-btn{
   background:var(--white);
-  border:1.5px solid rgba(var(--gold-rgb),.55);
-  color:var(--gold-light);
-  width:38px;
-  height:38px;
-  border-radius:4px;
+  border:1px solid var(--line);
+  color:var(--ink-deep);
+  width:36px;
+  height:36px;
+  border-radius:10px;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family:'EB Garamond',serif;
-  font-size:17px;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
   font-weight:600;
   cursor:pointer;
-  box-shadow:0 3px 10px rgba(0,0,0,.12), 0 2px 6px rgba(var(--gold-rgb),.2);
+  box-shadow:0 1px 2px rgba(0,0,0,.04);
   transition:all .15s ease;
 }
-.icon-btn:active{background:rgba(var(--gold-light-rgb),.15);transform:scale(0.96)}
+.icon-btn:active{background:var(--parchment);transform:scale(0.96)}
 
 main{flex:1;position:relative;z-index:1;padding:0 22px}
 .hero{text-align:center;padding:6px 0 16px}
 
-/* Medallion Outer Container */
+/* Medallion */
 .medallion{
-  width:105px;
-  height:105px;
-  margin:0 auto 12px;
+  width:92px;
+  height:92px;
+  margin:0 auto 14px;
   border-radius:50%;
-  border:2.5px solid var(--gold);
-  box-shadow:0 0 0 6px rgba(var(--gold-light-rgb),.18), 0 12px 32px rgba(0,0,0,.22), 0 6px 18px rgba(var(--gold-light-rgb),.35);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
   display:flex;
   align-items:center;
   justify-content:center;
-  background:radial-gradient(circle at 35% 30%,rgba(255,241,214,.95),rgba(255,233,194,.75));
+  background:var(--gold-pale);
   position:relative;
-  overflow:hidden;
-  transition:border-color .3s ease, box-shadow .3s ease;
+  transition:background-color .3s ease, border-color .3s ease;
 }
 
 .medallion .medallion-svg{
-  position:absolute;
-  top:5px;
-  left:5px;
-  width:95px;
-  height:95px;
+  width:80px;
+  height:80px;
   color:var(--gold);
   transition:color .3s ease;
 }
 
-h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
-.subtitle{font-size:18px;color:var(--gold-light);letter-spacing:.02em;font-style:italic}
+h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spacing:-.01em;margin:0 0 6px;color:var(--ink-deep)}
+.subtitle{font-size:14.5px;color:var(--ink);opacity:.72;letter-spacing:.01em;font-style:italic}
 
-/* Today Card: "TODAY" on top, text underneath */
+.season-badge{
+  margin:14px auto 0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--burgundy);
+  background:var(--gold-pale);
+  padding:6px 14px;
+  border-radius:999px;
+}
+.season-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+/* Today Card */
 .today-pill{
-  margin:12px auto 0;
+  margin:14px auto 0;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   gap:4px;
-  padding:11px 16px;
-  border:1.5px solid var(--gold);
-  border-radius:4px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:16px;
   cursor:pointer;
-  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,241,214,.85));
-  box-shadow:0 5px 16px rgba(0,0,0,.14), 0 2px 8px rgba(var(--gold-rgb),.28);
+  background:var(--white);
+  box-shadow:var(--shadow-soft);
   width:100%;
   max-width:380px;
   text-align:center;
   transition:all .15s ease
 }
 .today-tag{
-  font-family:'Cinzel',serif;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.12em;
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.1em;
   text-transform:uppercase;
   color:var(--gold);
 }
 .today-mystery-label{
+  font-family:'Fraunces',serif;
   font-size:16.5px;
-  font-weight:600;
+  font-weight:500;
   color:var(--ink-deep);
-  line-height:1.25;
+  line-height:1.3;
 }
-.today-pill:active{transform:scale(0.98);box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.today-pill:active{transform:scale(0.98)}
 
-.season-badge{
-  margin:10px auto 0;
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-family:'Cinzel',serif;
-  font-size:12px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--white);
-  background:linear-gradient(135deg,var(--gold-light),var(--gold));
-  padding:5px 14px;
-  border-radius:4px;
-  box-shadow:0 4px 14px rgba(0,0,0,.18), 0 2px 8px rgba(var(--gold-rgb),.38);
-}
-.season-badge::before{content:"✦";font-size:10px}
-
-/* Resume Card: Text on top, Button underneath */
+/* Resume Card */
 .resume-card{
-  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,241,214,.95));
-  border:2px solid var(--gold);
-  border-radius:4px;
-  padding:14px 16px;
-  margin:14px 0;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px;
+  margin:16px 0;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:12px;
   text-align:center;
-  box-shadow:0 8px 22px rgba(0,0,0,.15), 0 4px 12px rgba(var(--gold-rgb),.28);
+  box-shadow:var(--shadow-soft);
 }
 .resume-info-stacked{
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:2px;
+  gap:3px;
 }
 .resume-title{
-  font-family:'Cinzel',serif;
-  font-size:15px;
-  font-weight:700;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:600;
   color:var(--burgundy);
-  text-transform:uppercase;
   letter-spacing:.04em;
 }
 .resume-sub{
-  font-size:14px;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
   color:var(--ink);
-  opacity:.85;
+  opacity:.7;
 }
 .resume-btn{
-  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  background:var(--gold);
   color:var(--white);
   border:none;
-  padding:9px 24px;
-  border-radius:4px;
-  font-family:'Cinzel',serif;
+  padding:10px 26px;
+  border-radius:999px;
+  font-family:'Inter',sans-serif;
   font-size:13px;
   font-weight:600;
-  letter-spacing:.06em;
+  letter-spacing:.03em;
   cursor:pointer;
-  text-transform:uppercase;
-  box-shadow:0 4px 12px rgba(0,0,0,.18), 0 2px 6px rgba(var(--gold-rgb),.35);
   width:100%;
   max-width:220px;
 }
 
-.section-label{font-family:'Cinzel',serif;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);text-align:center;margin:22px 0 10px;display:flex;align-items:center;gap:10px}
-.section-label::before,.section-label::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--gold-rgb),.5),transparent)}
+.section-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;text-align:center;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
+.section-label::before,.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
 
-/* Choose a Day Dropdown Menu */
+/* Choose a Day Dropdown */
 .day-dropdown-container{margin-bottom:16px}
 .day-dropdown{
   width:100%;
   padding:14px 16px;
-  font-family:'Cinzel',serif;
-  font-size:16px;
+  font-family:'Inter',sans-serif;
+  font-size:15px;
   font-weight:600;
   color:var(--ink-deep);
-  background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,241,214,.9));
-  border:1.5px solid var(--gold);
-  border-radius:4px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:14px;
   outline:none;
   cursor:pointer;
-  box-shadow:0 5px 18px rgba(0,0,0,.15), 0 2px 8px rgba(var(--gold-rgb),.28);
+  box-shadow:var(--shadow-soft);
   appearance:none;
   -webkit-appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23b9791f' stroke-width='2.5' stroke-linecap='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2718%27%20height%3D%2718%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%233D6B5C%27%20stroke-width%3D%272.5%27%20stroke-linecap%3D%27round%27%3E%3Cpath%20d%3D%27M6%209l6%206%206-6%27/%3E%3C/svg%3E");
   background-repeat:no-repeat;
   background-position:right 14px center;
   transition:all .15s ease;
 }
-.day-dropdown:focus{border-color:var(--burgundy)}
+.day-dropdown:focus{border-color:var(--gold)}
 
 .prayers-toggle{
-  margin-top:24px;
-  border:1.5px solid rgba(var(--gold-rgb),.4);
-  border-radius:4px;
+  margin-top:26px;
+  border:1px solid var(--line);
+  border-radius:16px;
   overflow:hidden;
-  background:rgba(255,255,255,.65);
-  box-shadow:0 5px 16px rgba(0,0,0,.08), 0 2px 6px rgba(var(--gold-rgb),.15);
+  background:var(--white);
+  box-shadow:var(--shadow-soft);
 }
-.prayers-toggle summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Cinzel',serif;font-size:15px;letter-spacing:.05em;text-transform:uppercase;color:var(--gold-light)}
+.prayers-toggle summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep)}
 .prayers-toggle summary::-webkit-details-marker{display:none}
-.prayers-toggle summary::after{content:"+";font-size:20px;color:var(--gold)}
+.prayers-toggle summary::after{content:"+";font-size:19px;color:var(--gold);font-weight:400}
 .prayers-toggle[open] summary::after{content:"–"}
 .prayer-ref{padding:0 18px 18px}
-.prayer-ref h3{font-family:'Cinzel',serif;font-size:17px;color:var(--gold-light);margin:16px 0 5px;letter-spacing:.02em}
-.prayer-ref p{font-size:19px;line-height:1.6;color:var(--ink);margin:0;opacity:.95}
+.prayer-ref h3{font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:var(--gold);margin:16px 0 5px;letter-spacing:0}
+.prayer-ref p{font-family:'Fraunces',serif;font-size:17px;line-height:1.6;color:var(--ink);margin:0;opacity:.95}
 
-footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margin-top:26px;font-style:italic;letter-spacing:.01em}
+footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px;color:var(--ink);opacity:.5;margin-top:28px;font-style:italic}
 
 /* Overview Screen */
-.back-row{display:flex;align-items:center;gap:6px;padding:16px 20px 4px;color:var(--gold-light);font-size:16px;cursor:pointer;position:relative;z-index:2}
-.back-row .arrow{font-size:19px}
+.back-row{display:flex;align-items:center;gap:6px;padding:16px 20px 4px;color:var(--gold);font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;position:relative;z-index:2}
+.back-row .arrow{font-size:18px}
 .overview-head{text-align:center;padding:8px 0 6px}
-.set-name{font-family:'Cinzel',serif;font-size:30px;color:var(--ink-deep);margin:6px 0 2px}
-.set-forday{font-size:16px;color:var(--gold-light);letter-spacing:.03em;text-transform:uppercase}
-.mystery-list{margin-top:16px;display:flex;flex-direction:column;gap:10px}
+.set-name{font-family:'Fraunces',serif;font-weight:500;font-size:28px;color:var(--ink-deep);margin:6px 0 2px}
+.set-forday{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+.mystery-list{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .mystery-row{
   display:flex;
   gap:12px;
   align-items:flex-start;
-  padding:14px;
-  border:1.5px solid rgba(var(--gold-rgb),.3);
-  border-radius:4px;
-  background:rgba(255,255,255,.75);
-  box-shadow:0 4px 14px rgba(0,0,0,.08), 0 2px 6px rgba(var(--gold-rgb),.15);
+  padding:15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--white);
+  box-shadow:var(--shadow-soft);
 }
-.mystery-num{font-family:'Cinzel',serif;font-size:21px;color:var(--gold-light);min-width:22px}
-.mystery-info .mtitle{font-family:'Cinzel',serif;font-size:18.5px;color:var(--ink-deep);margin-bottom:3px}
-.mystery-info .mfruit{font-size:14.5px;color:var(--gold-light);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
-.mystery-info .mmed{font-size:17.5px;color:var(--ink);opacity:.9;line-height:1.5}
+.mystery-num{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--gold);min-width:22px}
+.mystery-info .mtitle{font-family:'Fraunces',serif;font-weight:500;font-size:17px;color:var(--ink-deep);margin-bottom:3px}
+.mystery-info .mfruit{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.mystery-info .mmed{font-family:'Fraunces',serif;font-size:15.5px;color:var(--ink);opacity:.92;line-height:1.55}
 
 .begin-btn{
   display:block;
   width:100%;
-  margin-top:22px;
+  margin-top:24px;
   padding:16px;
   border:none;
-  border-radius:4px;
-  background:linear-gradient(180deg,var(--gold-light),var(--gold));
+  border-radius:999px;
+  background:var(--gold);
   color:var(--white);
-  font-family:'Cinzel',serif;
+  font-family:'Inter',sans-serif;
   font-weight:600;
-  font-size:17px;
-  letter-spacing:.07em;
-  text-transform:uppercase;
+  font-size:15.5px;
+  letter-spacing:.04em;
   cursor:pointer;
-  box-shadow:0 10px 24px rgba(0,0,0,.2), 0 6px 16px rgba(var(--gold-rgb),.38);
 }
 .begin-btn:active{transform:translateY(1px)}
 
 /* Pray Screen Layout */
-.pray-wrap{display:flex;flex-direction:column;min-height:100vh;padding-bottom:70px}
+.pray-wrap{display:flex;flex-direction:column;min-height:100vh;padding-bottom:88px}
 .top-pray-bar{display:flex;align-items:center;justify-content:flex-start;padding:6px 18px 2px;position:relative;z-index:3}
 .font-scaler{
   display:flex;
   align-items:center;
   gap:4px;
-  background:rgba(255,255,255,.8);
-  border:1.5px solid rgba(var(--gold-rgb),.4);
-  border-radius:4px;
-  padding:2px 8px;
-  box-shadow:0 3px 10px rgba(0,0,0,.1), 0 2px 6px rgba(var(--gold-rgb),.18);
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:3px 9px;
 }
-.font-scaler-label{font-family:'Cinzel',serif;font-size:11px;color:var(--gold-light);margin-right:2px;text-transform:uppercase}
-.font-btn{background:none;border:none;color:var(--ink-deep);font-family:'Cinzel',serif;font-weight:700;font-size:14px;padding:2px 6px;cursor:pointer}
+.font-scaler-label{font-family:'Inter',sans-serif;font-size:10.5px;color:var(--ink);opacity:.6;margin-right:2px;text-transform:uppercase;letter-spacing:.05em}
+.font-btn{background:none;border:none;color:var(--ink-deep);font-family:'Inter',sans-serif;font-weight:700;font-size:13px;padding:2px 6px;cursor:pointer}
 .font-btn:active{color:var(--gold)}
 
-.bead-track-holder{padding:2px 18px 2px;position:relative;z-index:2}
-.bead-track{display:flex;align-items:center;gap:5px;overflow-x:auto;overflow-y:hidden;padding:4px 2px;scrollbar-width:none;touch-action:pan-x}
+.bead-track-holder{padding:4px 18px 2px;position:relative;z-index:2}
+.bead-track{display:flex;align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;padding:4px 2px;scrollbar-width:none;touch-action:pan-x}
 .bead-track::-webkit-scrollbar{display:none}
-.bead{flex:none;border-radius:50%;background:rgba(var(--gold-rgb),.18);border:1px solid rgba(var(--gold-rgb),.4);transition:all .2s ease;cursor:pointer;position:relative}
+.bead{flex:none;border-radius:50%;background:var(--line);transition:all .2s ease;cursor:pointer;position:relative}
 .bead::after{content:"";position:absolute;top:50%;left:50%;width:24px;height:24px;transform:translate(-50%,-50%)}
 .bead:active{transform:scale(1.3)}
-.bead.small{width:10px;height:10px}
-.bead.big{width:14px;height:14px}
-.bead.done{background:var(--gold);border-color:var(--gold);box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.bead.current{background:var(--burgundy);border-color:var(--burgundy);box-shadow:0 0 0 4px rgba(var(--burgundy-rgb),.28), 0 4px 10px rgba(0,0,0,.2)}
+.bead.small{width:9px;height:9px}
+.bead.big{width:13px;height:13px}
+.bead.done{background:var(--gold)}
+.bead.current{background:var(--burgundy);box-shadow:0 0 0 4px rgba(var(--burgundy-rgb),.16)}
 
-.progress-text{text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:rgba(74,47,31,.55);margin-top:1px}
+.progress-text{text-align:center;font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);opacity:.5;margin-top:2px}
 
-/* Tightened Middle Spacing: Circular Rosary Visualizer */
-.circular-rosary-wrap{width:100%;display:flex;justify-content:center;margin:0 auto;position:relative}
-.circular-rosary-svg{width:160px;height:82px;overflow:visible}
+.circular-rosary-wrap{width:100%;display:flex;justify-content:center;margin:2px auto 0;position:relative}
+.circular-rosary-svg{width:150px;height:78px;overflow:visible}
 
-/* Main Pray Text Container */
-.pray-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:4px 22px 12px;position:relative;z-index:1;overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
+.pray-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:6px 22px 12px;position:relative;z-index:1;overflow-y:auto;overflow-x:hidden;touch-action:pan-y}
 
-/* Swipe transition classes */
 .slide-out-left{animation:slideOutLeft .18s forwards ease-in}
 .slide-in-right{animation:slideInRight .18s forwards ease-out}
 .slide-out-right{animation:slideOutRight .18s forwards ease-in}
@@ -361,14 +347,15 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
-.decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:6px;font-weight:600}
-.step-eyebrow{font-family:'Cinzel',serif;font-size:15.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
-.step-title{font-family:'Cinzel',serif;font-size:27px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-size:15.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
+.decade-flag{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:8px}
+.step-eyebrow{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.step-title{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
+.step-fruit{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gold);margin-bottom:12px}
 
 .step-body{
-  font-size:calc(24.5px * var(--step-font-scale));
-  line-height:1.6;
+  font-family:'Fraunces',serif;
+  font-size:calc(21.5px * var(--step-font-scale));
+  line-height:1.62;
   color:var(--ink);
   white-space:pre-line;
   width:100%;
@@ -377,42 +364,41 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   box-sizing:border-box
 }
 .step-body.meditation{
-  font-size:calc(21px * var(--step-font-scale));
-  color:rgba(74,47,31,.95);
+  font-size:calc(18.5px * var(--step-font-scale));
+  color:var(--ink);
+  opacity:.92;
   font-style:italic
 }
 .step-body.litany-body{
-  font-size:calc(23.5px * var(--step-font-scale));
-  line-height:1.5;
+  font-size:calc(18px * var(--step-font-scale));
+  line-height:1.55;
   text-align:left;
   max-width:100%;
   padding:0 4px
 }
 
-/* FIXED / STATIC BOTTOM NAVIGATION BAR */
+/* Floating pill bottom nav */
 .bottom-pray-nav{
   position:fixed;
-  bottom:0;
+  bottom:16px;
   left:50%;
   transform:translateX(-50%);
-  width:100%;
-  max-width:480px;
-  background:linear-gradient(180deg, rgba(255,253,249,0.85) 0%, rgba(255,243,220,0.98) 100%);
-  backdrop-filter:blur(8px);
-  -webkit-backdrop-filter:blur(8px);
-  border-top:1.5px solid rgba(var(--gold-rgb),.28);
-  padding:6px 16px 8px;
+  width:auto;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:10px 22px 8px;
   z-index:10;
   display:flex;
   flex-direction:column;
   align-items:center;
-  box-shadow:0 -4px 18px rgba(0,0,0,.08);
+  box-shadow:var(--shadow-pill);
 }
 
-.pray-controls{display:flex;gap:32px;padding:2px 0;align-items:center;justify-content:center}
+.pray-controls{display:flex;gap:30px;padding:2px 0;align-items:center;justify-content:center}
 .ctrl-btn{
-  width:44px;
-  height:44px;
+  width:40px;
+  height:40px;
   border-radius:0;
   display:flex;
   align-items:center;
@@ -430,51 +416,51 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
   border:none !important;
   box-shadow:none !important;
 }
-.ctrl-btn svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.ctrl-btn svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .ctrl-btn:disabled{opacity:.2;cursor:not-allowed}
 .ctrl-btn:active:not(:disabled){transform:scale(0.88);opacity:0.6}
 
 .swipe-hint-underneath{
   text-align:center;
-  font-size:12px;
+  font-family:'Inter',sans-serif;
+  font-size:10.5px;
   font-style:italic;
-  color:var(--gold-light);
-  opacity:0.85;
-  margin-top:2px;
+  color:var(--ink);
+  opacity:0.5;
+  margin-top:1px;
 }
 
 .complete-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
 .complete-wrap .glyph-big{margin-bottom:18px}
-.complete-cross-svg{width:42px;height:52px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round}
-.complete-wrap h2{font-family:'Cinzel',serif;color:var(--ink-deep);font-size:27px;margin:0 0 10px}
-.complete-wrap p{color:var(--gold-light);font-style:italic;font-size:17px;max-width:310px;margin:0 0 26px}
+.complete-cross-svg{width:38px;height:48px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round}
+.complete-wrap h2{font-family:'Fraunces',serif;font-weight:500;color:var(--ink-deep);font-size:25px;margin:0 0 10px}
+.complete-wrap p{font-family:'Fraunces',serif;color:var(--gold);font-style:italic;font-size:16px;max-width:310px;margin:0 0 26px}
 
 .hidden{display:none!important}
 
 /* Deceased Card */
 .deceased-option-card{
-  background:rgba(255,255,255,.75);
-  border:1.5px solid rgba(var(--gold-rgb),.35);
-  border-radius:4px;
-  padding:13px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
   margin-top:14px;
   text-align:left;
-  box-shadow:0 4px 14px rgba(0,0,0,.08), 0 2px 6px rgba(var(--gold-rgb),.18);
+  box-shadow:var(--shadow-soft);
 }
-.deceased-checkbox-label{font-family:'Cinzel',serif;font-size:14.5px;color:var(--ink-deep);display:flex;align-items:center;gap:8px;cursor:pointer}
+.deceased-checkbox-label{font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--ink-deep);display:flex;align-items:center;gap:8px;cursor:pointer}
 #deceasedForm{margin-top:10px;display:flex;flex-direction:column;gap:10px}
-#deceasedName{width:100%;padding:9px 12px;border:1.5px solid rgba(var(--gold-rgb),.35);border-radius:4px;font-family:'EB Garamond',serif;font-size:17.5px;background:var(--white);color:var(--ink-deep);outline:none;box-shadow:inset 0 1px 3px rgba(0,0,0,.08)}
+#deceasedName{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;background:var(--white);color:var(--ink-deep);outline:none}
 #deceasedName:focus{border-color:var(--gold)}
-.gender-selector{display:flex;gap:12px;font-size:15.5px;color:var(--ink)}
+.gender-selector{display:flex;gap:12px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink)}
 .gender-selector label{display:flex;align-items:center;gap:5px;cursor:pointer}
 
 @media (max-width:600px){
-  body{font-size:21px}
-  h1.title{font-size:35px}
-  .subtitle{font-size:18px}
-  .today-pill{font-size:16px}
-  .set-name{font-size:30px}
-  .step-title{font-size:28px}
+  body{font-size:16px}
+  h1.title{font-size:30px}
+  .subtitle{font-size:14.5px}
+  .set-name{font-size:26px}
+  .step-title{font-size:25px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -623,7 +609,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v26';
+    const CACHE_NAME = 'rosary-v27';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -700,13 +686,13 @@ function isSameDate(e,t){return e.getFullYear()===t.getFullYear()&&e.getMonth()=
 function getLiturgicalSeason(e){const t=stripTime(e),r=t.getFullYear(),o=stripTime(computeEaster(r)),a=addDays(o,-46),l=addDays(o,-3),s=addDays(o,49),n=stripTime(getAdventStart(r)),i=new Date(r,11,25),u=stripTime(getBaptismOfLord(r));return t>=n&&t<i?"advent":t>=i||t<u?"christmas":t>=a&&t<l?"lent":t>=l&&t<o?"triduum":isSameDate(t,s)?"pentecost":t>=o&&t<=s?"easter":"ordinary"}
 
 const SEASON_THEMES={
-  advent:{gold:"#6b4c9a",goldLight:"#8266ad",goldPale:"#c9b8de",burgundy:"#4a2f6e",goldRgb:"107,76,154",goldLightRgb:"130,102,173",burgundyRgb:"74,47,110",label:{en:"Advent",es:"Adviento"}},
-  christmas:{gold:"#b9791f",goldLight:"#c98a2e",goldPale:"#f0c877",burgundy:"#8a651a",goldRgb:"185,121,31",goldLightRgb:"201,138,46",burgundyRgb:"138,101,26",label:{en:"Christmastide",es:"Navidad"}},
-  lent:{gold:"#5c3a68",goldLight:"#71517d",goldPale:"#c3aecb",burgundy:"#3d2547",goldRgb:"92,58,104",goldLightRgb:"113,81,125",burgundyRgb:"61,37,71",label:{en:"Lent",es:"Cuaresma"}},
-  triduum:{gold:"#8b1e2f",goldLight:"#a13345",goldPale:"#dba7ae",burgundy:"#5c1420",goldRgb:"139,30,47",goldLightRgb:"161,51,69",burgundyRgb:"92,20,32",label:{en:"Sacred Triduum",es:"Triduo Pascual"}},
-  easter:{gold:"#c9922e",goldLight:"#d9a53f",goldPale:"#f3d38c",burgundy:"#a8781f",goldRgb:"201,146,46",goldLightRgb:"217,165,63",burgundyRgb:"168,120,31",label:{en:"Eastertide",es:"Pascua"}},
-  pentecost:{gold:"#a8332e",goldLight:"#bf4a3f",goldPale:"#e5a9a2",burgundy:"#7a201c",goldRgb:"168,51,46",goldLightRgb:"191,74,63",burgundyRgb:"122,32,28",label:{en:"Pentecost",es:"Pentecostés"}},
-  ordinary:{gold:"#4f7a52",goldLight:"#639167",goldPale:"#b9d3ba",burgundy:"#345536",goldRgb:"79,122,82",goldLightRgb:"99,145,103",burgundyRgb:"52,85,54",label:{en:"Ordinary Time",es:"Tiempo Ordinario"}}
+  advent:{gold:"#5B4E82",goldLight:"#7267A0",goldPale:"#D9D3E8",burgundy:"#3A3159",goldRgb:"91,78,130",goldLightRgb:"114,103,160",burgundyRgb:"58,49,89",label:{en:"Advent",es:"Adviento"}},
+  christmas:{gold:"#A6822E",goldLight:"#C29F4C",goldPale:"#EEE1BC",burgundy:"#7A5E1E",goldRgb:"166,130,46",goldLightRgb:"194,159,76",burgundyRgb:"122,94,30",label:{en:"Christmastide",es:"Navidad"}},
+  lent:{gold:"#4A3A63",goldLight:"#5F4D7D",goldPale:"#D2CBDE",burgundy:"#2E2440",goldRgb:"74,58,99",goldLightRgb:"95,77,125",burgundyRgb:"46,36,64",label:{en:"Lent",es:"Cuaresma"}},
+  triduum:{gold:"#6B2530",goldLight:"#833043",goldPale:"#E3C7CC",burgundy:"#451822",goldRgb:"107,37,48",goldLightRgb:"131,48,67",burgundyRgb:"69,24,34",label:{en:"Sacred Triduum",es:"Triduo Pascual"}},
+  easter:{gold:"#B8933E",goldLight:"#D1AC5C",goldPale:"#F0E2BC",burgundy:"#8A6B26",goldRgb:"184,147,62",goldLightRgb:"209,172,92",burgundyRgb:"138,107,38",label:{en:"Eastertide",es:"Pascua"}},
+  pentecost:{gold:"#8C3230",goldLight:"#A8433F",goldPale:"#E8C9C7",burgundy:"#5C1F1E",goldRgb:"140,50,48",goldLightRgb:"168,67,63",burgundyRgb:"92,31,30",label:{en:"Pentecost",es:"Pentecostés"}},
+  ordinary:{gold:"#3D6B5C",goldLight:"#4F8471",goldPale:"#BFD6C9",burgundy:"#2A4A3F",goldRgb:"61,107,92",goldLightRgb:"79,132,113",burgundyRgb:"42,74,63",label:{en:"Ordinary Time",es:"Tiempo Ordinario"}}
 };
 
 let currentSeason=getLiturgicalSeason(new Date());
@@ -1080,8 +1066,8 @@ function buildCircularRosaryDOM(){
   circularNodes={hm:[]};
 
   svg.insertAdjacentHTML("beforeend", `
-    <path d="M 30,52 C 30,12 130,12 130,52" fill="none" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
-    <path d="M 80,52 L 80,68" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
+    <path d="M 30,52 C 30,12 130,12 130,52" fill="none" stroke="var(--line)" stroke-width="2" />
+    <path d="M 80,52 L 80,68" stroke="var(--line)" stroke-width="2" />
   `);
 
   for(let i=1;i<=10;i++){
@@ -1092,7 +1078,7 @@ function buildCircularRosaryDOM(){
     circle.setAttribute("cx",cx);
     circle.setAttribute("cy",cy);
     circle.setAttribute("r",4);
-    circle.setAttribute("fill","rgba(185,121,31,0.25)");
+    circle.setAttribute("fill","var(--line)");
     circle.setAttribute("stroke","none");
     circle.setAttribute("stroke-width","1.5");
     svg.appendChild(circle);
@@ -1128,7 +1114,7 @@ function updateCircularRosaryState(){
     const i=idx+1;
     const isDone=(i<activeHM)||(currentDecade>0 && currentStep && currentStep.type==="text" && currentStep.title.includes("Glory"));
     const isCurrent=(i===activeHM);
-    circle.setAttribute("fill", isCurrent?"var(--burgundy)":(isDone?"var(--gold)":"rgba(185,121,31,0.25)"));
+    circle.setAttribute("fill", isCurrent?"var(--burgundy)":(isDone?"var(--gold)":"var(--line)"));
     circle.setAttribute("r", isCurrent?5.5:4);
     circle.setAttribute("stroke", isCurrent?"#fff":"none");
   });
