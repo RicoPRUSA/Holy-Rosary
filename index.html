@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Holy Rosary</title>
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAEa0lEQVRYhcWXa2xTZRjHf+e0Xbd1a8/anl3ajW1sZYtkCnNZWBwCBmcWbo5gDHKRYOQDgl+NJH4yMXwwMcEQDZGIEhbNRAVxIxElQh1WZMuuwGjZYN3a3Tp26dZua48fYJNolJ469f/p5Lzv+/x/75P3eS8CD2ntvu3WiE57EJSNwDIghcXRPaATQTg5NZN0/NqxY7PzDcL8x+oDO59H4QRgWiTTv5DSIWiUmktHam8tADwwPw2I/675ggaVaLTC+UHtbeF+2jVuVM7cZEjBapKIRCOMTkwwFpxUC9GUORguF6MJmgNqzA2JiRQvyUen1eHp99Lj95FmNJKTnqEWoNQn63dolSibf18Jf6/U5GTSJTM37nYDkGWRKbDb8Y+MkJlmoXdwQBWBILBbRMAR6wBZSsPT7yUxQc/Lz22k0J5Ni7uL5XlLyc3IwmaVVQEApVpUlJpBn4hWo2H/lm2c/K6BwPgYpY4iWjxd9Ph9rChYhigIeIcGYw2ZpmrVD4+P8/be/fQPD1Foz6a8eDmtt930+H3oNFrscgb7Nm5VExKtms5PLHVw4ZqL75t+WfgnCAKVj6/AZpaxW2Vy5ExVADFnwGaVyTCbudh8FUNSEgAl+YVsW7OevAwbkWiULy9fJBieXnwAURTZXPE0Da5G1q4sY24uwutbt7Nv01bCM2Hqf3ZS73Kyt3ozHzecVQUgrH5tp/KoTtXlTxEYH6OkwEG9y8mBmhdpv+3m9KUfCM/OkC6ZKSt6jInpIJdbm1UBPDIDgiBgNBjYUFEJQE3lOupdTtx9vYRnZwAIhqboHfRzubWZN7bv4UlH8eIBmJINFGXncrP3DrIkkZtpo7nrBod2vEJRTi5FObnYrOl09HjQabVYTBKdDzaqWPTIKpgMTRNVFMypJqxGCYd9CYkJenoGfARD00xMTS2cA5YUIzazJWbzmADmIhF6h/yYU40stWXT1u3mmdJymrqu/2nDOfzqQY6e+YLpcDhmgJiq4NwVJ5OhEMZkA7/e7KQkv4DGjhY0omahT1VZBe3dt2j13IzZPGaAkfF7nLrwLeevNpKXmcXAaICqslXotPcTKBlS2PlsNV//9CPBUGjxAQCmQmHe/fwk/SPDXL/bjaLAmy/tIUGno/atdzhce4JuX58qc4hxH/ijSvILMaWkkqzXs7tqA4eOH+XugF+1Oag8C+bV1u3GZEjBZpFx93kZCATiMod/cAccC07i8XmZi0TIltP/ewCAmdlZGlxOPP3e/wcAYKWjGJMh/ueDyP1HQ1yqqVyHxSSxbc16rKa0eEKMiUBTvABfOS/iGxnmxPlvGB4bVR9AENyigPJpvAAAsiRhlaT4BkeVM5ryvOL2yWTtJgSy4olxy9vL0L24ynB0Th/eJdbV1UUiGs0LQMxX2YcVV+ohqqDsvvJeXUAEaHz/E4+giVYqAu3xRFOpUQVli/PoqXMAC8fZHVdbQF6x6qMEcbYPAQlIBZIWyXRcgDYUPpzTh3c1HvmsZb7hN7eTjnhkGVNgAAAAAElFTkSuQmCC">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -599,7 +599,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
       <div class="bead-track-holder">
         <div class="bead-track" id="beadTrack"></div>
-        <div class="progress-text" id="progressText">Step 1 of 1</div>
+        <div class="progress-text" id="progressText" aria-live="polite">Step 1 of 1</div>
       </div>
 
       <!-- Compact Circular / Decade Loop Bead Visualizer -->
@@ -643,15 +643,12 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 </div>
 
 <script>
-/* Register Service Worker for Offline / PWA capabilities */
+/* Register Service Worker for Offline / PWA capabilities.
+   Must be a real same-origin file: Chrome rejects blob:/data: URLs as SW scripts. */
 if ('serviceWorker' in navigator) {
-  const swCode = `
-    const CACHE_NAME = 'rosary-v27';
-    self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
-    self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
-  `;
-  const blob = new Blob([swCode], { type: 'application/javascript' });
-  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
 }
 
 let currentLang="en";
@@ -734,7 +731,6 @@ const SEASON_THEMES={
 
 let currentSeason=getLiturgicalSeason(new Date());
 let currentDayIndex=new Date().getDay(),sequence=[],stepIndex=0;
-let audioCtx=null;
 let currentMysteryKey="joyful";
 let overviewDayIndex=0;
 
@@ -751,10 +747,13 @@ let circularNodes=null;
 /* Perf: guard against double-fire during the slide animation window */
 let isTransitioning=false;
 
-function buzz(e){if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
+function buzz(e){if(navigator.vibrate){try{navigator.vibrate(e||40)}catch(e){}}}
+
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 
 function translateUI(){
   const trans=TRANSLATIONS[currentLang];
+  document.documentElement.lang=currentLang;
   document.getElementById("ui-brand").textContent=trans.brand;
   document.getElementById("ui-title").textContent=trans.title;
   document.getElementById("ui-subtitle").textContent=trans.subtitle;
@@ -884,6 +883,11 @@ function checkResumeState(){
             sequence=JSON.parse(cached);
             stepIndex=data.stepIndex;
             currentMysteryKey=data.currentMysteryKey;
+            if(data.currentLang && data.currentLang!==currentLang){
+              currentLang=data.currentLang;
+              document.getElementById("langBtn").textContent=currentLang==="en"?"ES":"EN";
+              translateUI();
+            }
             showScreen("pray");
             buildBeadTrackDOM();
             buildCircularRosaryDOM();
@@ -927,7 +931,7 @@ function buildSequence(e,t){
   const r=MYSTERY_SETS[currentLang][e],o=[];
   const dedicate=document.getElementById("dedicateDeceased").checked;
   const nameInput=document.getElementById("deceasedName").value.trim();
-  let name=nameInput||(currentLang==="en"?"our deceased loved one":"nuestro querido difunto");
+  let name=escapeHtml(nameInput||(currentLang==="en"?"our deceased loved one":"nuestro querido difunto"));
   const genderEl=document.querySelector('input[name="deceasedGender"]:checked');
   const gender=genderEl?genderEl.value:"him";
   let subj="he",obj="him",poss="his";
@@ -956,7 +960,7 @@ function buildSequence(e,t){
   }
 
   o.push({type:"text",eyebrow:currentLang==="en"?"On the Crucifix":"En el Crucifijo",title:currentLang==="en"?"Apostles' Creed":"Credo de los Apóstoles",body:pSource.apostlesCreed,bead:"big"});
-  o.push({type:"text",eyebrow:currentLang==="en"?"First Bead":"Primera Cuenta",title:currentLang==="en"?"Our Father":"Padrenuestro",body:pSource.ourFather,bead:"big"});
+  o.push({type:"text",pid:"ourFather",eyebrow:currentLang==="en"?"First Bead":"Primera Cuenta",title:currentLang==="en"?"Our Father":"Padrenuestro",body:pSource.ourFather,bead:"big"});
 
   for(let e=1;e<=3;e++){
     o.push({type:"text",eyebrow:currentLang==="en"?`Hail Mary ${e} of 3 — for ${["Faith","Hope","Charity"][e-1]}`:`Avemaría ${e} de 3 — por la ${["Fe","Esperanza","Caridad"][e-1]}`,title:currentLang==="en"?"Hail Mary":"Avemaría",body:pSource.hailMary,bead:"small"});
@@ -966,14 +970,14 @@ function buildSequence(e,t){
     let reqText=currentLang==="es"?"Dale, Señor, el descanso eterno, y brille para "+obj+" la luz perpetua. Que descanse en paz. Amén.":"Eternal rest grant unto "+name+", O Lord, and let perpetual light shine upon "+obj+". May "+subj+" rest in peace. Amen.";
     o.push({type:"text",eyebrow:currentLang==="en"?"Before the Decades — Eternal Rest":"Antes de las Décadas — Descanso Eterno",title:currentLang==="en"?"Eternal Rest (Requiem Aeternam)":"Descanso Eterno (Requiem Aeternam)",body:reqText,bead:"big"});
   }else{
-    o.push({type:"text",eyebrow:currentLang==="en"?"Before the Decades":"Antes de las Décadas",title:currentLang==="en"?"Glory Be":"Gloria al Padre",body:pSource.gloryBe,bead:"big"});
+    o.push({type:"text",pid:"gloryBe",eyebrow:currentLang==="en"?"Before the Decades":"Antes de las Décadas",title:currentLang==="en"?"Glory Be":"Gloria al Padre",body:pSource.gloryBe,bead:"big"});
   }
 
   o.push({type:"text",eyebrow:currentLang==="en"?"A Short Aspiration":"Jaculatoria Corta",title:currentLang==="en"?"Ejaculatory Prayer":"Jaculatoria",body:pSource.ejaculation,bead:"small"});
 
   r.items.forEach((e,t)=>{
     o.push({type:"mystery",decade:t+1,total:5,eyebrow:currentLang==="en"?`${ordinal(t+1)} Mystery`:`${t+1}º Misterio`,title:e.title,fruit:e.fruit,body:e.med,bead:"big",mysteryIndex:t});
-    o.push({type:"text",eyebrow:currentLang==="en"?`Decade ${t+1} — Our Father`:`Década ${t+1} — Padrenuestro`,title:currentLang==="en"?"Our Father":"Padrenuestro",body:pSource.ourFather,bead:"big",decade:t+1,mysteryIndex:t});
+    o.push({type:"text",pid:"ourFather",eyebrow:currentLang==="en"?`Decade ${t+1} — Our Father`:`Década ${t+1} — Padrenuestro`,title:currentLang==="en"?"Our Father":"Padrenuestro",body:pSource.ourFather,bead:"big",decade:t+1,mysteryIndex:t});
     for(let i=1;i<=10;i++){
       o.push({type:"text",eyebrow:currentLang==="en"?`Decade ${t+1} — Hail Mary ${i} of 10`:`Década ${t+1} — Avemaría ${i} de 10`,title:currentLang==="en"?"Hail Mary":"Avemaría",body:pSource.hailMary,bead:"small",decade:t+1,mysteryIndex:t,hailMaryNum:i});
     }
@@ -981,7 +985,7 @@ function buildSequence(e,t){
       let reqText=currentLang==="es"?"Dale, Señor, el descanso eterno, y brille para "+obj+" la luz perpetua. Que descanse en paz. Amén.":"Eternal rest grant unto "+name+", O Lord, and let perpetual light shine upon "+obj+". May "+subj+" rest in peace. Amen.";
       o.push({type:"text",eyebrow:currentLang==="en"?`Decade ${t+1} — Eternal Rest`:`Década ${t+1} — Descanso Eterno`,title:currentLang==="en"?"Eternal Rest (Requiem Aeternam)":"Descanso Eterno (Requiem Aeternam)",body:reqText,bead:"big",decade:t+1,mysteryIndex:t});
     }else{
-      o.push({type:"text",eyebrow:currentLang==="en"?`Decade ${t+1} — Glory Be`:`Década ${t+1} — Gloria al Padre`,title:currentLang==="en"?"Glory Be":"Gloria al Padre",body:pSource.gloryBe,bead:"big",decade:t+1,mysteryIndex:t});
+      o.push({type:"text",pid:"gloryBe",eyebrow:currentLang==="en"?`Decade ${t+1} — Glory Be`:`Década ${t+1} — Gloria al Padre`,title:currentLang==="en"?"Glory Be":"Gloria al Padre",body:pSource.gloryBe,bead:"big",decade:t+1,mysteryIndex:t});
     }
     o.push({type:"text",eyebrow:currentLang==="en"?`Decade ${t+1} — Fatima Prayer`:`Década ${t+1} — Oración de Fátima`,title:currentLang==="en"?"O My Jesus":"Oh Jesús Mío",body:pSource.fatima,bead:"small",decade:t+1,mysteryIndex:t});
   });
@@ -1150,7 +1154,7 @@ function updateCircularRosaryState(){
 
   circularNodes.hm.forEach((circle,idx)=>{
     const i=idx+1;
-    const isDone=(i<activeHM)||(currentDecade>0 && currentStep && currentStep.type==="text" && currentStep.title.includes("Glory"));
+    const isDone=(i<activeHM)||(currentDecade>0 && currentStep && currentStep.pid==="gloryBe");
     const isCurrent=(i===activeHM);
     circle.setAttribute("fill", isCurrent?"var(--burgundy)":(isDone?"var(--gold)":"var(--line)"));
     circle.setAttribute("r", isCurrent?5.5:4);
@@ -1158,7 +1162,7 @@ function updateCircularRosaryState(){
     circle.classList.toggle("bead-pulse", isCurrent);
   });
 
-  const ourFatherActive = currentStep && currentStep.title.includes("Our Father");
+  const ourFatherActive = currentStep && currentStep.pid==="ourFather";
   circularNodes.ourFatherBead.setAttribute("fill", ourFatherActive?"var(--burgundy)":"var(--gold-light)");
   circularNodes.ourFatherBead.classList.toggle("bead-pulse", !!ourFatherActive);
 }
@@ -1177,6 +1181,8 @@ function showScreen(e){
     newEl.classList.remove("hidden");
     newEl.classList.add("screen-fade-in");
     window.scrollTo(0,0);
+    newEl.setAttribute("tabindex","-1");
+    try{ newEl.focus({preventScroll:true}); }catch(err){}
     currentScreenName=e;
     setTimeout(()=>{
       newEl.classList.remove("screen-fade-in");
