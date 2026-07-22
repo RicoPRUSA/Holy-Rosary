@@ -109,21 +109,20 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
   transition:border-color .3s ease, box-shadow .3s ease;
 }
 
-/* Embedded Vector SVG Medallion */
-.medallion-svg{
-  width:95px;
-  height:95px;
-  color:var(--gold);
+.medallion .medallion-svg{
   position:absolute;
   top:5px;
   left:5px;
+  width:95px;
+  height:95px;
+  color:var(--gold);
   transition:color .3s ease;
 }
 
 h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacing:.03em;margin:0 0 4px;color:var(--ink-deep)}
 .subtitle{font-size:18px;color:var(--gold-light);letter-spacing:.02em;font-style:italic}
 
-/* Today Card */
+/* Today Card: "TODAY" on top, text underneath */
 .today-pill{
   margin:12px auto 0;
   display:flex;
@@ -175,7 +174,7 @@ h1.title{font-family:'Cinzel',serif;font-weight:700;font-size:36px;letter-spacin
 }
 .season-badge::before{content:"✦";font-size:10px}
 
-/* Resume Card */
+/* Resume Card: Text on top, Button underneath */
 .resume-card{
   background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,241,214,.95));
   border:2px solid var(--gold);
@@ -364,8 +363,8 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
 .decade-flag{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--burgundy);margin-bottom:6px;font-weight:600}
 .step-eyebrow{font-family:'Cinzel',serif;font-size:15.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:8px}
-.step-title{font-family:'Cinzel',serif;font-size:28px;color:var(--ink-deep);margin:0 0 16px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-size:16.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
+.step-title{font-family:'Cinzel',serif;font-size:27px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
+.step-fruit{font-size:15.5px;font-style:italic;color:var(--gold-light);margin-bottom:10px}
 
 .step-body{
   font-size:calc(24.5px * var(--step-font-scale));
@@ -498,9 +497,9 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 
     <main>
       <div class="hero">
-        <!-- Native Vector Medallion (Instant Load & Calendar Color Matched) -->
+        <!-- Medallion (inline SVG, traced from source art) -->
         <div class="medallion">
-          <svg class="medallion-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+          <svg class="medallion-svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-label="Our Lady Medallion">
             <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)">
               <path d="M2475 5029 c-352 -45 -707 -278 -839 -549 -38 -79 -41 -91 -41 -170 0 -72 4 -93 26 -135 25 -49 94 -112 152 -138 15 -6 27 -14 27 -17 0 -3 -81 -113 -181 -245 -348 -462 -435 -617 -475 -850 -13 -78 -14 -107 -5 -160 20 -114 27 -117 34 -14 10 153 51 274 148 445 71 123 142 219 325 440 86 104 184 224 218 267 l61 77 126 0 c93 0 146 5 205 20 276 70 560 245 696 427 l39 53 72 -36 c100 -50 180 -110 260 -192 72 -75 85 -113 50 -144 -10 -9 -148 -83 -308 -165 -324 -167 -498 -263 -654 -361 -372 -234 -576 -459 -676 -747 -40 -118 -55 -204 -55 -337 0 -54 -4 -98 -9 -98 -14 0 -35 165 -34 265 3 201 71 401 208 610 l20 30 -30 -22 c-43 -30 -184 -179 -227 -238 -47 -65 -98 -163 -131 -250 -102 -268 -37 -547 180 -770 83 -86 170 -153 413 -320 303 -208 390 -283 452 -393 32 -56 43 -67 28 -28 -45 119 -115 204 -300 366 -170 148 -313 298 -359 374 -19 31 -50 103 -69 159 -31 90 -35 116 -40 233 -6 161 -2 183 33 176 16 -3 25 -11 25 -22 0 -10 7 -26 16 -34 14 -15 13 -19 -8 -48 -17 -25 -23 -46 -22 -87 0 -49 3 -57 37 -87 27 -25 46 -34 72 -34 28 0 37 -5 45 -24 5 -13 16 -29 26 -34 13 -7 14 -13 5 -30 -6 -11 -11 -44 -11 -71 0 -44 5 -56 34 -89 33 -36 37 -37 100 -37 58 0 66 -2 68 -20 2 -11 13 -24 24 -29 19 -9 21 -16 17 -65 -3 -45 0 -63 17 -89 33 -54 105 -73 171 -47 12 4 18 -1 23 -19 4 -16 16 -28 32 -32 18 -5 23 -11 19 -23 -35 -84 17 -187 97 -193 39 -3 46 -50 13 -90 -49 -58 -25 -166 42 -190 34 -12 41 -22 23 -33 -19 -12 -11 -57 10 -62 l21 -6 -21 -14 c-27 -19 -27 -63 0 -70 29 -8 25 -17 -20 -56 l-41 -35 20 -59 c11 -32 23 -83 27 -112 l7 -53 -49 6 c-27 3 -70 16 -96 28 l-47 21 -34 -29 c-19 -16 -42 -35 -53 -42 -15 -10 -16 -14 -5 -19 8 -3 31 -21 51 -39 l37 -34 44 19 c65 28 124 34 139 16 17 -20 -3 -256 -30 -359 l-19 -71 33 -35 c18 -19 36 -43 39 -53 8 -22 37 -23 37 -1 0 9 16 32 35 50 l36 33 -20 98 c-11 54 -23 156 -27 226 l-7 128 39 -6 c67 -12 113 -25 119 -35 10 -17 43 -11 57 9 8 11 26 25 41 32 35 16 34 34 -3 56 -16 9 -30 21 -30 25 0 4 -8 12 -18 17 -14 7 -29 5 -58 -9 -21 -11 -63 -22 -93 -25 l-54 -6 7 56 c3 31 15 81 26 112 l19 55 -34 33 c-36 33 -42 49 -25 60 14 9 13 48 -2 63 -9 9 -9 15 0 24 15 15 16 54 2 63 -15 9 -12 25 5 25 8 0 29 13 46 28 59 53 48 161 -21 197 -16 8 -35 15 -43 15 -7 0 -18 12 -23 28 -10 24 -7 31 20 60 27 28 31 41 31 85 0 29 -4 60 -8 69 -7 13 -3 17 15 20 13 2 28 13 33 26 7 17 15 21 30 17 84 -25 140 -10 175 48 22 35 26 97 9 129 -9 17 -8 23 5 30 10 5 21 20 26 33 7 17 14 21 34 18 36 -7 89 13 121 47 36 37 46 116 21 155 -15 22 -15 25 -1 25 9 0 24 13 33 30 13 24 24 30 50 30 100 0 163 110 116 202 -15 28 -14 31 5 45 12 8 21 25 21 37 0 19 7 25 34 30 104 20 150 144 81 216 -22 23 -25 31 -16 48 6 12 11 29 11 39 0 10 14 25 33 34 71 34 73 157 4 199 -47 29 -108 26 -146 -6 -55 -46 -60 -121 -11 -174 40 -43 31 -82 -23 -101 -88 -30 -117 -148 -52 -213 16 -16 16 -18 1 -35 -9 -10 -16 -25 -16 -34 0 -13 -9 -17 -42 -17 -104 0 -165 -97 -124 -195 13 -29 13 -35 0 -46 -8 -6 -14 -20 -14 -30 0 -17 -8 -19 -60 -19 -54 0 -64 -3 -96 -33 -31 -28 -37 -42 -41 -84 -3 -29 0 -59 7 -72 9 -18 9 -26 -3 -39 -8 -9 -16 -23 -18 -30 -3 -9 -25 -14 -68 -15 -57 -2 -65 -5 -91 -34 -33 -37 -47 -95 -33 -134 10 -25 8 -28 -14 -33 -13 -4 -29 -18 -35 -32 -7 -15 -17 -23 -26 -19 -39 15 -62 15 -95 2 l-35 -15 -6 29 c-4 20 -13 30 -31 35 -19 5 -24 11 -19 23 27 61 5 138 -48 171 -34 21 -102 27 -128 11 -10 -7 -19 -2 -32 20 -10 16 -24 29 -32 29 -12 0 -12 6 0 41 18 52 5 104 -36 144 -23 22 -41 29 -83 33 -46 4 -55 8 -65 32 -10 22 -10 32 3 56 43 83 -18 194 -108 194 -20 0 -26 6 -30 33 -3 22 1 38 13 52 28 30 42 76 35 112 -6 33 -64 93 -90 93 -41 0 -18 55 74 178 161 213 400 365 826 527 358 136 470 196 564 301 l49 55 -5 -48 c-17 -176 -60 -262 -203 -403 -59 -58 -114 -120 -123 -136 -18 -35 -52 -168 -61 -237 -9 -75 -21 -90 -64 -83 -72 12 -76 12 -80 -9 -7 -33 -22 -45 -58 -45 -27 0 -36 -5 -44 -24 -11 -29 -38 -46 -74 -46 -20 0 -35 -12 -61 -49 -52 -72 -95 -81 -161 -33 -82 59 -148 153 -190 269 -32 88 -33 87 -90 -34 -106 -225 -78 -431 87 -638 61 -76 109 -124 109 -109 0 6 -4 14 -9 20 -6 5 -24 52 -42 104 -25 73 -33 118 -37 195 -4 96 10 209 27 220 5 2 26 -9 47 -27 64 -51 139 -81 187 -75 36 5 51 15 97 67 30 33 61 60 69 60 7 0 30 13 50 29 20 15 47 31 61 34 14 3 33 19 42 34 15 25 22 28 69 28 49 0 55 3 76 34 13 19 33 66 44 103 20 65 25 72 101 136 45 37 111 93 149 125 68 57 139 146 177 222 63 126 75 303 30 435 -70 203 -213 371 -418 492 -69 40 -75 47 -72 74 1 16 3 74 5 129 2 93 0 103 -25 146 -52 88 -139 140 -283 170 -97 20 -150 22 -260 8z m253 -48 c51 -11 113 -31 137 -45 53 -32 110 -97 126 -144 13 -39 7 -152 -9 -194 l-11 -27 -57 19 c-198 68 -364 60 -543 -28 -159 -77 -321 -229 -528 -491 -6 -9 -91 38 -126 69 -231 203 68 645 545 804 163 55 318 67 466 37z m129 -452 c34 -11 65 -24 68 -30 16 -24 -141 -184 -254 -259 -98 -66 -193 -111 -310 -150 -118 -38 -204 -52 -309 -48 l-83 3 41 55 c65 87 168 198 246 264 207 176 397 228 601 165z m497 -560 c-27 -54 -123 -147 -199 -194 -95 -59 -181 -98 -435 -195 -118 -45 -241 -95 -272 -110 -32 -15 -58 -24 -58 -21 0 9 123 101 210 157 114 73 759 409 768 400 2 -2 -4 -19 -14 -37z M1943 3570 c-409 -275 -619 -497 -696 -735 -79 -243 -12 -472 206 -700 82 -86 98 -93 42 -19 -47 61 -120 213 -142 294 -37 138 -13 331 61 484 93 192 218 337 606 704 36 34 63 61 60 61 -3 0 -65 -40 -137 -89z M2889 3485 c43 -8 90 -25 113 -40 36 -24 38 -24 28 -6 -20 39 -57 54 -138 57 l-77 3 74 -14z M2760 3355 c0 -29 95 -105 131 -105 8 0 22 16 31 35 l16 36 -24 -16 c-35 -23 -58 -19 -108 20 -25 19 -46 32 -46 30z" fill="currentColor"/>
             </g>
@@ -624,7 +623,7 @@ footer.home-foot{text-align:center;font-size:14px;color:rgba(74,47,31,.55);margi
 /* Register Service Worker for Offline / PWA capabilities */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v28';
+    const CACHE_NAME = 'rosary-v26';
     self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./']))); });
     self.addEventListener('fetch', e => { e.respondWith(caches.match(e.request).then(r => r || fetch(e.request))); });
   `;
@@ -678,7 +677,7 @@ const MYSTERY_SETS={
     luminous:{label:"Luminous Mysteries",days:"Thursday",items:[{title:"The Baptism in the Jordan",fruit:"Openness to the Holy Spirit",med:"Jesus is baptized by John in the Jordan, and the Father's voice proclaims Him His beloved Son as the Spirit descends like a dove."},{title:"The Wedding at Cana",fruit:"To Jesus through Mary",med:"At Mary's request, Jesus performs His first miracle, changing water into wine, and manifests His glory."},{title:"The Proclamation of the Kingdom",fruit:"Repentance and Trust in God",med:"Jesus preaches the coming of God's Kingdom, calling all people to conversion and offering forgiveness of sins."},{title:"The Transfiguration",fruit:"Desire for Holiness",med:"On Mount Tabor, Jesus is transfigured in glory before Peter, James, and John, revealing His divine splendor."},{title:"The Institution of the Eucharist",fruit:"Adoration and Love of the Mass",med:"At the Last Supper, Jesus gives us His Body and Blood under the appearance of bread and wine, remaining with us always."}]}
   },
   es:{
-    joyful:{label:"Misterios Gozosos",days:"Lunes y Sábado",items:[{title:"La Anunciación",fruit:"Humildad",med:"El Arcángel Gabriel anuncia a María que ha sido elegida para ser la Madre de Dios, y ella responde: \"Hágase en mí según tu palabra.\""},{title:"La Visitación",fruit:"Amor al Prójimo",med:"María corre a la montaña para visitar a su prima Isabel, quien la saluda como la Madre del Señor y se alegra con ella."},{title:"El Nacimiento de Jesús",fruit:"Pobreza de Espíritu",med:"En un pesebre en Belén, nace el Hijo de Dios y es recostado en un pesebre, entrando al mundo en humedad y silencio."},{title:"La Presentación",fruit:"Obediencia",med:"María y José presentan al Niño Jesús en el Templo, donde el anciano Simeón lo reconoce como la salvación del mundo."},{title:"El Niño Perdido y Hallado",fruit:"Piedad y Alegría de encontrar a Jesús",med:"Después de tres días de angustia, María y José encuentran al niño Jesús en el Templo, sentado entre los maestros."}]},
+    joyful:{label:"Misterios Gozosos",days:"Lunes y Sábado",items:[{title:"La Anunciación",fruit:"Humildad",med:"El Arcángel Gabriel anuncia a María que ha sido elegida para ser la Madre de Dios, y ella responde: \"Hágase en mí según tu palabra.\""},{title:"La Visitación",fruit:"Amor al Prójimo",med:"María corre a la montaña para visitar a su prima Isabel, quien la saluda como la Madre del Señor y se alegra con ella."},{title:"El Nacimiento de Jesús",fruit:"Pobreza de Espíritu",med:"En un pesebre en Belén, nace el Hijo de Dios y es recostado en un pesebre, entrando al mundo en humildad y silencio."},{title:"La Presentación",fruit:"Obediencia",med:"María y José presentan al Niño Jesús en el Templo, donde el anciano Simeón lo reconoce como la salvación del mundo."},{title:"El Niño Perdido y Hallado",fruit:"Piedad y Alegría de encontrar a Jesús",med:"Después de tres días de angustia, María y José encuentran al niño Jesús en el Templo, sentado entre los maestros."}]},
     sorrowful:{label:"Misterios Dolorosos",days:"Martes y Viernes",items:[{title:"La Agonía en el Huerto",fruit:"Dolor por el Pecado",med:"En Getsemaní, Jesús ora con angustia antes de su Pasión, sudando sangre y aceptando la voluntad del Padre."},{title:"La Flagelación",fruit:"Pureza y Mortificación",med:"Jesús es atado a una columna y azotado cruelmente, cargando con las heridas de nuestros pecados en su carne."},{title:"La Coronación de Espinas",fruit:"Coraje y Fortaleza Moral",med:"Los soldados se burlan de Jesús como rey, colocando una corona de espinas sobre su cabeza y vistiéndolo de púrpura."},{title:"Jesús con la Cruz a Cuestas",fruit:"Paciencia",med:"Jesús carga la pesada Cruz camino al Calvario, cayendo bajo su peso, pero continuando por amor a nosotros."},{title:"La Crucifixión",fruit:"Perseverancia y Salvación",med:"Jesús es clavado en la Cruz y muere por la redención del mundo, ofreciendo su vida por amor perfecto."}]},
     glorious:{label:"Misterios Gloriosos",days:"Domingo y Miércoles",items:[{title:"La Resurrección",fruit:"Fe",med:"Al tercer día, Jesús resucita de entre los muertos, triunfante sobre el pecado y la muerte, y se aparece a sus discípulos."},{title:"La Ascensión",fruit:"Esperanza y Deseo del Cielo",med:"Cuarenta días después de su Resurrección, Jesús asciende al Cielo, prometiendo preparar un lugar para nosotros."},{title:"La Venida del Espíritu Santo",fruit:"Amor de Dios, Sabiduría y Celo",med:"En Pentecostés, el Espíritu Santo desciende sobre María y los Apóstoles en lenguas de fuego, dándoles valor."},{title:"La Asunción de María",fruit:"Gracia de una Feliz Muerte",med:"Al final de su vida terrenal, María es llevada en cuerpo y alma a la gloria del Cielo."},{title:"La Coronación de María",fruit:"Confianza en la Intercesión de María",med:"María es coronada Reina de los Cielos y de la Tierra por su Hijo, entregada como Madre de todos los fieles."}]},
     luminous:{label:"Misterios Luminosos",days:"Jueves",items:[{title:"El Bautismo en el Jordán",fruit:"Apertura al Espíritu Santo",med:"Jesús es bautizado por Juan en el Jordán, y la voz del Padre lo proclama su Hijo amado mientras el Espíritu desciende."},{title:"Las Bodas de Caná",fruit:"A Jesús por María",med:"A petición de María, Jesús realiza su primer milagro, transformando el agua en vino, y manifiesta su gloria."},{title:"El Anuncio del Reino",fruit:"Arrepentimiento y Confianza en Dios",med:"Jesús proclama la venida del Reino de Dios, llamando a todos a la conversión y ofreciendo el perdón."},{title:"La Transfiguración",fruit:"Deseo de Santidad",med:"En el monte Tabor, Jesús se transfigura en gloria ante Pedro, Santiago y Juan, revelando su divinidad."},{title:"La Institución de la Eucaristía",fruit:"Adoración y Amor por la Misa",med:"En la Última Cena, Jesús nos entrega su Cuerpo y su Sangre bajo las especies de pan y vino, quedándose con nosotros."}]}
@@ -715,6 +714,19 @@ let currentDayIndex=new Date().getDay(),sequence=[],stepIndex=0;
 let audioCtx=null;
 let currentMysteryKey="joyful";
 let overviewDayIndex=0;
+
+/* Perf: cache the sequence separately from lightweight session state so we don't
+   JSON.stringify the whole sequence array on every single step navigation. */
+let savedSequenceCache=null;
+let saveStateTimer=null;
+
+/* Perf: keep references to bead nodes & circular-svg nodes so we mutate instead
+   of rebuilding the DOM every render. */
+let beadNodes=[];
+let circularNodes=null;
+
+/* Perf: guard against double-fire during the slide animation window */
+let isTransitioning=false;
 
 function buzz(e){if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
 
@@ -785,25 +797,41 @@ function renderHome(){
   checkResumeState();
 }
 
-/* LocalStorage State Persistence */
+/* ============ STATE PERSISTENCE (debounced, lightweight) ============ */
+/* Perf fix: previously JSON.stringify'd the entire `sequence` array (often 80-100
+   objects) on every single render/step. Now we only persist the sequence once when
+   it's built, and on every step we just persist small scalars, debounced so rapid
+   navigation doesn't hammer localStorage. */
+function persistSequenceOnce(){
+  try{
+    localStorage.setItem("rosary_sequence_cache", JSON.stringify(sequence));
+  }catch(e){}
+}
+
 function saveState(){
-  if(sequence.length>0 && stepIndex < sequence.length){
-    const state={
-      stepIndex,
-      currentMysteryKey,
-      overviewDayIndex,
-      currentLang,
-      sequence,
-      timestamp: Date.now()
-    };
-    localStorage.setItem("rosary_active_session", JSON.stringify(state));
-  }
+  if(sequence.length===0 || stepIndex>=sequence.length) return;
+  if(saveStateTimer) clearTimeout(saveStateTimer);
+  saveStateTimer=setTimeout(()=>{
+    try{
+      const state={
+        stepIndex,
+        currentMysteryKey,
+        overviewDayIndex,
+        currentLang,
+        total:sequence.length,
+        timestamp: Date.now()
+      };
+      localStorage.setItem("rosary_active_session", JSON.stringify(state));
+    }catch(e){}
+  }, 150);
 }
 
 function clearSavedState(){
   localStorage.removeItem("rosary_active_session");
+  localStorage.removeItem("rosary_sequence_cache");
   const c=document.getElementById("resumeContainer");
-  if(c) c.innerHTML="";
+  if(!c) return;
+  c.innerHTML="";
 }
 
 function checkResumeState(){
@@ -814,9 +842,9 @@ function checkResumeState(){
   if(saved){
     try{
       const data=JSON.parse(saved);
-      if(Date.now() - data.timestamp < 86400000 && data.sequence && data.sequence.length>0){
+      if(Date.now() - data.timestamp < 86400000 && data.total>0){
         const trans=TRANSLATIONS[currentLang];
-        const sub=trans.resumeSub.replace("{step}", data.stepIndex+1).replace("{total}", data.sequence.length);
+        const sub=trans.resumeSub.replace("{step}", data.stepIndex+1).replace("{total}", data.total);
         c.innerHTML=`
           <div class="resume-card">
             <div class="resume-info-stacked">
@@ -827,12 +855,20 @@ function checkResumeState(){
           </div>
         `;
         document.getElementById("resumeSessionBtn").addEventListener("click",()=>{
-          sequence=data.sequence;
-          stepIndex=data.stepIndex;
-          currentMysteryKey=data.currentMysteryKey;
-          showScreen("pray");
-          renderStep();
+          const cached=localStorage.getItem("rosary_sequence_cache");
+          if(!cached){ clearSavedState(); return; }
+          try{
+            sequence=JSON.parse(cached);
+            stepIndex=data.stepIndex;
+            currentMysteryKey=data.currentMysteryKey;
+            showScreen("pray");
+            buildBeadTrackDOM();
+            buildCircularRosaryDOM();
+            renderStep();
+          }catch(e){ clearSavedState(); }
         });
+      }else if(saved){
+        clearSavedState();
       }
     }catch(e){ clearSavedState(); }
   }
@@ -946,6 +982,7 @@ function buildSequence(e,t){
   o.push({type:"text",eyebrow:currentLang==="en"?"End":"Fin",title:currentLang==="en"?"Sign of the Cross":"Señal de la Cruz",body:pSource.signOfCross,bead:"big"});
 
   sequence=o;
+  persistSequenceOnce();
 }
 
 function ordinal(e){const t=["th","st","nd","rd"],r=e%100;return e+(t[(r-20)%10]||t[r]||t[0])}
@@ -987,20 +1024,25 @@ function renderStep(){
   }
 
   document.getElementById("progressText").textContent=(currentLang==="en"?"Step ":"Paso ")+(stepIndex+1)+(currentLang==="en"?" of ":" de ")+sequence.length;
-  renderBeadTrack();
-  renderCircularRosaryLoop();
+
+  /* Perf: update existing bead nodes instead of rebuilding the whole track */
+  updateBeadTrackState();
+  /* Perf: update existing circular SVG nodes instead of rewriting innerHTML */
+  updateCircularRosaryState();
 
   document.getElementById("prevBtn").disabled=0===stepIndex;
   t.scrollTop=0;
   window.scrollTo(0,0);
 }
 
-function renderBeadTrack(){
+/* ============ BEAD TRACK: build once, mutate on step (perf fix) ============ */
+function buildBeadTrackDOM(){
   const e=document.getElementById("beadTrack");
   e.innerHTML="";
+  beadNodes=[];
   sequence.forEach((t,r)=>{
     const o=document.createElement("div");
-    o.className="bead "+("big"===t.bead?"big":"small"),r<stepIndex&&o.classList.add("done"),r===stepIndex&&o.classList.add("current");
+    o.className="bead "+("big"===t.bead?"big":"small");
     o.setAttribute("role","button");
     o.setAttribute("aria-label",`${t.title} — step ${r+1}`);
     o.addEventListener("click",()=>{
@@ -1008,9 +1050,21 @@ function renderBeadTrack(){
       renderStep();
     });
     e.appendChild(o);
+    beadNodes.push(o);
+  });
+}
+
+function updateBeadTrackState(){
+  const e=document.getElementById("beadTrack");
+  if(beadNodes.length!==sequence.length){
+    buildBeadTrackDOM();
+  }
+  beadNodes.forEach((node,r)=>{
+    node.classList.toggle("done", r<stepIndex);
+    node.classList.toggle("current", r===stepIndex);
   });
   requestAnimationFrame(()=>{
-    const t=e.children[stepIndex];
+    const t=beadNodes[stepIndex];
     if(t){
       const r=t.offsetLeft-e.clientWidth/2+t.clientWidth/2;
       e.scrollTo({left:Math.max(0,r),behavior:"smooth"});
@@ -1018,52 +1072,68 @@ function renderBeadTrack(){
   });
 }
 
-/* Render Dynamic SVG Circular Rosary Visualizer Loop */
-function renderCircularRosaryLoop(){
+/* ============ CIRCULAR ROSARY LOOP: build once, mutate on step (perf fix) ============ */
+function buildCircularRosaryDOM(){
   const svg=document.getElementById("circularRosarySvg");
   if(!svg) return;
   svg.innerHTML="";
+  circularNodes={hm:[]};
 
-  const currentStep=sequence[stepIndex];
-  const activeHM = currentStep? (currentStep.hailMaryNum || 0) : 0;
-  const currentDecade = currentStep? (currentStep.decade || 0) : 0;
-
-  // Compact Arc & Stem Coordinates
-  let html=`
+  svg.insertAdjacentHTML("beforeend", `
     <path d="M 30,52 C 30,12 130,12 130,52" fill="none" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
     <path d="M 80,52 L 80,68" stroke="rgba(185,121,31,0.35)" stroke-width="2.5" />
-  `;
+  `);
 
-  // Draw 10 Hail Mary beads along arc
-  for(let i=1; i<=10; i++){
-    const angle = Math.PI - ((i - 0.5) * (Math.PI / 10));
-    const cx = 80 + 50 * Math.cos(angle);
-    const cy = 52 - 40 * Math.sin(angle);
-    
-    let isDone = (i < activeHM) || (currentDecade > 0 && currentStep && currentStep.type==="text" && currentStep.title.includes("Glory"));
-    let isCurrent = (i === activeHM);
-
-    let color = isCurrent ? "var(--burgundy)" : (isDone ? "var(--gold)" : "rgba(185,121,31,0.25)");
-    let radius = isCurrent ? 5.5 : 4;
-    let stroke = isCurrent ? "#fff" : "none";
-
-    html += `<circle cx="${cx}" cy="${cy}" r="${radius}" fill="${color}" stroke="${stroke}" stroke-width="1.5" />`;
+  for(let i=1;i<=10;i++){
+    const angle=Math.PI-((i-0.5)*(Math.PI/10));
+    const cx=80+50*Math.cos(angle);
+    const cy=52-40*Math.sin(angle);
+    const circle=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    circle.setAttribute("cx",cx);
+    circle.setAttribute("cy",cy);
+    circle.setAttribute("r",4);
+    circle.setAttribute("fill","rgba(185,121,31,0.25)");
+    circle.setAttribute("stroke","none");
+    circle.setAttribute("stroke-width","1.5");
+    svg.appendChild(circle);
+    circularNodes.hm.push(circle);
   }
 
-  // Center Medallion Bead
-  html += `<circle cx="80" cy="52" r="5.5" fill="var(--gold-light)" stroke="var(--gold)" stroke-width="1" />`;
-  // Our Father Bead
-  html += `<circle cx="80" cy="63" r="4.5" fill="${currentStep && currentStep.title.includes("Our Father")?'var(--burgundy)':'var(--gold-light)'}" />`;
-  
-  // Crucifix as Pure Vector SVG Path
-  html += `
+  const medallionBead=document.createElementNS("http://www.w3.org/2000/svg","circle");
+  medallionBead.setAttribute("cx",80);medallionBead.setAttribute("cy",52);medallionBead.setAttribute("r",5.5);
+  medallionBead.setAttribute("fill","var(--gold-light)");medallionBead.setAttribute("stroke","var(--gold)");medallionBead.setAttribute("stroke-width","1");
+  svg.appendChild(medallionBead);
+
+  const ourFatherBead=document.createElementNS("http://www.w3.org/2000/svg","circle");
+  ourFatherBead.setAttribute("cx",80);ourFatherBead.setAttribute("cy",63);ourFatherBead.setAttribute("r",4.5);
+  ourFatherBead.setAttribute("fill","var(--gold-light)");
+  svg.appendChild(ourFatherBead);
+  circularNodes.ourFatherBead=ourFatherBead;
+
+  svg.insertAdjacentHTML("beforeend", `
     <g transform="translate(80, 80)" stroke="var(--burgundy)" stroke-width="2.2" stroke-linecap="round">
       <line x1="0" y1="-7" x2="0" y2="7" />
       <line x1="-4.5" y1="-2.5" x2="4.5" y2="-2.5" />
     </g>
-  `;
+  `);
+}
 
-  svg.innerHTML = html;
+function updateCircularRosaryState(){
+  if(!circularNodes){ buildCircularRosaryDOM(); }
+  const currentStep=sequence[stepIndex];
+  const activeHM=currentStep?(currentStep.hailMaryNum||0):0;
+  const currentDecade=currentStep?(currentStep.decade||0):0;
+
+  circularNodes.hm.forEach((circle,idx)=>{
+    const i=idx+1;
+    const isDone=(i<activeHM)||(currentDecade>0 && currentStep && currentStep.type==="text" && currentStep.title.includes("Glory"));
+    const isCurrent=(i===activeHM);
+    circle.setAttribute("fill", isCurrent?"var(--burgundy)":(isDone?"var(--gold)":"rgba(185,121,31,0.25)"));
+    circle.setAttribute("r", isCurrent?5.5:4);
+    circle.setAttribute("stroke", isCurrent?"#fff":"none");
+  });
+
+  circularNodes.ourFatherBead.setAttribute("fill", currentStep && currentStep.title.includes("Our Father")?"var(--burgundy)":"var(--gold-light)");
 }
 
 function showScreen(e){
@@ -1090,6 +1160,13 @@ function applySeasonTheme(e){
 let touchStartX=0, touchEndX=0;
 
 function animatedStepChange(direction){
+  /* Perf/bug fix: guard against overlapping animations from rapid taps, which
+     previously could desync stepIndex from what was rendered. */
+  if(isTransitioning) return;
+  isTransitioning=true;
+  document.getElementById("prevBtn").disabled=true;
+  document.getElementById("nextBtn").disabled=true;
+
   const prayMain=document.getElementById("prayMain");
   const outClass = direction === 'next' ? 'slide-out-left' : 'slide-out-right';
   const inClass = direction === 'next' ? 'slide-in-right' : 'slide-in-left';
@@ -1100,7 +1177,12 @@ function animatedStepChange(direction){
     renderStep();
     prayMain.classList.remove(outClass);
     prayMain.classList.add(inClass);
-    setTimeout(()=>prayMain.classList.remove(inClass), 180);
+    setTimeout(()=>{
+      prayMain.classList.remove(inClass);
+      isTransitioning=false;
+      document.getElementById("nextBtn").disabled=false;
+      /* prevBtn disabled state is re-evaluated inside renderStep() */
+    }, 180);
   }, 160);
 }
 
@@ -1149,10 +1231,13 @@ document.getElementById("beginBtn").addEventListener("click",()=>{
   buildSequence(DAY_SCHEDULE[overviewDayIndex].key,DAY_SCHEDULE[overviewDayIndex].nameIndex);
   stepIndex=0;
   showScreen("pray");
+  buildBeadTrackDOM();
+  buildCircularRosaryDOM();
   renderStep();
 });
 
 document.getElementById("nextBtn").addEventListener("click",()=>{
+  if(isTransitioning) return;
   if(stepIndex < sequence.length - 1){
     animatedStepChange('next');
   } else {
@@ -1162,6 +1247,7 @@ document.getElementById("nextBtn").addEventListener("click",()=>{
 });
 
 document.getElementById("prevBtn").addEventListener("click",()=>{
+  if(isTransitioning) return;
   if(stepIndex > 0){
     animatedStepChange('prev');
   }
