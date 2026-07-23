@@ -24,6 +24,7 @@
   --gold:#3D6B5C;
   --gold-light:#4F8471;
   --gold-pale:#BFD6C9;
+  --gold-text:#3D6B5C;
   --gold-rgb:61,107,92;
   --gold-light-rgb:79,132,113;
   --burgundy-rgb:42,74,63;
@@ -45,7 +46,6 @@ html.dark-mode{
   --parchment:#1E1A28;
   --surface:#221E30;
   --line:#332E42;
-  --accent-text:var(--gold-light);
 }
 *{box-sizing:border-box}
 html,body{height:100%;overflow-x:hidden;width:100%}
@@ -68,7 +68,7 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .brand-cross-svg{
   width:16px;
   height:18px;
-  color:var(--gold);
+  color:var(--gold-text);
   fill:none;
   stroke:currentColor;
   stroke-width:2.3;
@@ -96,6 +96,9 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
   transition:all .15s ease;
 }
 .icon-btn:active{background:var(--parchment);transform:scale(0.96)}
+.icon-btn svg{color:var(--ink-deep)}
+.icon-btn .mute-slash{opacity:0}
+.icon-btn.muted .mute-slash{opacity:1}
 
 main{flex:1;position:relative;z-index:1;padding:0 22px}
 .hero{text-align:center;padding:6px 0 16px}
@@ -119,7 +122,7 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
 .medallion .medallion-svg{
   width:80px;
   height:80px;
-  color:var(--gold);
+  color:var(--gold-text);
   transition:color .3s ease;
 }
 
@@ -168,7 +171,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   font-weight:600;
   letter-spacing:.1em;
   text-transform:uppercase;
-  color:var(--gold);
+  color:var(--gold-text);
 }
 .today-mystery-label{
   font-family:'Fraunces',serif;
@@ -228,6 +231,28 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   max-width:220px;
 }
 
+.streak-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px 16px 12px;
+  margin-top:16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  box-shadow:var(--shadow-soft);
+}
+.streak-count{
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--gold-text);
+}
+.streak-dots{display:flex;gap:10px}
+
 .section-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;text-align:center;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
 .section-label::before,.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
 
@@ -265,20 +290,20 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
 }
 .prayers-toggle summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep)}
 .prayers-toggle summary::-webkit-details-marker{display:none}
-.prayers-toggle summary::after{content:"+";font-size:19px;color:var(--gold);font-weight:400}
+.prayers-toggle summary::after{content:"+";font-size:19px;color:var(--gold-text);font-weight:400}
 .prayers-toggle[open] summary::after{content:"–"}
 .prayer-ref{padding:0 18px 18px}
-.prayer-ref h3{font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:var(--gold);margin:16px 0 5px;letter-spacing:0}
+.prayer-ref h3{font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:var(--gold-text);margin:16px 0 5px;letter-spacing:0}
 .prayer-ref p{font-family:'Fraunces',serif;font-size:17px;line-height:1.6;color:var(--ink);margin:0;opacity:.95}
 
 footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px;color:var(--ink);opacity:.5;margin-top:28px;font-style:italic}
 
 /* Overview Screen */
-.back-row{display:flex;align-items:center;gap:6px;padding:16px 20px 4px;color:var(--gold);font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;position:relative;z-index:2}
+.back-row{display:flex;align-items:center;gap:6px;padding:16px 20px 4px;color:var(--gold-text);font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;position:relative;z-index:2}
 .back-row .arrow{font-size:18px}
 .overview-head{text-align:center;padding:8px 0 6px}
 .set-name{font-family:'Fraunces',serif;font-weight:500;font-size:28px;color:var(--ink-deep);margin:6px 0 2px}
-.set-forday{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+.set-forday{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--gold-text);letter-spacing:.08em;text-transform:uppercase}
 .mystery-list{margin-top:18px;display:flex;flex-direction:column;gap:10px}
 .mystery-row{
   display:flex;
@@ -290,9 +315,9 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   background:var(--surface);
   box-shadow:var(--shadow-soft);
 }
-.mystery-num{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--gold);min-width:22px}
+.mystery-num{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--gold-text);min-width:22px}
 .mystery-info .mtitle{font-family:'Fraunces',serif;font-weight:500;font-size:17px;color:var(--ink-deep);margin-bottom:3px}
-.mystery-info .mfruit{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.mystery-info .mfruit{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;color:var(--gold-text);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
 .mystery-info .mmed{font-family:'Fraunces',serif;font-size:15.5px;color:var(--ink);opacity:.92;line-height:1.55}
 
 .begin-btn{
@@ -326,7 +351,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 }
 .font-scaler-label{font-family:'Inter',sans-serif;font-size:10.5px;color:var(--ink);opacity:.6;margin-right:2px;text-transform:uppercase;letter-spacing:.05em}
 .font-btn{background:none;border:none;color:var(--ink-deep);font-family:'Inter',sans-serif;font-weight:700;font-size:13px;padding:2px 6px;cursor:pointer}
-.font-btn:active{color:var(--gold)}
+.font-btn:active{color:var(--gold-text)}
 
 .bead-track-holder{padding:4px 18px 2px;position:relative;z-index:2}
 .bead-track{display:flex;align-items:center;gap:6px;overflow-x:auto;overflow-y:hidden;padding:4px 2px;scrollbar-width:none;touch-action:pan-x}
@@ -359,9 +384,9 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 .step-inner{margin:auto 0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center;box-sizing:border-box}
 
 .decade-flag{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);margin-bottom:8px}
-.step-eyebrow{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.step-eyebrow{font-family:'Inter',sans-serif;font-size:13.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-text);margin-bottom:10px}
 .step-title{font-family:'Fraunces',serif;font-weight:500;font-size:26px;color:var(--ink-deep);margin:0 0 12px;line-height:1.25;width:100%;overflow-wrap:break-word}
-.step-fruit{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gold);margin-bottom:12px}
+.step-fruit{font-family:'Fraunces',serif;font-style:italic;font-size:15px;color:var(--gold-text);margin-bottom:12px}
 
 .step-body{
   font-family:'Fraunces',serif;
@@ -419,13 +444,13 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   cursor:pointer;
   border:none !important;
   background:transparent !important;
-  color:var(--gold) !important;
+  color:var(--gold-text) !important;
   box-shadow:none !important;
   transition:transform .15s ease, opacity .15s ease;
 }
 .ctrl-btn.primary{
   background:transparent !important;
-  color:var(--gold) !important;
+  color:var(--gold-text) !important;
   border:none !important;
   box-shadow:none !important;
 }
@@ -445,9 +470,9 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
 .complete-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px}
 .complete-wrap .glyph-big{margin-bottom:18px}
-.complete-cross-svg{width:38px;height:48px;color:var(--gold);fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round}
+.complete-cross-svg{width:38px;height:48px;color:var(--gold-text);fill:none;stroke:currentColor;stroke-width:2.3;stroke-linecap:round}
 .complete-wrap h2{font-family:'Fraunces',serif;font-weight:500;color:var(--ink-deep);font-size:25px;margin:0 0 10px}
-.complete-wrap p{font-family:'Fraunces',serif;color:var(--gold);font-style:italic;font-size:16px;max-width:310px;margin:0 0 26px}
+.complete-wrap p{font-family:'Fraunces',serif;color:var(--gold-text);font-style:italic;font-size:16px;max-width:310px;margin:0 0 26px}
 
 .hidden{display:none!important}
 
@@ -508,10 +533,17 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   <div id="screen-home">
     <header class="top">
       <div class="brand">
-        <svg class="brand-cross-svg" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></svg>
+        <svg class="brand-cross-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 8h14"/></svg>
         <span id="ui-brand">Holy Rosary</span>
       </div>
-      <div style="display:flex;gap:8px;">
+      <div style="display:flex;gap:6px;">
+        <button class="icon-btn" id="hapticBtn" aria-label="Mute haptic feedback">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+            <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+            <line class="mute-slash" x1="3" y1="3" x2="21" y2="21"/>
+          </svg>
+        </button>
         <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
         <button class="icon-btn" id="langBtn" aria-label="Language">ES</button>
         <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
@@ -538,6 +570,9 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
           <div class="today-mystery-label" id="todayLabel">—</div>
         </div>
       </div>
+
+      <!-- Prayer streak tracker -->
+      <div id="streakContainer"></div>
 
       <!-- Resume Active Session Banner (if saved) -->
       <div id="resumeContainer"></div>
@@ -604,7 +639,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
       <!-- Compact Circular / Decade Loop Bead Visualizer -->
       <div class="circular-rosary-wrap" id="circularRosaryWrap">
-        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 88"></svg>
+        <svg class="circular-rosary-svg" id="circularRosarySvg" viewBox="0 0 160 88" aria-hidden="true"></svg>
       </div>
 
       <div class="pray-main" id="prayMain"></div>
@@ -613,13 +648,13 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
       <div class="bottom-pray-nav">
         <div class="pray-controls">
           <button class="ctrl-btn" id="prevBtn" aria-label="Previous step">
-            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
           </button>
           <button class="ctrl-btn" id="exitHomeBtn" aria-label="Return home">
-            <svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h4v-6h4v6h4a1 1 0 001-1V10"/></svg>
           </button>
           <button class="ctrl-btn primary" id="nextBtn" aria-label="Next step">
-            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
           </button>
         </div>
         <div class="swipe-hint-underneath" id="ui-swipeHint">Swipe left/right to navigate</div>
@@ -632,7 +667,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   <div id="screen-complete" class="hidden">
     <div class="complete-wrap">
       <div class="glyph-big">
-        <svg class="complete-cross-svg" viewBox="0 0 24 24"><path d="M12 2v20M5 8h14"/></svg>
+        <svg class="complete-cross-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 8h14"/></svg>
       </div>
       <h2 id="ui-compTitle">Rosary Complete</h2>
       <p id="ui-compQuote">"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."</p>
@@ -724,12 +759,26 @@ function getLiturgicalSeason(e){const t=stripTime(e),r=t.getFullYear(),o=stripTi
 
 const SEASON_THEMES={
   advent:{gold:"#5B4E82",goldLight:"#7267A0",goldPale:"#D9D3E8",burgundy:"#3A3159",goldRgb:"91,78,130",goldLightRgb:"114,103,160",burgundyRgb:"58,49,89",label:{en:"Advent",es:"Adviento"}},
-  christmas:{gold:"#A6822E",goldLight:"#C29F4C",goldPale:"#EEE1BC",burgundy:"#7A5E1E",goldRgb:"166,130,46",goldLightRgb:"194,159,76",burgundyRgb:"122,94,30",label:{en:"Christmastide",es:"Navidad"}},
+  christmas:{gold:"#8A6C26",goldLight:"#C29F4C",goldPale:"#EEE1BC",burgundy:"#7A5E1E",goldRgb:"138,108,38",goldLightRgb:"194,159,76",burgundyRgb:"122,94,30",label:{en:"Christmastide",es:"Navidad"}},
   lent:{gold:"#4A3A63",goldLight:"#5F4D7D",goldPale:"#D2CBDE",burgundy:"#2E2440",goldRgb:"74,58,99",goldLightRgb:"95,77,125",burgundyRgb:"46,36,64",label:{en:"Lent",es:"Cuaresma"}},
   triduum:{gold:"#6B2530",goldLight:"#833043",goldPale:"#E3C7CC",burgundy:"#451822",goldRgb:"107,37,48",goldLightRgb:"131,48,67",burgundyRgb:"69,24,34",label:{en:"Sacred Triduum",es:"Triduo Pascual"}},
-  easter:{gold:"#B8933E",goldLight:"#D1AC5C",goldPale:"#F0E2BC",burgundy:"#8A6B26",goldRgb:"184,147,62",goldLightRgb:"209,172,92",burgundyRgb:"138,107,38",label:{en:"Eastertide",es:"Pascua"}},
+  easter:{gold:"#866B2D",goldLight:"#D1AC5C",goldPale:"#F0E2BC",burgundy:"#8A6B26",goldRgb:"134,107,45",goldLightRgb:"209,172,92",burgundyRgb:"138,107,38",label:{en:"Eastertide",es:"Pascua"}},
   pentecost:{gold:"#8C3230",goldLight:"#A8433F",goldPale:"#E8C9C7",burgundy:"#5C1F1E",goldRgb:"140,50,48",goldLightRgb:"168,67,63",burgundyRgb:"92,31,30",label:{en:"Pentecost",es:"Pentecostés"}},
   ordinary:{gold:"#3D6B5C",goldLight:"#4F8471",goldPale:"#BFD6C9",burgundy:"#2A4A3F",goldRgb:"61,107,92",goldLightRgb:"79,132,113",burgundyRgb:"42,74,63",label:{en:"Ordinary Time",es:"Tiempo Ordinario"}}
+};
+
+/* Dark-mode-safe accent per season: raw season hues are tuned for a light
+   canvas and fail WCAG contrast against a dark background. These lightened
+   variants (each verified >=4.6:1 against the dark surface color) are swapped
+   in for text/icon-strength accent use whenever dark mode is active. */
+const SEASON_DARK_SAFE={
+  advent:{hex:"#8F82B4",rgb:"143,130,180"},
+  christmas:{hex:"#AA852F",rgb:"170,133,47"},
+  lent:{hex:"#9581B5",rgb:"149,129,181"},
+  triduum:{hex:"#CC6C7B",rgb:"204,108,123"},
+  easter:{hex:"#A88639",rgb:"168,134,57"},
+  pentecost:{hex:"#CD706E",rgb:"205,112,110"},
+  ordinary:{hex:"#559580",rgb:"85,149,128"}
 };
 
 let currentSeason=getLiturgicalSeason(new Date());
@@ -751,7 +800,7 @@ let circularNodes=null;
 /* Perf: guard against double-fire during the slide animation window */
 let isTransitioning=false;
 
-function buzz(e){if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
+function buzz(e){if(!hapticsEnabled)return;if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
 
 function translateUI(){
   const trans=TRANSLATIONS[currentLang];
@@ -817,6 +866,7 @@ function renderHome(){
     <h3>${currentLang==="en"?"Memorare":"Acordaos"}</h3><p>${prayersSource.memorare}</p>
   `;
 
+  renderStreak();
   checkResumeState();
 }
 
@@ -855,6 +905,80 @@ function clearSavedState(){
   const c=document.getElementById("resumeContainer");
   if(!c) return;
   c.innerHTML="";
+}
+
+/* ============ STREAK TRACKER ============ */
+function dateKeyFor(d){
+  const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");
+  return `${y}-${m}-${day}`;
+}
+
+function getCompletionMap(){
+  try{
+    const raw=localStorage.getItem("rosary_completions");
+    return raw ? JSON.parse(raw) : {};
+  }catch(e){ return {}; }
+}
+
+function recordStreakCompletion(){
+  try{
+    const map=getCompletionMap();
+    map[dateKeyFor(new Date())]=true;
+    localStorage.setItem("rosary_completions", JSON.stringify(map));
+  }catch(e){}
+}
+
+function computeStreak(map){
+  let streak=0;
+  const cursor=new Date();
+  const todayKey=dateKeyFor(cursor);
+  if(!map[todayKey]){
+    /* today not done yet — count backward starting yesterday so an unbroken
+       streak still shows as "alive" until the day is over */
+    cursor.setDate(cursor.getDate()-1);
+  }
+  while(map[dateKeyFor(cursor)]){
+    streak++;
+    cursor.setDate(cursor.getDate()-1);
+  }
+  return streak;
+}
+
+function renderStreak(){
+  const holder=document.getElementById("streakContainer");
+  if(!holder) return;
+  const map=getCompletionMap();
+  const streak=computeStreak(map);
+  const trans=TRANSLATIONS[currentLang];
+
+  const days=[];
+  for(let i=6;i>=0;i--){
+    const d=new Date();
+    d.setDate(d.getDate()-i);
+    days.push({label:trans.daysNames[d.getDay()].slice(0,1), done: !!map[dateKeyFor(d)], isToday: i===0});
+  }
+
+  const dotsHtml=days.map(d=>`
+    <div style="display:flex;flex-direction:column;align-items:center;gap:5px">
+      <div style="width:9px;height:9px;border-radius:50%;background:${d.done?"var(--gold)":"var(--line)"};${d.isToday && !d.done ? "box-shadow:0 0 0 2px var(--line);":""}"></div>
+      <div style="font-family:'Inter',sans-serif;font-size:9.5px;color:var(--ink);opacity:.5;letter-spacing:.02em">${d.label}</div>
+    </div>
+  `).join("");
+
+  const streakLabel = currentLang==="en"
+    ? (streak===1 ? "1 day streak" : `${streak} day streak`)
+    : (streak===1 ? "1 día seguido" : `${streak} días seguidos`);
+
+  holder.innerHTML = streak>0 ? `
+    <div class="streak-card">
+      <div class="streak-count">${streakLabel}</div>
+      <div class="streak-dots">${dotsHtml}</div>
+    </div>
+  ` : `
+    <div class="streak-card">
+      <div class="streak-dots">${dotsHtml}</div>
+    </div>
+  `;
 }
 
 function checkResumeState(){
@@ -1187,13 +1311,23 @@ function showScreen(e){
 
 function applySeasonTheme(e){
   const t=SEASON_THEMES[e]||SEASON_THEMES.ordinary,r=document.documentElement.style;
+  const safe=SEASON_DARK_SAFE[e]||SEASON_DARK_SAFE.ordinary;
   r.setProperty("--gold",t.gold);
   r.setProperty("--gold-light",t.goldLight);
   r.setProperty("--gold-pale",t.goldPale);
-  r.setProperty("--burgundy",t.burgundy);
   r.setProperty("--gold-rgb",t.goldRgb);
   r.setProperty("--gold-light-rgb",t.goldLightRgb);
-  r.setProperty("--burgundy-rgb",t.burgundyRgb);
+  if(typeof isDarkMode!=="undefined" && isDarkMode){
+    /* dark mode: use the lightened, contrast-verified variant for anything
+       read as text or a functional icon against a dark background */
+    r.setProperty("--gold-text",safe.hex);
+    r.setProperty("--burgundy",safe.hex);
+    r.setProperty("--burgundy-rgb",safe.rgb);
+  }else{
+    r.setProperty("--gold-text",t.gold);
+    r.setProperty("--burgundy",t.burgundy);
+    r.setProperty("--burgundy-rgb",t.burgundyRgb);
+  }
   const o=document.getElementById("seasonBadge");
   o&&(o.textContent=t.label[currentLang]);
 }
@@ -1246,15 +1380,17 @@ prayMainEl.addEventListener('touchend', e => {
 }, { passive: true });
 
 /* ============ INITIALIZATION & LISTENERS ============ */
-translateUI();
-renderHome();
 
-/* Dark mode: respect stored preference, else system preference */
+/* Dark mode: respect stored preference, else system preference.
+   Resolved BEFORE first render so applySeasonTheme (called inside translateUI)
+   picks the correct light/dark-safe accent variant from the start. */
 function applyDarkMode(isDark){
+  isDarkMode = isDark;
   document.documentElement.classList.toggle("dark-mode", isDark);
   const btn=document.getElementById("themeBtn");
   if(btn) btn.textContent = isDark ? "☀" : "☾";
   try{ localStorage.setItem("rosary_dark_mode", isDark ? "1" : "0"); }catch(e){}
+  applySeasonTheme(currentSeason);
 }
 let isDarkMode = (()=>{
   try{
@@ -1264,9 +1400,32 @@ let isDarkMode = (()=>{
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 })();
 applyDarkMode(isDarkMode);
+
+translateUI();
+renderHome();
+
 document.getElementById("themeBtn").addEventListener("click", ()=>{
-  isDarkMode = !isDarkMode;
-  applyDarkMode(isDarkMode);
+  applyDarkMode(!isDarkMode);
+});
+
+/* Haptic feedback mute toggle: respect stored preference, default on */
+function applyHapticsUI(){
+  const btn=document.getElementById("hapticBtn");
+  btn.classList.toggle("muted", !hapticsEnabled);
+  btn.setAttribute("aria-label", hapticsEnabled ? "Mute haptic feedback" : "Unmute haptic feedback");
+}
+let hapticsEnabled = (()=>{
+  try{
+    const stored = localStorage.getItem("rosary_haptics");
+    if(stored !== null) return stored === "1";
+  }catch(e){}
+  return true;
+})();
+applyHapticsUI();
+document.getElementById("hapticBtn").addEventListener("click", ()=>{
+  hapticsEnabled = !hapticsEnabled;
+  try{ localStorage.setItem("rosary_haptics", hapticsEnabled ? "1" : "0"); }catch(e){}
+  applyHapticsUI();
 });
 
 document.getElementById("dedicateDeceased").addEventListener("change",e=>{
@@ -1304,6 +1463,7 @@ document.getElementById("nextBtn").addEventListener("click",()=>{
     animatedStepChange('next');
   } else {
     clearSavedState();
+    recordStreakCompletion();
     showScreen("complete");
   }
 });
