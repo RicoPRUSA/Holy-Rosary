@@ -101,12 +101,12 @@ header.top{display:flex;align-items:center;justify-content:space-between;padding
 .icon-btn.muted .mute-slash{opacity:1}
 
 main{flex:1;position:relative;z-index:1;padding:0 22px}
-.hero{text-align:center;padding:6px 0 16px}
+.hero{text-align:center;padding:6px 0 0}
 
 /* Medallion */
 .medallion{
-  width:92px;
-  height:92px;
+  width:108px;
+  height:108px;
   margin:0 auto 14px;
   border-radius:50%;
   border:1px solid var(--line);
@@ -120,14 +120,14 @@ main{flex:1;position:relative;z-index:1;padding:0 22px}
 }
 
 .medallion .medallion-svg{
-  width:80px;
-  height:80px;
+  width:96px;
+  height:96px;
   color:var(--gold-text);
   transition:color .3s ease;
 }
 
-h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spacing:-.01em;margin:0 0 6px;color:var(--ink-deep)}
-.subtitle{font-size:14.5px;color:var(--ink);opacity:.72;letter-spacing:.01em;font-style:italic}
+h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:27px;letter-spacing:-.01em;margin:0 0 5px;color:var(--ink-deep)}
+.subtitle{font-size:13px;color:var(--ink);opacity:.72;letter-spacing:.01em;font-style:italic}
 
 .season-badge{
   margin:14px auto 0;
@@ -188,7 +188,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   border:1px solid var(--line);
   border-radius:16px;
   padding:16px;
-  margin:16px 0;
+  margin-top:14px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -236,7 +236,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
   border:1px solid var(--line);
   border-radius:16px;
   padding:14px 16px 12px;
-  margin-top:16px;
+  margin-top:14px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -253,11 +253,11 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
 }
 .streak-dots{display:flex;gap:10px}
 
-.section-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;text-align:center;margin:24px 0 12px;display:flex;align-items:center;gap:10px}
+.section-label{font-family:'Inter',sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.5;text-align:center;margin:14px 0 12px;display:flex;align-items:center;gap:10px}
 .section-label::before,.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
 
 /* Choose a Day Dropdown */
-.day-dropdown-container{margin-bottom:16px}
+.day-dropdown-container{margin-bottom:0}
 .day-dropdown{
   width:100%;
   padding:14px 16px;
@@ -281,7 +281,7 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:32px;letter-spac
 .day-dropdown:focus{border-color:var(--gold)}
 
 .prayers-toggle{
-  margin-top:26px;
+  margin-top:14px;
   border:1px solid var(--line);
   border-radius:16px;
   overflow:hidden;
@@ -495,8 +495,8 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
 @media (max-width:600px){
   body{font-size:16px}
-  h1.title{font-size:30px}
-  .subtitle{font-size:14.5px}
+  h1.title{font-size:25px}
+  .subtitle{font-size:13px}
   .set-name{font-size:26px}
   .step-title{font-size:25px}
 }
