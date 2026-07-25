@@ -477,6 +477,33 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 .hidden{display:none!important}
 
 /* Deceased Card */
+.intention-card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+  margin-top:14px;
+  text-align:left;
+  box-shadow:var(--shadow-soft);
+}
+.intention-label{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;color:var(--ink-deep);margin-bottom:8px}
+#intentionText{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-family:'Fraunces',serif;
+  font-size:15px;
+  background:var(--surface);
+  color:var(--ink-deep);
+  outline:none;
+  resize:vertical;
+  min-height:44px;
+  line-height:1.4;
+}
+#intentionText:focus{border-color:var(--gold)}
+#intentionText::placeholder{color:var(--ink);opacity:.5;font-family:'Inter',sans-serif}
+
 .deceased-option-card{
   background:var(--surface);
   border:1px solid var(--line);
@@ -576,6 +603,12 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
       <!-- Resume Active Session Banner (if saved) -->
       <div id="resumeContainer"></div>
+
+      <!-- Prayer Intention -->
+      <div class="intention-card">
+        <label class="intention-label" for="intentionText" id="ui-intentionLabel">Your Intention (optional)</label>
+        <textarea id="intentionText" rows="2" placeholder="What are you praying for today?"></textarea>
+      </div>
 
       <!-- Deceased Loved One Option -->
       <div class="deceased-option-card">
@@ -743,8 +776,8 @@ const MYSTERY_SETS={
 };
 
 const TRANSLATIONS={
-  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --"},
-  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --"}
+  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --",intentionLabel:"Your Intention (optional)",intentionPlaceholder:"What are you praying for today?",intentionEyebrow:"I Offer This Rosary For",intentionTitle:"Your Intention"},
+  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --",intentionLabel:"Tu Intención (opcional)",intentionPlaceholder:"¿Por qué intención rezas hoy?",intentionEyebrow:"Ofrezco Este Rosario Por",intentionTitle:"Tu Intención"}
 };
 
 const DAY_SCHEDULE=[{nameIndex:0,key:"glorious"},{nameIndex:1,key:"joyful"},{nameIndex:2,key:"sorrowful"},{nameIndex:3,key:"glorious"},{nameIndex:4,key:"luminous"},{nameIndex:5,key:"sorrowful"},{nameIndex:6,key:"joyful"}];
@@ -810,6 +843,8 @@ function translateUI(){
   document.getElementById("ui-todayPrefix").textContent=trans.todayPrefix.toUpperCase();
   document.getElementById("ui-deceasedLabel").textContent=trans.deceasedLabel;
   document.getElementById("deceasedName").placeholder=trans.deceasedPlaceholder;
+  document.getElementById("ui-intentionLabel").textContent=trans.intentionLabel;
+  document.getElementById("intentionText").placeholder=trans.intentionPlaceholder;
   document.getElementById("ui-genderMale").textContent=trans.genderMale;
   document.getElementById("ui-genderFemale").textContent=trans.genderFemale;
   document.getElementById("ui-genderPlural").textContent=trans.genderPlural;
@@ -1066,6 +1101,13 @@ function buildSequence(e,t){
   const pSource=PRAYERS[currentLang];
 
   o.push({type:"text",eyebrow:currentLang==="en"?"Before You Begin":"Antes de Comenzar",title:currentLang==="en"?"Preparatory Prayer":"Oración Preparatoria",body:pSource.preparatory,bead:"big"});
+
+  const intentionRaw=document.getElementById("intentionText").value.trim();
+  if(intentionRaw){
+    const trans=TRANSLATIONS[currentLang];
+    o.push({type:"intention",eyebrow:trans.intentionEyebrow,title:trans.intentionTitle,body:intentionRaw,bead:"big"});
+  }
+
   o.push({type:"text",eyebrow:currentLang==="en"?"Begin":"Comenzar",title:currentLang==="en"?"Sign of the Cross":"Señal de la Cruz",body:pSource.signOfCross,bead:"big"});
   o.push({type:"text",eyebrow:currentLang==="en"?"Preparing the Soul":"Preparación del Alma",title:currentLang==="en"?"Act of Contrition":"Acto de Contrición",body:pSource.actOfContrition,bead:"big"});
 
@@ -1166,7 +1208,7 @@ function renderStep(){
         ${e.decade?`<div class="decade-flag">${labelDecade} ${e.decade} ${currentLang==="en"?"of 5":"de 5"}</div>`:""}
         <div class="step-eyebrow">${e.eyebrow}</div>
         <div class="step-title">${e.title}</div>
-        <div class="step-body">${e.body.replace(/\n/g,"<br><br>")}</div>
+        <div class="step-body${e.type==="intention"?" meditation":""}">${e.body.replace(/\n/g,"<br><br>")}</div>
       </div>
     `;
   }
