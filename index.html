@@ -284,10 +284,29 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:27px;letter-spac
   margin-top:14px;
   border:1px solid var(--line);
   border-radius:16px;
-  overflow:hidden;
   background:var(--surface);
   box-shadow:var(--shadow-soft);
 }
+.prayer-close-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:sticky;
+  top:16px;
+  width:34px;
+  height:34px;
+  margin:0 16px 0 auto;
+  border-radius:50%;
+  background:var(--surface);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-pill);
+  color:var(--ink-deep);
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  z-index:5;
+}
+.prayer-close-btn:active{transform:scale(0.92)}
 .prayers-toggle summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep)}
 .prayers-toggle summary::-webkit-details-marker{display:none}
 .prayers-toggle summary::after{content:"+";font-size:19px;color:var(--gold-text);font-weight:400}
@@ -634,6 +653,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
       <details class="prayers-toggle">
         <summary id="ui-summaryPrayers">Prayers of the Rosary</summary>
+        <button class="prayer-close-btn" id="closePrayersBtn" aria-label="Close">✕</button>
         <div class="prayer-ref" id="prayerRef"></div>
       </details>
 
@@ -777,8 +797,8 @@ const MYSTERY_SETS={
 };
 
 const TRANSLATIONS={
-  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --",intentionLabel:"Your Intention (optional)",intentionPlaceholder:"What are you praying for today?",intentionEyebrow:"I Offer This Rosary For",intentionTitle:"Your Intention"},
-  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --",intentionLabel:"Tu Intención (opcional)",intentionPlaceholder:"¿Por qué intención rezas hoy?",intentionEyebrow:"Ofrezco Este Rosario Por",intentionTitle:"Tu Intención"}
+  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --",intentionLabel:"Your Intention (optional)",intentionPlaceholder:"What are you praying for today?",intentionEyebrow:"I Offer This Rosary For",intentionTitle:"Your Intention",closeLabel:"Close"},
+  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --",intentionLabel:"Tu Intención (opcional)",intentionPlaceholder:"¿Por qué intención rezas hoy?",intentionEyebrow:"Ofrezco Este Rosario Por",intentionTitle:"Tu Intención",closeLabel:"Cerrar"}
 };
 
 const DAY_SCHEDULE=[{nameIndex:0,key:"glorious"},{nameIndex:1,key:"joyful"},{nameIndex:2,key:"sorrowful"},{nameIndex:3,key:"glorious"},{nameIndex:4,key:"luminous"},{nameIndex:5,key:"sorrowful"},{nameIndex:6,key:"joyful"}];
@@ -862,6 +882,7 @@ function translateUI(){
   document.getElementById("nextBtn").setAttribute("aria-label", trans.nextCtrl);
   document.getElementById("ui-textSizeLabel").textContent=trans.textSizeLabel;
   document.getElementById("ui-swipeHint").textContent=trans.swipeHint;
+  document.getElementById("closePrayersBtn").setAttribute("aria-label", trans.closeLabel);
   applySeasonTheme(currentSeason);
 }
 
@@ -1488,6 +1509,11 @@ document.getElementById("daySelect").addEventListener("change", e=>{
 document.getElementById("infoBtn").addEventListener("click",()=>{
   document.querySelector(".prayers-toggle").open=true;
   document.querySelector(".prayers-toggle").scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.getElementById("closePrayersBtn").addEventListener("click",()=>{
+  const toggle=document.querySelector(".prayers-toggle");
+  toggle.open=false;
+  toggle.scrollIntoView({behavior:"smooth",block:"start"});
 });
 document.getElementById("backFromOverview").addEventListener("click",()=>showScreen("home"));
 
