@@ -565,6 +565,14 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   animation:medallionBreathe 4.5s ease-in-out infinite;
 }
 
+@keyframes todayBreathe{
+  0%,100%{box-shadow:var(--shadow-soft), 0 0 0 0 rgba(var(--gold-rgb),0)}
+  50%{box-shadow:var(--shadow-soft), 0 0 0 7px rgba(var(--gold-rgb),.10)}
+}
+.today-pill{
+  animation:todayBreathe 4.5s ease-in-out infinite;
+}
+
 .screen-fade-out{animation:screenFadeOut .16s forwards ease-in}
 .screen-fade-in{animation:screenFadeIn .22s forwards ease-out}
 @keyframes screenFadeOut{from{opacity:1}to{opacity:0}}
