@@ -145,6 +145,17 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:27px;letter-spac
   border-radius:999px;
 }
 .season-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.week-label{
+  margin-top:7px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  font-weight:500;
+  color:var(--ink);
+  opacity:.55;
+  letter-spacing:.01em;
+  text-align:center;
+}
+.week-label:empty{display:none}
 
 /* Today Card */
 .today-pill{
@@ -618,6 +629,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
         <h1 class="title" id="ui-title">The Holy Rosary</h1>
         <div class="subtitle" id="ui-subtitle">Pray always, and do not lose heart</div>
         <div class="season-badge" id="seasonBadge">Ordinary Time</div>
+        <div class="week-label" id="weekLabel"></div>
         
         <!-- Rectangular Today Card ("TODAY" on top, text underneath) -->
         <div class="today-pill" id="todayPill">
@@ -843,6 +855,69 @@ function stripTime(e){return new Date(e.getFullYear(),e.getMonth(),e.getDate())}
 function isSameDate(e,t){return e.getFullYear()===t.getFullYear()&&e.getMonth()===t.getMonth()&&e.getDate()===t.getDate()}
 function getLiturgicalSeason(e){const t=stripTime(e),r=t.getFullYear(),o=stripTime(computeEaster(r)),a=addDays(o,-46),l=addDays(o,-3),s=addDays(o,49),n=stripTime(getAdventStart(r)),i=new Date(r,11,25),u=stripTime(getBaptismOfLord(r));return t>=n&&t<i?"advent":t>=i||t<u?"christmas":t>=a&&t<l?"lent":t>=l&&t<o?"triduum":isSameDate(t,s)?"pentecost":t>=o&&t<=s?"easter":"ordinary"}
 
+/* Liturgical week counter (e.g. "17th Sunday in Ordinary Time", "1st Sunday in Lent").
+   Ordinary Time's numbering is interrupted by Lent/Easter and, once it resumes after
+   Pentecost, is counted BACKWARD from the 34th (last) week at Christ the King so the
+   season always lands correctly regardless of how early or late Easter falls that year. */
+function getLiturgicalWeekLabel(date, lang){
+  const t=stripTime(date);
+  const year=t.getFullYear();
+  const easter=stripTime(computeEaster(year));
+  const season=getLiturgicalSeason(t);
+  const weekSunday=addDays(t,-t.getDay());
+
+  const ashWednesday=addDays(easter,-46);
+  const adventStart=stripTime(getAdventStart(year));
+  const christKingSunday=addDays(adventStart,-7);
+  const baptism=stripTime(getBaptismOfLord(year));
+  const palmSunday=addDays(easter,-7);
+  const trinitySunday=addDays(easter,56);
+  const WEEK_MS=7*86400000;
+
+  if(season==="ordinary"){
+    if(isSameDate(weekSunday,trinitySunday))return"";
+    let weekNum;
+    if(t<ashWednesday){
+      const firstOTSunday=addDays(baptism,0===baptism.getDay()?7:7-baptism.getDay());
+      if(weekSunday<firstOTSunday)return"";
+      weekNum=2+Math.round((weekSunday-firstOTSunday)/WEEK_MS);
+    }else{
+      weekNum=34-Math.round((christKingSunday-weekSunday)/WEEK_MS);
+    }
+    if(weekNum<2||weekNum>34)return"";
+    return"en"===lang?`${ordinal(weekNum)} Sunday in Ordinary Time`:`Domingo ${weekNum} del Tiempo Ordinario`;
+  }
+
+  if(season==="lent"){
+    if(isSameDate(weekSunday,palmSunday))return"";
+    const firstLentSunday=addDays(ashWednesday,4);
+    const weekNum=1+Math.round((weekSunday-firstLentSunday)/WEEK_MS);
+    if(weekNum<1||weekNum>5)return"";
+    if("en"===lang)return`${ordinal(weekNum)} Sunday in Lent`;
+    const esWords=["","Primer","Segundo","Tercer","Cuarto","Quinto"];
+    return`${esWords[weekNum]} Domingo de Cuaresma`;
+  }
+
+  if(season==="advent"){
+    const weekNum=1+Math.round((weekSunday-adventStart)/WEEK_MS);
+    if(weekNum<1||weekNum>4)return"";
+    if("en"===lang)return`${ordinal(weekNum)} Sunday of Advent`;
+    const esWords=["","Primer","Segundo","Tercer","Cuarto"];
+    return`${esWords[weekNum]} Domingo de Adviento`;
+  }
+
+  if(season==="easter"){
+    if(isSameDate(weekSunday,easter))return"";
+    const weekNum=1+Math.round((weekSunday-easter)/WEEK_MS);
+    if(weekNum<2||weekNum>7)return"";
+    if("en"===lang)return`${ordinal(weekNum)} Sunday of Easter`;
+    const esWords=["","","Segundo","Tercer","Cuarto","Quinto","Sexto","Séptimo"];
+    return`${esWords[weekNum]} Domingo de Pascua`;
+  }
+
+  return"";
+}
+
 const SEASON_THEMES={
   advent:{gold:"#5B4E82",goldLight:"#7267A0",goldPale:"#D9D3E8",burgundy:"#3A3159",goldRgb:"91,78,130",goldLightRgb:"114,103,160",burgundyRgb:"58,49,89",label:{en:"Advent",es:"Adviento"}},
   christmas:{gold:"#8A6C26",goldLight:"#C29F4C",goldPale:"#EEE1BC",burgundy:"#7A5E1E",goldRgb:"138,108,38",goldLightRgb:"194,159,76",burgundyRgb:"122,94,30",label:{en:"Christmastide",es:"Navidad"}},
@@ -915,6 +990,8 @@ function translateUI(){
   document.getElementById("ui-textSizeLabel").textContent=trans.textSizeLabel;
   document.getElementById("ui-swipeHint").textContent=trans.swipeHint;
   document.getElementById("closePrayersBtn").setAttribute("aria-label", trans.closeLabel);
+  const weekLabelEl=document.getElementById("weekLabel");
+  if(weekLabelEl) weekLabelEl.textContent=getLiturgicalWeekLabel(new Date(), currentLang);
   applySeasonTheme(currentSeason);
 }
 
