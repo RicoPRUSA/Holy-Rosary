@@ -1216,7 +1216,7 @@ function openOverview(e){
 function buildSequence(e,t){
   const r=MYSTERY_SETS[currentLang][e],o=[];
   const dedicate=document.getElementById("dedicateDeceased").checked;
-  const nameInput=document.getElementById("deceasedName").value.trim();
+  const nameInput=escapeHtml(document.getElementById("deceasedName").value.trim());
   let name=nameInput||(currentLang==="en"?"our deceased loved one":"nuestro querido difunto");
   const genderEl=document.querySelector('input[name="deceasedGender"]:checked');
   const gender=genderEl?genderEl.value:"him";
@@ -1233,7 +1233,7 @@ function buildSequence(e,t){
 
   o.push({type:"text",eyebrow:currentLang==="en"?"Before You Begin":"Antes de Comenzar",title:currentLang==="en"?"Preparatory Prayer":"Oración Preparatoria",body:pSource.preparatory,bead:"big"});
 
-  const intentionRaw=document.getElementById("intentionText").value.trim();
+  const intentionRaw=escapeHtml(document.getElementById("intentionText").value.trim());
   if(intentionRaw){
     const trans=TRANSLATIONS[currentLang];
     o.push({type:"intention",eyebrow:trans.intentionEyebrow,title:trans.intentionTitle,body:intentionRaw,bead:"big"});
@@ -1306,6 +1306,15 @@ function buildSequence(e,t){
 }
 
 function ordinal(e){const t=["th","st","nd","rd"],r=e%100;return e+(t[(r-20)%10]||t[r]||t[0])}
+
+/* Sanitizes free-text user input (the intention field, the deceased-loved-one's
+   name) before it's woven into prayer text that later gets rendered via innerHTML.
+   Applied at the point of reading the input, so every downstream usage — including
+   the copy cached to localStorage for "resume" and read back later — is already
+   safe, rather than relying on each render call-site to remember to escape. */
+function escapeHtml(str){
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+}
 
 /* Render Step */
 function renderStep(){
