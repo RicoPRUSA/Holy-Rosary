@@ -63,22 +63,6 @@ body{
 .app{width:100%;max-width:480px;min-height:100vh;position:relative;display:flex;flex-direction:column;padding:0 0 28px}
 
 header.top{display:flex;align-items:center;justify-content:center;padding:18px 20px 10px;position:relative;z-index:2}
-header.top .brand{display:none}
-header.top > div{justify-content:center;flex-wrap:wrap}
-.brand{font-family:'Fraunces',serif;font-weight:500;font-size:17px;letter-spacing:.01em;color:var(--ink-deep);text-transform:none;display:flex;align-items:center;gap:8px}
-
-.brand-cross-svg{
-  width:16px;
-  height:18px;
-  color:var(--gold-text);
-  fill:none;
-  stroke:currentColor;
-  stroke-width:2.3;
-  stroke-linecap:round;
-  flex-shrink:0;
-  transition:color .3s ease;
-}
-
 /* Header Buttons */
 .icon-btn{
   background:var(--surface);
@@ -293,40 +277,25 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:27px;letter-spac
 }
 .day-dropdown:focus{border-color:var(--gold)}
 
-.prayers-toggle{
-  margin-top:14px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--surface);
-  box-shadow:var(--shadow-soft);
-}
-.prayer-close-btn{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  position:sticky;
-  top:16px;
-  width:34px;
-  height:34px;
-  margin:0 16px 0 auto;
-  border-radius:50%;
-  background:var(--surface);
-  border:1px solid var(--line);
-  box-shadow:var(--shadow-pill);
-  color:var(--ink-deep);
-  font-size:19px;
-  font-weight:700;
-  cursor:pointer;
-  z-index:5;
-}
-.prayer-close-btn:active{transform:scale(0.92)}
-.prayers-toggle summary{list-style:none;cursor:pointer;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep)}
-.prayers-toggle summary::-webkit-details-marker{display:none}
-.prayers-toggle summary::after{content:"+";font-size:19px;color:var(--gold-text);font-weight:400}
-.prayers-toggle[open] summary::after{content:"–"}
-.prayer-ref{padding:0 18px 18px}
-.prayer-ref h3{font-family:'Fraunces',serif;font-weight:500;font-size:16px;color:var(--gold-text);margin:16px 0 5px;letter-spacing:0}
-.prayer-ref p{font-family:'Fraunces',serif;font-size:17px;line-height:1.6;color:var(--ink);margin:0;opacity:.95}
+.prayers-card{margin-top:14px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow-soft);padding:14px 16px 16px}
+.prayers-card-label{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:.03em;color:var(--ink-deep);margin-bottom:8px}
+.prayer-display h3{font-family:'Fraunces',serif;font-weight:500;font-size:17px;color:var(--gold-text);margin:16px 0 6px;letter-spacing:0}
+.prayer-display p{font-family:'Fraunces',serif;font-size:17px;line-height:1.6;color:var(--ink);margin:0;opacity:.95}
+.prayer-display.hidden{display:none}
+.prayer-sheet{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.prayer-sheet.hidden{display:none}
+.prayer-sheet-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.prayer-sheet-panel{position:relative;width:100%;max-width:480px;max-height:85vh;display:flex;flex-direction:column;background:var(--cream);border-radius:22px 22px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.25);animation:sheetUp .25s ease-out}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px}
+.sheet-title{font-family:'Fraunces',serif;font-weight:500;font-size:19px;color:var(--ink-deep)}
+.sheet-close{width:34px;height:34px;border-radius:50%;background:var(--surface);border:1px solid var(--line);color:var(--ink-deep);font-size:17px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.sheet-close:active{transform:scale(.92)}
+.sheet-body{overflow-y:auto;padding:4px 18px 28px;-webkit-overflow-scrolling:touch}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+.step-intention-input{width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:'Fraunces',serif;font-size:max(16px,calc(19px * var(--step-font-scale)));line-height:1.45;background:var(--surface);color:var(--ink-deep);outline:none;resize:none}
+.step-intention-input:focus{border-color:var(--gold)}
+.step-intention-input::placeholder{color:var(--ink);opacity:.5}
+.step-intention-hint{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink);opacity:.6;margin-top:10px;text-align:center}
 
 footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px;color:var(--ink);opacity:.5;margin-top:28px;font-style:italic}
 
@@ -554,16 +523,17 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 .gender-selector label{display:flex;align-items:center;gap:5px;cursor:pointer}
 
 @media (max-width:600px){
-  .bottom-pray-nav{width:calc(100% - 48px);max-width:360px;padding:5px 18px 4px;bottom:12px}
-  .pray-controls{gap:38px;padding:0}
-  .ctrl-btn{width:38px;height:34px}
-  .ctrl-btn svg{width:24px;height:24px}
-  .swipe-hint-underneath{font-size:9.5px;margin-top:0}
   body{font-size:16px}
   h1.title{font-size:25px}
   .subtitle{font-size:13px}
   .set-name{font-size:26px}
   .step-title{font-size:25px}
+  .pray-wrap{padding-bottom:76px}
+  .bottom-pray-nav{bottom:10px;width:min(300px,calc(100% - 32px));padding:3px 14px 5px}
+  .pray-controls{width:100%;justify-content:space-around;gap:0;padding:0}
+  .ctrl-btn{width:36px;height:34px}
+  .ctrl-btn svg{width:23px;height:23px}
+  .swipe-hint-underneath{font-size:10px;line-height:1.1;margin-top:0}
 }
 @keyframes beadPulse{
   0%,100%{transform:scale(1);opacity:1}
@@ -605,11 +575,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   <!-- ===================== HOME SCREEN ===================== -->
   <div id="screen-home">
     <header class="top">
-      <div class="brand">
-        <svg class="brand-cross-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M5 8h14"/></svg>
-        <span id="ui-brand">Holy Rosary</span>
-      </div>
-      <div style="display:flex;gap:6px;">
+      <div style="display:flex;gap:8px;justify-content:center;">
         <button class="icon-btn" id="hapticBtn" aria-label="Mute haptic feedback">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
@@ -619,7 +585,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
         </button>
         <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">☾</button>
         <button class="icon-btn" id="langBtn" aria-label="Language">ES</button>
-        <button class="icon-btn" id="infoBtn" aria-label="About">i</button>
+        <button class="icon-btn" id="infoBtn" aria-label="Prayers of the Rosary">i</button>
       </div>
     </header>
 
@@ -678,11 +644,11 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
         <select class="day-dropdown" id="daySelect"></select>
       </div>
 
-      <details class="prayers-toggle">
-        <summary id="ui-summaryPrayers">Prayers of the Rosary</summary>
-        <button class="prayer-close-btn" id="closePrayersBtn" aria-label="Close">✕</button>
-        <div class="prayer-ref" id="prayerRef"></div>
-      </details>
+      <div class="prayers-card">
+        <label class="prayers-card-label" id="ui-summaryPrayers" for="prayerSelect">Prayers of the Rosary</label>
+        <select class="day-dropdown" id="prayerSelect"></select>
+        <div class="prayer-display hidden" id="prayerDisplay"></div>
+      </div>
 
       <footer class="home-foot" id="ui-footer">Hail Mary, full of grace, the Lord is with thee.</footer>
     </main>
@@ -758,6 +724,19 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
 
 </div>
 
+<div class="prayer-sheet hidden" id="prayerSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+  <div class="prayer-sheet-backdrop" id="sheetBackdrop"></div>
+  <div class="prayer-sheet-panel">
+    <div class="sheet-head">
+      <span class="sheet-title" id="sheetTitle">Prayers of the Rosary</span>
+      <button class="sheet-close" id="sheetCloseBtn" aria-label="Close">✕</button>
+    </div>
+    <div class="sheet-body" id="sheetBody">
+      <select class="day-dropdown" id="sheetSelect"></select>
+      <div class="prayer-display hidden" id="sheetDisplay"></div>
+    </div>
+  </div>
+</div>
 <script>
 /* Register Service Worker for Offline / PWA capabilities.
    Network-first for the page itself: always tries to fetch the latest
@@ -848,8 +827,8 @@ const MYSTERY_SETS={
 };
 
 const TRANSLATIONS={
-  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --",intentionLabel:"Your Intention (optional)",intentionPlaceholder:"What are you praying for today?",intentionEyebrow:"I Offer This Rosary For",intentionTitle:"Your Intention",closeLabel:"Close"},
-  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --",intentionLabel:"Tu Intención (opcional)",intentionPlaceholder:"¿Por qué intención rezas hoy?",intentionEyebrow:"Ofrezco Este Rosario Por",intentionTitle:"Tu Intención",closeLabel:"Cerrar"}
+  en:{brand:"Holy Rosary",title:"The Holy Rosary",subtitle:"Pray always, and do not lose heart",todayPrefix:"Today",deceasedLabel:"Pray for a Deceased Loved One",deceasedPlaceholder:"Name of Deceased (e.g. John)",genderMale:"He/Him",genderFemale:"She/Her",genderPlural:"They/Them",sectionDays:"Choose a Day",summaryPrayers:"Prayers of the Rosary",footer:"Hail Mary, full of grace, the Lord is with thee.",backBtn:"Days",beginBtn:"Begin the Rosary",compTitle:"Rosary Complete",compQuote:'"Through the Rosary, may we come to know and love Jesus more deeply, through the heart of His Mother."',doneBtn:"Return Home",backCtrl:"Back",homeCtrl:"Home",nextCtrl:"Next",finishCtrl:"Finish",daysNames:["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],textSizeLabel:"Text",swipeHint:"Swipe left/right to navigate",resumeTitle:"Resume Active Rosary",resumeSub:"Step {step} of {total}",resumeBtn:"Resume",selectPrompt:"-- Select a Day --",intentionLabel:"Your Intention (optional)",intentionPlaceholder:"What are you praying for today?",intentionEyebrow:"I Offer This Rosary For",intentionTitle:"Your Intention",closeLabel:"Close",prayerSelectPrompt:"-- Select a Prayer --",intentionHint:"Optional. Type it here, then swipe or tap Next to continue."},
+  es:{brand:"Santo Rosario",title:"El Santo Rosario",subtitle:"Orad siempre, y no desaniméis",todayPrefix:"Hoy",deceasedLabel:"Rezar por un Ser Querido Difunto",deceasedPlaceholder:"Nombre del difunto (ej. Juan)",genderMale:"Él",genderFemale:"Ella",genderPlural:"Ellos",sectionDays:"Elige un Día",summaryPrayers:"Oraciones del Rosario",footer:"Dios te salve, María, llena eres de gracia, el Señor es contigo.",backBtn:"Días",beginBtn:"Comenzar el Rosario",compTitle:"Rosario Completado",compQuote:'"A través del Rosario, podamos conocer y amar más profundamente a Jesús, a través del corazón de su Madre."',doneBtn:"Volver al Inicio",backCtrl:"Atrás",homeCtrl:"Inicio",nextCtrl:"Siguiente",finishCtrl:"Terminar",daysNames:["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"],textSizeLabel:"Texto",swipeHint:"Desliza a los lados para navegar",resumeTitle:"Continuar Rosario",resumeSub:"Paso {step} de {total}",resumeBtn:"Continuar",selectPrompt:"-- Selecciona un Día --",intentionLabel:"Tu Intención (opcional)",intentionPlaceholder:"¿Por qué intención rezas hoy?",intentionEyebrow:"Ofrezco Este Rosario Por",intentionTitle:"Tu Intención",closeLabel:"Cerrar",prayerSelectPrompt:"-- Selecciona una Oración --",intentionHint:"Opcional. Escríbela aquí y luego desliza o toca Siguiente."}
 };
 
 const DAY_SCHEDULE=[{nameIndex:0,key:"glorious"},{nameIndex:1,key:"joyful"},{nameIndex:2,key:"sorrowful"},{nameIndex:3,key:"glorious"},{nameIndex:4,key:"luminous"},{nameIndex:5,key:"sorrowful"},{nameIndex:6,key:"joyful"}];
@@ -967,12 +946,13 @@ let circularNodes=null;
 
 /* Perf: guard against double-fire during the slide animation window */
 let isTransitioning=false;
+let intentionValue="";
+function persistIntention(){try{localStorage.setItem("rosary_intention",intentionValue)}catch(e){}}
 
 function buzz(e){if(!hapticsEnabled)return;if(navigator.vibrate)try{navigator.vibrate(e||40);return}catch(e){}try{const t=window.AudioContext||window.webkitAudioContext;if(t&&(audioCtx||(audioCtx=new t),audioCtx)){"suspended"===audioCtx.state&&audioCtx.resume();const e=audioCtx.createOscillator(),t=audioCtx.createGain();e.connect(t),t.connect(audioCtx.destination),e.type="sine",e.frequency.setValueAtTime(60,audioCtx.currentTime),t.gain.setValueAtTime(.8,audioCtx.currentTime),t.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+.05),e.start(),e.stop(audioCtx.currentTime+.05)}}catch(e){}}
 
 function translateUI(){
   const trans=TRANSLATIONS[currentLang];
-  document.getElementById("ui-brand").textContent=trans.brand;
   document.getElementById("ui-title").textContent=trans.title;
   document.getElementById("ui-subtitle").textContent=trans.subtitle;
   document.getElementById("ui-todayPrefix").textContent=trans.todayPrefix.toUpperCase();
@@ -996,32 +976,72 @@ function translateUI(){
   document.getElementById("nextBtn").setAttribute("aria-label", trans.nextCtrl);
   document.getElementById("ui-textSizeLabel").textContent=trans.textSizeLabel;
   document.getElementById("ui-swipeHint").textContent=trans.swipeHint;
-  document.getElementById("closePrayersBtn").setAttribute("aria-label", trans.closeLabel);
+  document.getElementById("infoBtn").setAttribute("aria-label",trans.summaryPrayers);
+  document.getElementById("sheetCloseBtn").setAttribute("aria-label",trans.closeLabel);
+  document.getElementById("sheetTitle").textContent=trans.summaryPrayers;
   const weekLabelEl=document.getElementById("weekLabel");
   if(weekLabelEl) weekLabelEl.textContent=getLiturgicalWeekLabel(new Date(), currentLang);
   applySeasonTheme(currentSeason);
 }
 
-const PRAYER_MENU_KEYS = ["preparatory","signOfCross","actOfContrition","apostlesCreed","ourFather","hailMary","gloryBe","ejaculation","fatima","hailHolyQueen","litany","closing","stMichael","memorare"];
-function prayerLabel(key, lang){
-  const labels={
-    en:["Preparatory Prayer","Sign of the Cross","Act of Contrition","Apostles' Creed","Our Father","Hail Mary","Glory Be","Ejaculatory Prayer","Fatima Prayer","Hail, Holy Queen (Salve Regina)","Litany of Loreto","Closing Prayer","Saint Michael's Prayer","Memorare"],
-    es:["Oración Preparatoria","Señal de la Cruz","Acto de Contrición","Credo de los Apóstoles","Padrenuestro","Avemaría","Gloria","Jaculatoria","Oración de Fátima","La Salve","Letanías Lauretanas","Oración Final","San Miguel Arcángel","Acordaos"]
-  };
-  return labels[lang][PRAYER_MENU_KEYS.indexOf(key)] || key;
-}
-function renderPrayerReference(){
-  const r=document.getElementById("prayerRef"), src=PRAYERS[currentLang];
-  const selected=document.getElementById("prayerPicker")?.value || "preparatory";
-  r.innerHTML=`<label class="intention-label" for="prayerPicker">${currentLang==="en"?"Choose a prayer":"Elige una oración"}</label>
-    <select class="day-dropdown" id="prayerPicker">${PRAYER_MENU_KEYS.map(k=>`<option value="${k}">${prayerLabel(k,currentLang)}</option>`).join("")}</select>
-    <div id="selectedPrayerText"><h3>${prayerLabel(selected,currentLang)}</h3><p>${src[selected].replace(/\n/g,"<br>")}</p></div>`;
-  const picker=document.getElementById("prayerPicker");
-  picker.value=selected;
-  picker.addEventListener("change",()=>{
-    const key=picker.value;
-    document.getElementById("selectedPrayerText").innerHTML=`<h3>${prayerLabel(key,currentLang)}</h3><p>${src[key].replace(/\n/g,"<br>")}</p>`;
+const PRAYER_LIST=[
+  ["preparatory","Preparatory Prayer","Oración Preparatoria"],
+  ["signOfCross","Sign of the Cross","Señal de la Cruz"],
+  ["actOfContrition","Act of Contrition","Acto de Contrición"],
+  ["apostlesCreed","Apostles' Creed","Credo de los Apóstoles"],
+  ["ourFather","Our Father","Padrenuestro"],
+  ["hailMary","Hail Mary","Avemaría"],
+  ["gloryBe","Glory Be","Gloria"],
+  ["ejaculation","Ejaculatory Prayer","Jaculatoria"],
+  ["fatima","Fatima Prayer","Oración de Fátima"],
+  ["hailHolyQueen","Hail, Holy Queen (Salve Regina)","La Salve"],
+  ["litany","Litany of Loreto","Letanías Lauretanas"],
+  ["closing","Closing Prayer","Oración Final"],
+  ["stMichael","Saint Michael's Prayer","San Miguel Arcángel"],
+  ["memorare","Memorare","Acordaos"]
+];
+function prayerName(row){return currentLang==="en"?row[1]:row[2];}
+function fillPrayerSelect(sel){
+  const prev=sel.value;
+  sel.innerHTML="";
+  const ph=document.createElement("option");
+  ph.value="";ph.textContent=TRANSLATIONS[currentLang].prayerSelectPrompt;
+  sel.appendChild(ph);
+  PRAYER_LIST.forEach(row=>{
+    const o=document.createElement("option");
+    o.value=row[0];o.textContent=prayerName(row);
+    sel.appendChild(o);
   });
+  sel.value=prev||"";
+}
+function renderPrayerInto(container,key){
+  const row=PRAYER_LIST.find(r=>r[0]===key);
+  if(!row||!PRAYERS[currentLang][key]){container.classList.add("hidden");container.innerHTML="";return;}
+  const body=PRAYERS[currentLang][key].replace(/\n/g,"<br>");
+  container.innerHTML="<h3>"+prayerName(row)+"</h3><p>"+body+"</p>";
+  container.classList.remove("hidden");
+}
+function populatePrayerSelects(){
+  [["prayerSelect","prayerDisplay"],["sheetSelect","sheetDisplay"]].forEach(([a,b])=>{
+    const sel=document.getElementById(a);
+    fillPrayerSelect(sel);
+    renderPrayerInto(document.getElementById(b),sel.value);
+  });
+}
+let sheetReturnFocus=null;
+function openPrayerSheet(){
+  const sh=document.getElementById("prayerSheet");
+  sheetReturnFocus=document.activeElement;
+  sh.classList.remove("hidden");
+  document.body.style.overflow="hidden";
+  document.getElementById("sheetSelect").focus();
+}
+function closePrayerSheet(){
+  const sh=document.getElementById("prayerSheet");
+  if(sh.classList.contains("hidden"))return;
+  sh.classList.add("hidden");
+  document.body.style.overflow="";
+  if(sheetReturnFocus&&sheetReturnFocus.focus)sheetReturnFocus.focus();
 }
 
 function renderHome(){
@@ -1042,7 +1062,7 @@ function renderHome(){
     select.appendChild(opt);
   });
 
-  renderPrayerReference();
+  populatePrayerSelects();
 
   renderStreak();
   checkResumeState();
@@ -1080,6 +1100,7 @@ function saveState(){
 function clearSavedState(){
   localStorage.removeItem("rosary_active_session");
   localStorage.removeItem("rosary_sequence_cache");
+  localStorage.removeItem("rosary_intention");
   const c=document.getElementById("resumeContainer");
   if(!c) return;
   c.innerHTML="";
@@ -1184,6 +1205,7 @@ function checkResumeState(){
           if(!cached){ clearSavedState(); return; }
           try{
             sequence=JSON.parse(cached);
+            intentionValue=localStorage.getItem("rosary_intention")||"";
             stepIndex=data.stepIndex;
             currentMysteryKey=data.currentMysteryKey;
             showScreen("pray");
@@ -1245,9 +1267,9 @@ function buildSequence(e,t){
 
   o.push({type:"text",eyebrow:currentLang==="en"?"Before You Begin":"Antes de Comenzar",title:currentLang==="en"?"Preparatory Prayer":"Oración Preparatoria",body:pSource.preparatory,bead:"big"});
 
-  const intentionRaw=escapeHtml(document.getElementById("intentionText").value.trim());
-  const trans=TRANSLATIONS[currentLang];
-  o.push({type:"intention",eyebrow:trans.intentionEyebrow,title:trans.intentionTitle,body:intentionRaw,bead:"big"});
+  intentionValue=document.getElementById("intentionText").value.trim();
+  persistIntention();
+  o.push({type:"intention",eyebrow:TRANSLATIONS[currentLang].intentionEyebrow,title:TRANSLATIONS[currentLang].intentionTitle,body:"",bead:"big"});
 
   o.push({type:"text",eyebrow:currentLang==="en"?"Begin":"Comenzar",title:currentLang==="en"?"Sign of the Cross":"Señal de la Cruz",body:pSource.signOfCross,bead:"big"});
   o.push({type:"text",eyebrow:currentLang==="en"?"Preparing the Soul":"Preparación del Alma",title:currentLang==="en"?"Act of Contrition":"Acto de Contrición",body:pSource.actOfContrition,bead:"big"});
@@ -1343,6 +1365,19 @@ function renderStep(){
         <div class="step-body meditation">${e.body}</div>
       </div>
     `;
+  }else if(e.type==="intention"){
+    t.innerHTML=`
+      <div class="step-inner">
+        <div class="step-eyebrow">${e.eyebrow}</div>
+        <div class="step-title">${e.title}</div>
+        <textarea id="stepIntention" class="step-intention-input" rows="4"></textarea>
+        <div class="step-intention-hint">${TRANSLATIONS[currentLang].intentionHint}</div>
+      </div>
+    `;
+    const ta=document.getElementById("stepIntention");
+    ta.placeholder=TRANSLATIONS[currentLang].intentionPlaceholder;
+    ta.value=intentionValue;
+    ta.addEventListener("input",()=>{intentionValue=ta.value;persistIntention();});
   }else if(e.type==="litany"){
     const litanyGroups = e.body.split("\n\n").map(g=>`<p>${g.replace(/\n/g,"<br>")}</p>`).join("");
     t.innerHTML=`
@@ -1358,19 +1393,9 @@ function renderStep(){
         ${e.decade?`<div class="decade-flag">${labelDecade} ${e.decade} ${currentLang==="en"?"of 5":"de 5"}</div>`:""}
         <div class="step-eyebrow">${e.eyebrow}</div>
         <div class="step-title">${e.title}</div>
-        ${e.type==="intention" ? `<textarea id="rosaryIntentionInput" aria-label="${currentLang==="en"?"Your Intention":"Tu intención"}" placeholder="${currentLang==="en"?"Add an intention here if you wish…":"Añade aquí una intención si lo deseas…"}" style="width:100%;max-width:420px;min-height:110px;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink-deep);font:16px Inter,sans-serif;line-height:1.5;resize:vertical">${e.body}</textarea>` : `<div class="step-body">${e.body.replace(/\n/g,"<br><br>")}</div>`}
+        <div class="step-body${e.type==="intention"?" meditation":""}">${e.body.replace(/\n/g,"<br><br>")}</div>
       </div>
     `;
-  }
-
-  const rosaryIntentionInput=document.getElementById("rosaryIntentionInput");
-  if(rosaryIntentionInput){
-    rosaryIntentionInput.addEventListener("input",()=>{
-      const safe=escapeHtml(rosaryIntentionInput.value.trim());
-      sequence[stepIndex].body=safe;
-      document.getElementById("intentionText").value=rosaryIntentionInput.value;
-      persistSequenceOnce();
-    });
   }
 
   document.getElementById("progressText").textContent=(currentLang==="en"?"Step ":"Paso ")+(stepIndex+1)+(currentLang==="en"?" of ":" de ")+sequence.length;
@@ -1565,11 +1590,14 @@ function animatedStepChange(direction){
 }
 
 const prayMainEl = document.getElementById("prayMain");
+let swipeIgnore=false;
 prayMainEl.addEventListener('touchstart', e => {
+  swipeIgnore=!!(e.target.closest&&e.target.closest('textarea'));
   touchStartX = e.changedTouches[0].screenX;
 }, { passive: true });
 
 prayMainEl.addEventListener('touchend', e => {
+  if(swipeIgnore) return;
   touchEndX = e.changedTouches[0].screenX;
   const diff = touchStartX - touchEndX;
   if (Math.abs(diff) > 50) {
@@ -1644,17 +1672,15 @@ document.getElementById("daySelect").addEventListener("change", e=>{
   }
 });
 
-document.getElementById("infoBtn").addEventListener("click",()=>{
-  const toggle=document.querySelector(".prayers-toggle");
-  toggle.open=true;
-  toggle.scrollIntoView({behavior:"smooth",block:"start"});
-  setTimeout(()=>document.getElementById("prayerPicker")?.focus(),250);
+document.getElementById("infoBtn").addEventListener("click",openPrayerSheet);
+document.getElementById("sheetCloseBtn").addEventListener("click",closePrayerSheet);
+document.getElementById("sheetBackdrop").addEventListener("click",closePrayerSheet);
+document.getElementById("prayerSelect").addEventListener("change",e=>renderPrayerInto(document.getElementById("prayerDisplay"),e.target.value));
+document.getElementById("sheetSelect").addEventListener("change",e=>{
+  renderPrayerInto(document.getElementById("sheetDisplay"),e.target.value);
+  document.getElementById("sheetBody").scrollTop=0;
 });
-document.getElementById("closePrayersBtn").addEventListener("click",()=>{
-  const toggle=document.querySelector(".prayers-toggle");
-  toggle.open=false;
-  toggle.scrollIntoView({behavior:"smooth",block:"start"});
-});
+window.addEventListener("keydown",e=>{ if(e.key==="Escape") closePrayerSheet(); });
 document.getElementById("backFromOverview").addEventListener("click",()=>showScreen("home"));
 
 document.getElementById("beginBtn").addEventListener("click",()=>{
@@ -1718,6 +1744,7 @@ document.getElementById("langBtn").addEventListener("click",e=>{
 });
 
 window.addEventListener("keydown",e=>{
+  if(e.target&&/^(TEXTAREA|INPUT|SELECT)$/.test(e.target.tagName)) return;
   const t=document.getElementById("screen-pray");
   if(t&&!t.classList.contains("hidden")){
     if("ArrowRight"===e.key||" "===e.key){
