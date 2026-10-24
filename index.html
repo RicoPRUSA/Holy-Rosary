@@ -292,7 +292,8 @@ h1.title{font-family:'Fraunces',serif;font-weight:500;font-size:27px;letter-spac
 .sheet-close:active{transform:scale(.92)}
 .sheet-body{overflow-y:auto;padding:4px 18px 28px;-webkit-overflow-scrolling:touch}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
-.step-intention-input{width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:'Fraunces',serif;font-size:max(16px,calc(19px * var(--step-font-scale)));line-height:1.45;background:var(--surface);color:var(--ink-deep);outline:none;resize:none}
+.pray-main .step-inner{-webkit-user-select:none;user-select:none}
+.step-intention-input{-webkit-user-select:text;user-select:text;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:'Fraunces',serif;font-size:max(16px,calc(19px * var(--step-font-scale)));line-height:1.45;background:var(--surface);color:var(--ink-deep);outline:none;resize:none}
 .step-intention-input:focus{border-color:var(--gold)}
 .step-intention-input::placeholder{color:var(--ink);opacity:.5}
 .step-intention-hint{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--ink);opacity:.6;margin-top:10px;text-align:center}
@@ -745,7 +746,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
    of being stuck on whatever was cached the very first time. */
 if ('serviceWorker' in navigator) {
   const swCode = `
-    const CACHE_NAME = 'rosary-v29';
+    const CACHE_NAME = 'rosary-v30';
     self.addEventListener('install', e => {
       self.skipWaiting();
       e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['./'])));
@@ -781,13 +782,13 @@ const PRAYERS={
     preparatory:"O my Jesus, I offer up my prayers, works, joys, and sufferings of this day for all the intentions of Thy Sacred Heart, in union with the Holy Sacrifice of the Mass offered throughout the world, in reparation for my sins, for the intentions of all who are dear to me, and in particular for the fruit of this Holy Rosary which I now begin.",
     signOfCross:"In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
     actOfContrition:"O my God, I am heartily sorry for having offended Thee, and I detest all my sins because of Thy just punishments, but most of all because they offend Thee, my God, Who art all good and deserving of all my love. I firmly resolve, with the help of Thy grace, to sin no more, and to avoid the near occasions of sin. Amen.",
-    apostlesCreed:"I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son, our Lord: Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; the third day He rose again from the dead. He ascended into Heaven, and sits at the right hand of God the Father Almighty. From thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the Communion of Saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.",
+    apostlesCreed:"I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son, our Lord: Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; the third day He rose again from the dead. He ascended into Heaven, and sits at the right hand of God the Father Almighty. From there He shall come to judge the living and the dead. I believe in the Holy Spirit, the Holy Catholic Church, the Communion of Saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.",
     ourFather:"Our Father, who art in Heaven, hallowed be Thy name. Thy kingdom come, Thy will be done, on earth as it is in Heaven. <strong>Give us this day our daily bread, and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil. Amen.</strong>",
     hailMary:"Hail Mary, full of grace, the Lord is with thee. Blessed art thou amongst women, and blessed is the fruit of thy womb, Jesus. <strong>Holy Mary, Mother of God, pray for us sinners, now and at the hour of our death. Amen.</strong>",
     gloryBe:"Glory be to the Father, and to the Son, and to the Holy Spirit. <strong>As it was in the beginning, is now, and ever shall be, world without end. Amen.</strong>",
     ejaculation:"Jesus, I trust in You and I surrender myself to You; take care of everything. Mary, Mother of grace, Mother of mercy, shield me from the enemy, and receive me at the hour of my death. St. Michael the Archangel, defend us in battle. Amen.",
     fatima:"O my Jesus, forgive us our sins, save us from the fires of Hell, lead all souls to Heaven, especially those most in need of Thy mercy.",
-    hailHolyQueen:"Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor vanished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. <strong>That we may be made worthy of the promises of Christ.</strong>",
+    hailHolyQueen:"Hail, Holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor banished children of Eve. To thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious advocate, thine eyes of mercy toward us, and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.\n\nV. Pray for us, O Holy Mother of God.\nR. <strong>That we may be made worthy of the promises of Christ.</strong>",
     stMichael:"Saint Michael the Archangel, defend us in battle. Be our protection against the wickedness and snares of the devil. May God rebuke him, we humbly pray; and do you, O Prince of the Heavenly Host, by the power of God, cast into hell Satan and all the evil spirits who prowl about the world seeking the ruin of souls. Amen.",
     litany:"Lord, have mercy. Christ, have mercy. Lord, have mercy.\nChrist, hear us. Christ, graciously hear us.\nGod the Father of Heaven, have mercy on us.\nGod the Son, Redeemer of the world, have mercy on us.\nGod the Holy Spirit, have mercy on us.\nHoly Trinity, one God, have mercy on us.\n\nHoly Mary, <strong>pray for us</strong>.\nHoly Mother of God, <strong>pray for us</strong>.\nHoly Virgin of virgins, <strong>pray for us</strong>.\nMother of Christ, <strong>pray for us</strong>.\nMother of the Church, <strong>pray for us</strong>.\nMother of mercy, <strong>pray for us</strong>.\nMother of divine grace, <strong>pray for us</strong>.\nMother of hope, <strong>pray for us</strong>.\nMother most pure, <strong>pray for us</strong>.\nMother most chaste, <strong>pray for us</strong>.\nMother inviolate, <strong>pray for us</strong>.\nMother undefiled, <strong>pray for us</strong>.\nMother most amiable, <strong>pray for us</strong>.\nMother most admirable, <strong>pray for us</strong>.\nMother of good counsel, <strong>pray for us</strong>.\nMother of our Creator, <strong>pray for us</strong>.\nMother of our Savior, <strong>pray for us</strong>.\nVirgin most prudent, <strong>pray for us</strong>.\nVirgin most venerable, <strong>pray for us</strong>.\nVirgin most renowned, <strong>pray for us</strong>.\nVirgin most powerful, <strong>pray for us</strong>.\nVirgin most merciful, <strong>pray for us</strong>.\nVirgin most faithful, <strong>pray for us</strong>.\nMirror of justice, <strong>pray for us</strong>.\nSeat of wisdom, <strong>pray for us</strong>.\nCause of our joy, <strong>pray for us</strong>.\nSpiritual vessel, <strong>pray for us</strong>.\nVessel of honor, <strong>pray for us</strong>.\nSingular vessel of devotion, <strong>pray for us</strong>.\nMystical rose, <strong>pray for us</strong>.\nTower of David, <strong>pray for us</strong>.\nTower of ivory, <strong>pray for us</strong>.\nHouse of gold, <strong>pray for us</strong>.\nArk of the covenant, <strong>pray for us</strong>.\nGate of Heaven, <strong>pray for us</strong>.\nMorning star, <strong>pray for us</strong>.\nHealth of the sick, <strong>pray for us</strong>.\nRefuge of sinners, <strong>pray for us</strong>.\nComforter of the afflicted, <strong>pray for us</strong>.\nHelp of Christians, <strong>pray for us</strong>.\nQueen of Angels, <strong>pray for us</strong>.\nQueen of Patriarchs, <strong>pray for us</strong>.\nQueen of Prophets, <strong>pray for us</strong>.\nQueen of Apostles, <strong>pray for us</strong>.\nQueen of Martyrs, <strong>pray for us</strong>.\nQueen of Confessors, <strong>pray for us</strong>.\nQueen of Virgins, <strong>pray for us</strong>.\nQueen of all Saints, <strong>pray for us</strong>.\nQueen conceived without original sin, <strong>pray for us</strong>.\nQueen assumed into Heaven, <strong>pray for us</strong>.\nQueen of the most holy Rosary, <strong>pray for us</strong>.\nQueen of families, <strong>pray for us</strong>.\nQueen of peace, <strong>pray for us</strong>.\n\nLamb of God, who takest away the sins of the world, <strong>spare us, O Lord.</strong>\nLamb of God, who takest away the sins of the world, <strong>graciously hear us, O Lord.</strong>\nLamb of God, who takest away the sins of the world, <strong>have mercy on us.</strong>\n\nV. Pray for us, O Holy Mother of God.\nR. <strong>That we may be made worthy of the promises of Christ.</strong>\n\nLet us pray. Grant, we beseech Thee, O Lord God, that we, Thy servants, may enjoy perpetual health of mind and body, and by the glorious intercession of the Blessed Mary, ever Virgin, may be delivered from present sorrow and obtain eternal joy. Through Christ our Lord. Amen.",
     closing:"Let us pray. O God, whose only-begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life; grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.",
@@ -1597,6 +1598,7 @@ prayMainEl.addEventListener('touchstart', e => {
 }, { passive: true });
 
 prayMainEl.addEventListener('touchend', e => {
+  lastTouchTime=Date.now();
   if(swipeIgnore) return;
   touchEndX = e.changedTouches[0].screenX;
   const diff = touchStartX - touchEndX;
@@ -1606,8 +1608,32 @@ prayMainEl.addEventListener('touchend', e => {
     } else if (diff < 0 && stepIndex > 0) {
       animatedStepChange('prev');
     }
+    lastTapTime=0;
+  } else {
+    handleTap(e.changedTouches[0].clientX,e.changedTouches[0].clientY,e.target);
   }
 }, { passive: true });
+
+/* Double-tap anywhere on the prayer text to advance to the next step.
+   Taps on buttons, links or form fields are ignored, and so is the final step
+   (so a stray double-tap can't end the rosary — use Finish for that). */
+let lastTapTime=0,lastTapX=0,lastTapY=0,lastTouchTime=0;
+function handleTap(x,y,target){
+  if(target&&target.closest&&target.closest('button, a, textarea, input, select, label')){lastTapTime=0;return;}
+  const now=Date.now();
+  if(now-lastTapTime<320&&Math.abs(x-lastTapX)<40&&Math.abs(y-lastTapY)<40){
+    lastTapTime=0;
+    if(!isTransitioning&&stepIndex<sequence.length-1) document.getElementById("nextBtn").click();
+  }else{
+    lastTapTime=now;lastTapX=x;lastTapY=y;
+  }
+}
+/* Mouse / desktop: native dblclick (ignored when it was synthesized from a touch). */
+prayMainEl.addEventListener('dblclick',e=>{
+  if(Date.now()-lastTouchTime<700) return;
+  if(e.target.closest&&e.target.closest('button, a, textarea, input, select, label')) return;
+  if(!isTransitioning&&stepIndex<sequence.length-1) document.getElementById("nextBtn").click();
+});
 
 /* ============ INITIALIZATION & LISTENERS ============ */
 
