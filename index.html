@@ -410,8 +410,8 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
   font-style:italic
 }
 .step-body.litany-body{
-  font-size:calc(18px * var(--step-font-scale));
-  line-height:1.55;
+  font-size:calc(21.5px * var(--step-font-scale));
+  line-height:1.62;
   text-align:left;
   max-width:100%;
   padding:0 4px
@@ -748,7 +748,7 @@ footer.home-foot{font-family:'Fraunces',serif;text-align:center;font-size:13.5px
    of being stuck on whatever was cached the very first time. */
 /* APP VERSION — bump this one number on every release. It feeds the version
    label on the home screen and the service-worker cache name. */
-const APP_VERSION = 31;
+const APP_VERSION = 33;
 document.addEventListener('DOMContentLoaded',()=>{const v=document.getElementById('appVersion');if(v)v.textContent='v'+APP_VERSION;});
 if ('serviceWorker' in navigator) {
   const swCode = `
@@ -1272,13 +1272,13 @@ function buildSequence(e,t){
   }
   const pSource=PRAYERS[currentLang];
 
+  o.push({type:"text",eyebrow:currentLang==="en"?"Begin":"Comenzar",title:currentLang==="en"?"Sign of the Cross":"Señal de la Cruz",body:pSource.signOfCross,bead:"big"});
   o.push({type:"text",eyebrow:currentLang==="en"?"Before You Begin":"Antes de Comenzar",title:currentLang==="en"?"Preparatory Prayer":"Oración Preparatoria",body:pSource.preparatory,bead:"big"});
 
   intentionValue=document.getElementById("intentionText").value.trim();
   persistIntention();
   o.push({type:"intention",eyebrow:TRANSLATIONS[currentLang].intentionEyebrow,title:TRANSLATIONS[currentLang].intentionTitle,body:"",bead:"big"});
 
-  o.push({type:"text",eyebrow:currentLang==="en"?"Begin":"Comenzar",title:currentLang==="en"?"Sign of the Cross":"Señal de la Cruz",body:pSource.signOfCross,bead:"big"});
   o.push({type:"text",eyebrow:currentLang==="en"?"Preparing the Soul":"Preparación del Alma",title:currentLang==="en"?"Act of Contrition":"Acto de Contrición",body:pSource.actOfContrition,bead:"big"});
 
   if(dedicate){
@@ -1291,6 +1291,7 @@ function buildSequence(e,t){
     o.push({type:"text",eyebrow:currentLang==="en"?"Prayer for the Departed":"Oración por los Difuntos",title:"De Profundis (Psalm 130 / Salmo 129)",body:deProfundisText,bead:"big"});
   }
 
+  o.push({type:"text",eyebrow:currentLang==="en"?"A Short Aspiration":"Jaculatoria Corta",title:currentLang==="en"?"Ejaculatory Prayer":"Jaculatoria",body:pSource.ejaculation,bead:"small"});
   o.push({type:"text",eyebrow:currentLang==="en"?"On the Crucifix":"En el Crucifijo",title:currentLang==="en"?"Apostles' Creed":"Credo de los Apóstoles",body:pSource.apostlesCreed,bead:"big"});
   o.push({type:"text",eyebrow:currentLang==="en"?"First Bead":"Primera Cuenta",title:currentLang==="en"?"Our Father":"Padrenuestro",body:pSource.ourFather,bead:"big"});
 
@@ -1305,7 +1306,6 @@ function buildSequence(e,t){
     o.push({type:"text",eyebrow:currentLang==="en"?"Before the Decades":"Antes de las Décadas",title:currentLang==="en"?"Glory Be":"Gloria al Padre",body:pSource.gloryBe,bead:"big"});
   }
 
-  o.push({type:"text",eyebrow:currentLang==="en"?"A Short Aspiration":"Jaculatoria Corta",title:currentLang==="en"?"Ejaculatory Prayer":"Jaculatoria",body:pSource.ejaculation,bead:"small"});
 
   r.items.forEach((e,t)=>{
     o.push({type:"mystery",decade:t+1,total:5,eyebrow:currentLang==="en"?`${ordinal(t+1)} Mystery`:`${t+1}º Misterio`,title:e.title,fruit:e.fruit,body:e.med,bead:"big",mysteryIndex:t});
